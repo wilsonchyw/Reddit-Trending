@@ -1,0 +1,10 @@
+{
+    "SPACs": true,
+    "RobinHood": false,
+    "stocks": true,
+    "wallstreetbets": false,
+    "CryptoCurrency": true,
+    "investing": false,
+    "SatoshiStreetBets": true,
+    "pennystocks": true
+}

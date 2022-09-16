@@ -1,0 +1,91 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoom-in {
+    0% {
+        transform: scale(0, 0);
+    }
+    50% {
+        transform: scale(0.4, 0.4);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+.main-tag {
+    animation: zoom-in 1s;
+}
+
+.test1 {
+    animation: fadeIn 2s, zoom-in 1s;
+}
+.test2 {
+    animation: fadeIn 3s, zoom-in 1.5s;
+}
+.test3 {
+    animation: fadeIn 4s, zoom-in 2s;
+}
+.test4 {
+    animation: fadeIn 5s, zoom-in 2.5s;
+}
+
+.panel {
+    width: 200px;
+    height: 100px;
+    background: green;
+    margin-top: 10px;
+}
+
+.moveUp {
+    width: 200px;
+    height: 100px;
+    background: green;
+    margin-top: 10px;
+}
+
+.example-enter {
+    height: 0px;
+}
+
+.example-enter.example-enter-active {
+    height: 100px;
+    -webkit-transition: height 2s ease;
+}
+
+.example-leave.example-leave-active {
+    height: 0px;
+    -webkit-transition: height 2s ease;
+}
+
+@keyframes zoom-in-out {
+    0% {
+        transform: scale(0.8, 0.8);
+    }
+    50% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(0.8, 0.8);
+    }
+}
+@keyframes fade-in-out {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.zoom-in-out {
+    animation: zoom-in-out 2s infinite, fade-in-out 2s infinite;
+}
