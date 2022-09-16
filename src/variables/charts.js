@@ -112,13 +112,20 @@ export const lineChartOptions = {
         toolbar: {
             show: true,
         },
-        events: {
-            click(event, chartContext, config) {
-                console.log(config.config.series[config.seriesIndex])
-                console.log(config.config.series[config.seriesIndex].name)
-                console.log(config.config.series[config.seriesIndex].data[config.dataPointIndex])
+        events: {},
+        animations: {
+            enabled: true,
+            easing: 'easeinout',
+            speed: 800,
+            animateGradually: {
+                enabled: true,
+                delay: 50
             },
-        },
+            dynamicAnimation: {
+                enabled: true,
+                speed: 150
+            }
+        }
     },
     tooltip: {
         theme: "dark",

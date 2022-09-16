@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     fetchLimit: 2000,
-    minVote: 100,
-    minComment: 100,
+    minVote: 50,
+    minComment: 50,
     maxYAxis: 2000,
     dateRange: 1,
     cache: true,

@@ -107,7 +107,7 @@ export default function Dashboard() {
     );
     return (
         <>
-            <Flex flexDirection="column" >
+            <Flex flexDirection="column" className="m-3">
                 {notice && <Grid templateColumns={{ sm: "1fr 1fr 1fr" }} templateRows={{ sm: "repeat(2, auto)" }} gap="20px" mb="20px" mt="20px">
                     <Notice title="Total record" content={totalRecord} Icon={StatsIcon} />
                     <Notice title="Total thread" content={totalThread} Icon={DocumentIcon} />
