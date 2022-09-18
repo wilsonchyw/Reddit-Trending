@@ -2,7 +2,6 @@
 import { Box, Portal, useColorMode, useDisclosure } from "@chakra-ui/react";
 import bgAdmin from "assets/img/admin-background.png";
 import Configurator from "components/Configurator/Configurator";
-import Footer from "components/Footer/Footer.js";
 import TagCloud from "components/Cloud";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
@@ -35,7 +34,6 @@ export default function Dashboard(props) {
         <MainPanel>
             <TagCloud />
             <Switch>{getRoutes(routes)}</Switch>
-            <Footer />
             <Portal>
                 <FixedPlugin secondary={true} fixed={fixed} onOpen={onOpen} />
             </Portal>
