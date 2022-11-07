@@ -1,17 +1,17 @@
 // Chakra imports
-import { Box, Portal, useColorMode, useDisclosure } from "@chakra-ui/react";
-import bgAdmin from "assets/img/admin-background.png";
-import Configurator from "components/Configurator/Configurator";
+import { Portal, useDisclosure } from "@chakra-ui/react";
 import TagCloud from "components/Cloud";
-import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import routes from "routes.js";
+import Configurator from "components/Configurator/Configurator";
 // Custom Chakra theme
 import FixedPlugin from "components/FixedPlugin/FixedPlugin";
 // Custom components
 import MainPanel from "components/Layout/MainPanel";
 //import PanelContainer from "components/Layout/PanelContainer";
 //import PanelContent from "components/Layout/PanelContent";
+import Message from "components/Message";
+import React, { useState } from "react";
+import { Route, Switch } from "react-router-dom";
+import routes from "routes.js";
 
 export default function Dashboard(props) {
     const { ...rest } = props;
@@ -32,6 +32,7 @@ export default function Dashboard(props) {
     // Chakra Color Mode
     return (
         <MainPanel>
+            <Message/>
             <TagCloud />
             <Switch>{getRoutes(routes)}</Switch>
             <Portal>

@@ -50,7 +50,7 @@ export default function Canvas() {
                 }}
             ></span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -65,7 +65,7 @@ export default function Canvas() {
                 BTC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -80,7 +80,7 @@ export default function Canvas() {
                 Bitcoin
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -95,7 +95,7 @@ export default function Canvas() {
                 ROSE
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -110,7 +110,7 @@ export default function Canvas() {
                 ON
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -125,7 +125,7 @@ export default function Canvas() {
                 BENE
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -140,7 +140,7 @@ export default function Canvas() {
                 GO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -155,7 +155,7 @@ export default function Canvas() {
                 DD
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -170,7 +170,7 @@ export default function Canvas() {
                 GME
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -185,7 +185,7 @@ export default function Canvas() {
                 NVDA
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -200,7 +200,7 @@ export default function Canvas() {
                 MSFT
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -215,7 +215,7 @@ export default function Canvas() {
                 MC
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -230,7 +230,7 @@ export default function Canvas() {
                 F
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -245,7 +245,7 @@ export default function Canvas() {
                 PLTR
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -260,7 +260,7 @@ export default function Canvas() {
                 NFT
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -275,7 +275,7 @@ export default function Canvas() {
                 LRC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -290,7 +290,7 @@ export default function Canvas() {
                 ONE
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -305,7 +305,7 @@ export default function Canvas() {
                 PM
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -320,7 +320,7 @@ export default function Canvas() {
                 UK
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -335,7 +335,7 @@ export default function Canvas() {
                 ETH
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -350,7 +350,7 @@ export default function Canvas() {
                 DPZ
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -365,7 +365,7 @@ export default function Canvas() {
                 FORD
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -380,7 +380,7 @@ export default function Canvas() {
                 KO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -395,7 +395,7 @@ export default function Canvas() {
                 WISH
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -410,7 +410,7 @@ export default function Canvas() {
                 PYPL
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -425,7 +425,7 @@ export default function Canvas() {
                 SQ
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -440,7 +440,7 @@ export default function Canvas() {
                 OXY
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -455,7 +455,7 @@ export default function Canvas() {
                 ADA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -470,7 +470,7 @@ export default function Canvas() {
                 TSLA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -485,7 +485,7 @@ export default function Canvas() {
                 SCVX
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -500,7 +500,7 @@ export default function Canvas() {
                 TAIT
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -515,7 +515,7 @@ export default function Canvas() {
                 SEAH
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -530,7 +530,7 @@ export default function Canvas() {
                 AMC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -545,7 +545,7 @@ export default function Canvas() {
                 RC
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -560,7 +560,7 @@ export default function Canvas() {
                 ATH
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -575,7 +575,7 @@ export default function Canvas() {
                 BAT
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -590,7 +590,7 @@ export default function Canvas() {
                 MP
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -605,7 +605,7 @@ export default function Canvas() {
                 B
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -620,7 +620,7 @@ export default function Canvas() {
                 AM
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -635,7 +635,7 @@ export default function Canvas() {
                 ZIM
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -650,7 +650,7 @@ export default function Canvas() {
                 FB
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -665,7 +665,7 @@ export default function Canvas() {
                 PEG
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -680,7 +680,7 @@ export default function Canvas() {
                 BIG
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -695,7 +695,7 @@ export default function Canvas() {
                 K
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -710,7 +710,7 @@ export default function Canvas() {
                 ZRX
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -725,7 +725,7 @@ export default function Canvas() {
                 CEO
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -740,7 +740,7 @@ export default function Canvas() {
                 D
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -755,7 +755,7 @@ export default function Canvas() {
                 BNB
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -770,7 +770,7 @@ export default function Canvas() {
                 SOL
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -785,7 +785,7 @@ export default function Canvas() {
                 XRP
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -800,7 +800,7 @@ export default function Canvas() {
                 LUNA
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -815,7 +815,7 @@ export default function Canvas() {
                 DOGE
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -830,7 +830,7 @@ export default function Canvas() {
                 DOT
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -845,7 +845,7 @@ export default function Canvas() {
                 AVAX
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -860,7 +860,7 @@ export default function Canvas() {
                 MCMJ
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -875,7 +875,7 @@ export default function Canvas() {
                 CAN
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -890,7 +890,7 @@ export default function Canvas() {
                 SHIB
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -905,7 +905,7 @@ export default function Canvas() {
                 DAO
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -920,7 +920,7 @@ export default function Canvas() {
                 PSA
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -935,7 +935,7 @@ export default function Canvas() {
                 BBBY
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -950,7 +950,7 @@ export default function Canvas() {
                 ESSC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -965,7 +965,7 @@ export default function Canvas() {
                 SAGE
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -980,7 +980,7 @@ export default function Canvas() {
                 AMD
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -995,7 +995,7 @@ export default function Canvas() {
                 ATVI
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1010,7 +1010,7 @@ export default function Canvas() {
                 CF
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1025,7 +1025,7 @@ export default function Canvas() {
                 V
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1040,7 +1040,7 @@ export default function Canvas() {
                 EV
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1055,7 +1055,7 @@ export default function Canvas() {
                 INTC
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1070,7 +1070,7 @@ export default function Canvas() {
                 OCC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1085,7 +1085,7 @@ export default function Canvas() {
                 UPST
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1100,7 +1100,7 @@ export default function Canvas() {
                 USDC
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1115,7 +1115,7 @@ export default function Canvas() {
                 AAPL
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1130,7 +1130,7 @@ export default function Canvas() {
                 BREZ
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1145,7 +1145,7 @@ export default function Canvas() {
                 GDP
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1160,7 +1160,7 @@ export default function Canvas() {
                 FCF
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1175,7 +1175,7 @@ export default function Canvas() {
                 NEAR
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1190,7 +1190,7 @@ export default function Canvas() {
                 MATIC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1205,7 +1205,7 @@ export default function Canvas() {
                 CC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1220,7 +1220,7 @@ export default function Canvas() {
                 NET
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1235,7 +1235,7 @@ export default function Canvas() {
                 PAC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1250,7 +1250,7 @@ export default function Canvas() {
                 PUMP
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1265,7 +1265,7 @@ export default function Canvas() {
                 ROLL
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1280,7 +1280,7 @@ export default function Canvas() {
                 OUT
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1295,7 +1295,7 @@ export default function Canvas() {
                 ATOM
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1310,7 +1310,7 @@ export default function Canvas() {
                 AMCX
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1325,7 +1325,7 @@ export default function Canvas() {
                 BHSE
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1340,7 +1340,7 @@ export default function Canvas() {
                 UI
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1355,7 +1355,7 @@ export default function Canvas() {
                 NIO
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1370,7 +1370,7 @@ export default function Canvas() {
                 CMC
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1385,7 +1385,7 @@ export default function Canvas() {
                 RH
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1400,7 +1400,7 @@ export default function Canvas() {
                 TGT
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1415,7 +1415,7 @@ export default function Canvas() {
                 ZNGA
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1430,7 +1430,7 @@ export default function Canvas() {
                 G
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1445,7 +1445,7 @@ export default function Canvas() {
                 NU
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1460,7 +1460,7 @@ export default function Canvas() {
                 TTWO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1475,7 +1475,7 @@ export default function Canvas() {
                 CRO
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1490,7 +1490,7 @@ export default function Canvas() {
                 HUYA
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1505,7 +1505,7 @@ export default function Canvas() {
                 BUSD
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1520,7 +1520,7 @@ export default function Canvas() {
                 TH
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1535,7 +1535,7 @@ export default function Canvas() {
                 CURI
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1550,7 +1550,7 @@ export default function Canvas() {
                 ICP
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1565,7 +1565,7 @@ export default function Canvas() {
                 AAVE
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1580,7 +1580,7 @@ export default function Canvas() {
                 IRS
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1595,7 +1595,7 @@ export default function Canvas() {
                 TA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1610,7 +1610,7 @@ export default function Canvas() {
                 PS
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1625,7 +1625,7 @@ export default function Canvas() {
                 AVA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1640,7 +1640,7 @@ export default function Canvas() {
                 IGC
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1655,7 +1655,7 @@ export default function Canvas() {
                 TG
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1670,7 +1670,7 @@ export default function Canvas() {
                 SBUX
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1685,7 +1685,7 @@ export default function Canvas() {
                 SJ
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1700,7 +1700,7 @@ export default function Canvas() {
                 FTM
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1715,7 +1715,7 @@ export default function Canvas() {
                 FTT
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1730,7 +1730,7 @@ export default function Canvas() {
                 AR
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1745,7 +1745,7 @@ export default function Canvas() {
                 BBIG
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1760,7 +1760,7 @@ export default function Canvas() {
                 SOLO
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1775,7 +1775,7 @@ export default function Canvas() {
                 ETN
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1790,7 +1790,7 @@ export default function Canvas() {
                 GM
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1805,7 +1805,7 @@ export default function Canvas() {
                 BMO
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -1820,7 +1820,7 @@ export default function Canvas() {
                 NYC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1835,7 +1835,7 @@ export default function Canvas() {
                 NEW
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1850,7 +1850,7 @@ export default function Canvas() {
                 TEAM
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1865,7 +1865,7 @@ export default function Canvas() {
                 OI
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1880,7 +1880,7 @@ export default function Canvas() {
                 VCRA
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -1895,7 +1895,7 @@ export default function Canvas() {
                 DOCU
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1910,7 +1910,7 @@ export default function Canvas() {
                 AMZN
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1925,7 +1925,7 @@ export default function Canvas() {
                 TURN
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1940,7 +1940,7 @@ export default function Canvas() {
                 BTI
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -1955,7 +1955,7 @@ export default function Canvas() {
                 EA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -1970,7 +1970,7 @@ export default function Canvas() {
                 CTO
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -1985,7 +1985,7 @@ export default function Canvas() {
                 MRNA
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2000,7 +2000,7 @@ export default function Canvas() {
                 ANY
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2015,7 +2015,7 @@ export default function Canvas() {
                 GS
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2030,7 +2030,7 @@ export default function Canvas() {
                 ELA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2045,7 +2045,7 @@ export default function Canvas() {
                 API3
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2060,7 +2060,7 @@ export default function Canvas() {
                 PROM
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2075,7 +2075,7 @@ export default function Canvas() {
                 MLP
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2090,7 +2090,7 @@ export default function Canvas() {
                 L
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2105,7 +2105,7 @@ export default function Canvas() {
                 SELF
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2120,7 +2120,7 @@ export default function Canvas() {
                 BYND
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2135,7 +2135,7 @@ export default function Canvas() {
                 REAL
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2150,7 +2150,7 @@ export default function Canvas() {
                 BX
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2165,7 +2165,7 @@ export default function Canvas() {
                 CPSR
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2180,7 +2180,7 @@ export default function Canvas() {
                 ROKU
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2195,7 +2195,7 @@ export default function Canvas() {
                 EPS
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2210,7 +2210,7 @@ export default function Canvas() {
                 FREE
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2225,7 +2225,7 @@ export default function Canvas() {
                 BABA
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2240,7 +2240,7 @@ export default function Canvas() {
                 BTC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2255,7 +2255,7 @@ export default function Canvas() {
                 Bitcoin
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2270,7 +2270,7 @@ export default function Canvas() {
                 ROSE
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2285,7 +2285,7 @@ export default function Canvas() {
                 ON
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2300,7 +2300,7 @@ export default function Canvas() {
                 BENE
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2315,7 +2315,7 @@ export default function Canvas() {
                 GO
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2330,7 +2330,7 @@ export default function Canvas() {
                 DD
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2345,7 +2345,7 @@ export default function Canvas() {
                 GME
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2360,7 +2360,7 @@ export default function Canvas() {
                 NVDA
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2375,7 +2375,7 @@ export default function Canvas() {
                 MSFT
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2390,7 +2390,7 @@ export default function Canvas() {
                 MC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2405,7 +2405,7 @@ export default function Canvas() {
                 F
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2420,7 +2420,7 @@ export default function Canvas() {
                 PLTR
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2435,7 +2435,7 @@ export default function Canvas() {
                 NFT
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2450,7 +2450,7 @@ export default function Canvas() {
                 LRC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2465,7 +2465,7 @@ export default function Canvas() {
                 ONE
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2480,7 +2480,7 @@ export default function Canvas() {
                 PM
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2495,7 +2495,7 @@ export default function Canvas() {
                 UK
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2510,7 +2510,7 @@ export default function Canvas() {
                 ETH
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2525,7 +2525,7 @@ export default function Canvas() {
                 DPZ
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2540,7 +2540,7 @@ export default function Canvas() {
                 FORD
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2555,7 +2555,7 @@ export default function Canvas() {
                 KO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2570,7 +2570,7 @@ export default function Canvas() {
                 WISH
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2585,7 +2585,7 @@ export default function Canvas() {
                 PYPL
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2600,7 +2600,7 @@ export default function Canvas() {
                 SQ
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2615,7 +2615,7 @@ export default function Canvas() {
                 OXY
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2630,7 +2630,7 @@ export default function Canvas() {
                 ADA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2645,7 +2645,7 @@ export default function Canvas() {
                 TSLA
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2660,7 +2660,7 @@ export default function Canvas() {
                 SCVX
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2675,7 +2675,7 @@ export default function Canvas() {
                 TAIT
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2690,7 +2690,7 @@ export default function Canvas() {
                 SEAH
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2705,7 +2705,7 @@ export default function Canvas() {
                 AMC
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2720,7 +2720,7 @@ export default function Canvas() {
                 RC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2735,7 +2735,7 @@ export default function Canvas() {
                 ATH
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2750,7 +2750,7 @@ export default function Canvas() {
                 BAT
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2765,7 +2765,7 @@ export default function Canvas() {
                 MP
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2780,7 +2780,7 @@ export default function Canvas() {
                 B
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2795,7 +2795,7 @@ export default function Canvas() {
                 AM
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2810,7 +2810,7 @@ export default function Canvas() {
                 ZIM
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2825,7 +2825,7 @@ export default function Canvas() {
                 FB
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2840,7 +2840,7 @@ export default function Canvas() {
                 PEG
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2855,7 +2855,7 @@ export default function Canvas() {
                 BIG
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2870,7 +2870,7 @@ export default function Canvas() {
                 K
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2885,7 +2885,7 @@ export default function Canvas() {
                 ZRX
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2900,7 +2900,7 @@ export default function Canvas() {
                 CEO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2915,7 +2915,7 @@ export default function Canvas() {
                 D
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -2930,7 +2930,7 @@ export default function Canvas() {
                 BNB
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -2945,7 +2945,7 @@ export default function Canvas() {
                 SOL
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -2960,7 +2960,7 @@ export default function Canvas() {
                 XRP
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -2975,7 +2975,7 @@ export default function Canvas() {
                 LUNA
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -2990,7 +2990,7 @@ export default function Canvas() {
                 DOGE
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3005,7 +3005,7 @@ export default function Canvas() {
                 DOT
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3020,7 +3020,7 @@ export default function Canvas() {
                 AVAX
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3035,7 +3035,7 @@ export default function Canvas() {
                 MCMJ
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3050,7 +3050,7 @@ export default function Canvas() {
                 CAN
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3065,7 +3065,7 @@ export default function Canvas() {
                 SHIB
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3080,7 +3080,7 @@ export default function Canvas() {
                 DAO
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3095,7 +3095,7 @@ export default function Canvas() {
                 PSA
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3110,7 +3110,7 @@ export default function Canvas() {
                 BBBY
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3125,7 +3125,7 @@ export default function Canvas() {
                 ESSC
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3140,7 +3140,7 @@ export default function Canvas() {
                 SAGE
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3155,7 +3155,7 @@ export default function Canvas() {
                 AMD
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3170,7 +3170,7 @@ export default function Canvas() {
                 ATVI
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3185,7 +3185,7 @@ export default function Canvas() {
                 CF
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3200,7 +3200,7 @@ export default function Canvas() {
                 V
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3215,7 +3215,7 @@ export default function Canvas() {
                 EV
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3230,7 +3230,7 @@ export default function Canvas() {
                 INTC
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3245,7 +3245,7 @@ export default function Canvas() {
                 OCC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3260,7 +3260,7 @@ export default function Canvas() {
                 UPST
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3275,7 +3275,7 @@ export default function Canvas() {
                 USDC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3290,7 +3290,7 @@ export default function Canvas() {
                 AAPL
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3305,7 +3305,7 @@ export default function Canvas() {
                 BREZ
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3320,7 +3320,7 @@ export default function Canvas() {
                 GDP
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3335,7 +3335,7 @@ export default function Canvas() {
                 FCF
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3350,7 +3350,7 @@ export default function Canvas() {
                 NEAR
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3365,7 +3365,7 @@ export default function Canvas() {
                 MATIC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3380,7 +3380,7 @@ export default function Canvas() {
                 CC
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3395,7 +3395,7 @@ export default function Canvas() {
                 NET
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3410,7 +3410,7 @@ export default function Canvas() {
                 PAC
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3425,7 +3425,7 @@ export default function Canvas() {
                 PUMP
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3440,7 +3440,7 @@ export default function Canvas() {
                 ROLL
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3455,7 +3455,7 @@ export default function Canvas() {
                 OUT
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3470,7 +3470,7 @@ export default function Canvas() {
                 ATOM
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3485,7 +3485,7 @@ export default function Canvas() {
                 AMCX
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3500,7 +3500,7 @@ export default function Canvas() {
                 BHSE
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3515,7 +3515,7 @@ export default function Canvas() {
                 UI
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3530,7 +3530,7 @@ export default function Canvas() {
                 NIO
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3545,7 +3545,7 @@ export default function Canvas() {
                 CMC
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3560,7 +3560,7 @@ export default function Canvas() {
                 RH
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3575,7 +3575,7 @@ export default function Canvas() {
                 TGT
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3590,7 +3590,7 @@ export default function Canvas() {
                 ZNGA
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3605,7 +3605,7 @@ export default function Canvas() {
                 G
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3620,7 +3620,7 @@ export default function Canvas() {
                 NU
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3635,7 +3635,7 @@ export default function Canvas() {
                 TTWO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3650,7 +3650,7 @@ export default function Canvas() {
                 CRO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3665,7 +3665,7 @@ export default function Canvas() {
                 HUYA
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3680,7 +3680,7 @@ export default function Canvas() {
                 BUSD
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3695,7 +3695,7 @@ export default function Canvas() {
                 TH
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3710,7 +3710,7 @@ export default function Canvas() {
                 CURI
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3725,7 +3725,7 @@ export default function Canvas() {
                 ICP
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3740,7 +3740,7 @@ export default function Canvas() {
                 AAVE
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -3755,7 +3755,7 @@ export default function Canvas() {
                 IRS
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3770,7 +3770,7 @@ export default function Canvas() {
                 TA
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3785,7 +3785,7 @@ export default function Canvas() {
                 PS
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -3800,7 +3800,7 @@ export default function Canvas() {
                 AVA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3815,7 +3815,7 @@ export default function Canvas() {
                 IGC
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3830,7 +3830,7 @@ export default function Canvas() {
                 TG
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3845,7 +3845,7 @@ export default function Canvas() {
                 SBUX
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3860,7 +3860,7 @@ export default function Canvas() {
                 SJ
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3875,7 +3875,7 @@ export default function Canvas() {
                 FTM
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3890,7 +3890,7 @@ export default function Canvas() {
                 FTT
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3905,7 +3905,7 @@ export default function Canvas() {
                 AR
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3920,7 +3920,7 @@ export default function Canvas() {
                 BBIG
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3935,7 +3935,7 @@ export default function Canvas() {
                 SOLO
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3950,7 +3950,7 @@ export default function Canvas() {
                 ETN
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -3965,7 +3965,7 @@ export default function Canvas() {
                 GM
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -3980,7 +3980,7 @@ export default function Canvas() {
                 BMO
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -3995,7 +3995,7 @@ export default function Canvas() {
                 NYC
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -4010,7 +4010,7 @@ export default function Canvas() {
                 NEW
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -4025,7 +4025,7 @@ export default function Canvas() {
                 TEAM
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -4040,7 +4040,7 @@ export default function Canvas() {
                 OI
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -4055,7 +4055,7 @@ export default function Canvas() {
                 VCRA
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -4070,7 +4070,7 @@ export default function Canvas() {
                 DOCU
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -4085,7 +4085,7 @@ export default function Canvas() {
                 AMZN
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -4100,7 +4100,7 @@ export default function Canvas() {
                 TURN
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -4115,7 +4115,7 @@ export default function Canvas() {
                 BTI
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -4130,7 +4130,7 @@ export default function Canvas() {
                 EA
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -4145,7 +4145,7 @@ export default function Canvas() {
                 CTO
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -4160,7 +4160,7 @@ export default function Canvas() {
                 MRNA
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -4175,7 +4175,7 @@ export default function Canvas() {
                 ANY
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -4190,7 +4190,7 @@ export default function Canvas() {
                 GS
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -4205,7 +4205,7 @@ export default function Canvas() {
                 ELA
             </span>
             <span
-                className="test3"
+                className="zoom test3"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -4220,7 +4220,7 @@ export default function Canvas() {
                 API3
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -4235,7 +4235,7 @@ export default function Canvas() {
                 MLP
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -4250,7 +4250,7 @@ export default function Canvas() {
                 L
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "1.171875px",
@@ -4265,7 +4265,7 @@ export default function Canvas() {
                 SELF
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "28.41968562206996px",
@@ -4280,7 +4280,7 @@ export default function Canvas() {
                 REAL
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "47.48017373123326px",
@@ -4295,7 +4295,7 @@ export default function Canvas() {
                 BX
             </span>
             <span
-                className="test2"
+                className="zoom test2"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",
@@ -4310,7 +4310,7 @@ export default function Canvas() {
                 CPSR
             </span>
             <span
-                className="test1"
+                className="zoom test1"
                 style={{
                     ...spanStyle,
                     fontSize: "14.664260780675605px",
@@ -4325,7 +4325,7 @@ export default function Canvas() {
                 FREE
             </span>
             <span
-                className="test4"
+                className="zoom test4"
                 style={{
                     ...spanStyle,
                     fontSize: "5.770989437554294px",

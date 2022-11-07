@@ -12,14 +12,15 @@ export default function ThreadTrend({ textColor, showForums, handleThreadFetch, 
     const textTableColor = useColorModeValue("gray.500", "white");
     let max = 0;
     datas.forEach((c) => (max = Math.max(c.change, max)));
+
     return (
         <>
             <Flex direction="column">
                 <Flex align="center" justify="space-between" p="22px">
                     <Text fontSize="lg" color={textColor} fontWeight="bold">
-                        Top{expand ? ` ${datas.length} ` : " 10 "}thread in {dateRange * 24} hours
+                        Top{expand ? ` ${datas.length} ` : " 10 "}changes in {dateRange * 24} hours
                     </Text>
-                    <input className="form-control w-25" type="text" placeholder="Search" value={userSearch} onChange={(e) => setUserSearch(e.target.value)} />
+                    <input className="form-control w-25" type="text" placeholder="Search" onChange={(e) => setUserSearch(e.target.value)} />
                     <div>
                         <Button variant="primary" maxH="30px" onClick={reset}>
                             RESET CHART
@@ -55,7 +56,7 @@ export default function ThreadTrend({ textColor, showForums, handleThreadFetch, 
                     </Thead>
                     <Tbody>
                         {datas
-                            .filter((c) => showForums[c.forum] && (c.id==userSearch || c.title.toLowerCase().includes(userSearch)))
+                            .filter((c) => showForums[c.forum] && (c.id == userSearch || c.title.toLowerCase().includes(userSearch)))
                             .slice(0, expand ? 9999 : 10)
                             .map((el, index, arr) => (
                                 <Tr key={el.id}>
@@ -63,7 +64,9 @@ export default function ThreadTrend({ textColor, showForums, handleThreadFetch, 
                                         <Button variant="primary" size="xs" onClick={() => handleThreadFetch(el.id)}>
                                             CHART
                                         </Button>{" "}
-                                        <a href={`https://www.reddit.com/r/${el.forum}/comments/${el.id}`} target="_blank">{el.title}</a>
+                                        <a href={`https://www.reddit.com/r/${el.forum}/comments/${el.id}`} target="_blank">
+                                            {el.title}
+                                        </a>
                                     </Td>
                                     <Td color={textTableColor} fontSize="sm" fontWeight="bold" borderColor={borderColor} border={index === arr.length - 1 ? "none" : null}>
                                         {el.forum}

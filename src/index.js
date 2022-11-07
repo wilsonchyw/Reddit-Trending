@@ -26,13 +26,11 @@ import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 // Custom Chakra theme
 import theme from "theme/theme.js";
 import { store } from "./store";
+import Message from "components/Message";
 
 ReactDOM.render(
     <Provider store={store}>
         <ChakraProvider theme={theme} resetCss={false} position="relative">
-            {/**
-             
-             */}
             <HashRouter>
                 <Switch>
                     <Route path={`/`} component={AdminLayout} />

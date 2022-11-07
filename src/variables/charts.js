@@ -68,16 +68,6 @@ export const barChartOptions = {
     ],
 };
 
-export const lineChartData = [
-    {
-        name: "Mobile apps",
-        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-    },
-    {
-        name: "Websites",
-        data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-    },
-];
 
 export const pieChartOptions = {
     chart: {
@@ -109,6 +99,7 @@ export const pieChartOptions = {
 
 export const lineChartOptions = {
     chart: {
+        id: 'apexchart-example',
         toolbar: {
             show: true,
         },
@@ -129,9 +120,22 @@ export const lineChartOptions = {
     },
     tooltip: {
         theme: "dark",
+        y: {
+            formatter: undefined,
+            title: {
+                formatter: (seriesName) => {
+                    if(/@/.test(seriesName)){
+                        return seriesName.split("@")[1]
+                    }
+                    return seriesName
+                    
+                },
+            },
+        },
     },
     dataLabels: {
         enabled: false,
+        
     },
     
     stroke: {
@@ -151,6 +155,8 @@ export const lineChartOptions = {
                 colors: "#fff",
                 fontSize: "12px",
             },
+            datetimeUTC: false
+            //formatter: (value) => { return new Date(parseInt(value)).toLocaleTimeString().split(":").slice(0,2).join(":") },
         },
     },
     yaxis: {

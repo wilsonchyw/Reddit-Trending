@@ -8,7 +8,8 @@ const initialState = {
     dateRange: 1,
     cache: true,
     notice:true,
-    search:""
+    search:"",
+    useRestApi:true
 };
 
 const equalToInitialState = (state) => {
@@ -24,22 +25,22 @@ export const settingSlice = createSlice({
     reducers: {
         setFetchLimit: (state, action) => {
             state.cache = false
-            state.fetchLimit = action.payload;
+            state.fetchLimit = parseInt(action.payload);
         },
         setMinVote: (state, action) => {
             state.cache = false
-            state.minVote = action.payload;
+            state.minVote = parseInt(action.payload);
         },
         setMinComment: (state, action) => { 
             state.cache = false  
-            state.minComment = action.payload;
+            state.minComment = parseInt(action.payload);
         },
         setMaxYAxis: (state, action) => {
             state.maxYAxis = parseInt(action.payload);
         },
         setDateRange: (state, action) => {
             state.cache = false
-            state.dateRange = action.payload;
+            state.dateRange = parseInt(action.payload);
         },
         setSearch:(state,action)=>{
             state.search=action.payload
@@ -50,11 +51,14 @@ export const settingSlice = createSlice({
         toggleNotice: (state) => {
             state.notice = !state.notice;
         },
+        toggleUseRestApi:(state)=>{
+            state.useRestApi = !state.useRestApi
+        }
 
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { setFetchLimit, setMinVote, setMinComment, setMaxYAxis, setDateRange, toggleCache ,toggleNotice,setSearch} = settingSlice.actions;
+export const { setFetchLimit, setMinVote, setMinComment, setMaxYAxis, setDateRange, toggleCache ,toggleNotice,setSearch,toggleUseRestApi} = settingSlice.actions;
 
 export default settingSlice.reducer;

@@ -11,124 +11,148 @@ import Setting from "components/Dashboard/Setting";
 import ThreadTrendChart from "components/Dashboard/ThreadTrendChart";
 import ThreadTrendTable from "components/Dashboard/ThreadTrendTable";
 import { ClockIcon, DocumentIcon, StatsIcon } from "components/Icons/Icons.js";
-import apiHandler from "lib/apiHandler";
+import graphQLHandler from "lib/graphQLHandler";
+import restHandler from "lib/restHandler";
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setChartData, setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from "store/rawDataSlice";
 import { setSearch } from "store/settingSlice";
 import FORUMS from "variables/forum.json";
-
+import { getQueryAllString, getQueryOneString } from "variables/graphQL";
 
 export default function Dashboard() {
-    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, cache,notice ,search} = useSelector((state) => state.setting);
-    const { trendChart, trends, forums, lastestVote, lastestComment, symbolHeat } = useSelector((state) => state.raw);
+    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, cache, notice, search, useRestApi } = useSelector((state) => state.setting);
+    const { trends, forums, lastestVote, lastestComment, symbolHeat } = useSelector((state) => state.raw);
     const dispatch = useDispatch();
     const textColor = useColorModeValue("gray.700", "white");
     const { colorMode } = useColorMode();
 
     const [showForums, setShowForums] = useState(FORUMS);
     const [target, setTarget] = useState("vote");
-    const [lastUpdate , setLastUpdate] = useState(null)
-    const [totalRecord , setTotalRecord] = useState(null)
-    const [totalThread , setTotalThread] = useState(null)
+    const [lastUpdate, setLastUpdate] = useState(null);
+    const [totalRecord, setTotalRecord] = useState(null);
+    const [totalThread, setTotalThread] = useState(null);
 
     const params = {
         limit: fetchLimit,
         minVote: minVote,
         minComment: minComment,
-        cache: cache,
         dateRange: dateRange,
     };
 
     const forumData = useMemo(() => {
         const forum = forums.filter((f) => showForums[f.forum]).sort((a, b) => b.count - a.count);
-
         return {
             labels: forum.map((f) => f.forum),
             data: forum.map((f) => f.count),
         };
-    }, [showForums,forums]);
+    }, [showForums, forums]);
 
     const handleThreadFetch = (id) => {
         const options = {
-            url: "/post/trendSymbol",
-            params: { ...params, symbol: id },
+            url: "/thread/one",
+            params: { ...params, id: id },
         };
-        apiHandler(options, (data) => {
+        const callback = (data) => {
             dispatch(
                 setChartData([
                     { name: "Vote", data: data.map((d) => [d.updated, d.vote]) },
                     { name: "Comment", data: data.map((d) => [d.updated, d.comment]) },
                 ])
             );
-        });
+        };
+        if (useRestApi) {
+            restHandler([[options, callback]]);
+        } else {
+            const query = getQueryOneString(options.params);
+            graphQLHandler(query, [(data) => callback(data.thread.one)]);
+        }
     };
-
-    useEffect(() => { 
-        apiHandler({ url: "/post/trend", params }, (data) => dispatch(setTrendsData(data)));
-        apiHandler({ url: "/public/vote", params }, (data) => dispatch(setLastestVote(data)));
-        apiHandler({ url: "/public/comment", params }, (data) => dispatch(setLastestComment(data)));
-        apiHandler({ url: "/count/forum", params }, (data) => dispatch(setForumData(data)));
-        apiHandler({ url: "/post/symbols", params }, (data) => dispatch(setHeat(data)));
-
-        apiHandler({ url: "/count/last" }, setLastUpdate);
-        apiHandler({ url: "/count/post" }, setTotalThread);
-        apiHandler({ url: "/count/post_trend" }, setTotalRecord);         
-    }, []); 
+    useEffect(() => {
+        if (useRestApi) {
+            restHandler([
+                [{ url: "/state/all", params }, (data) => dispatch(setTrendsData(data))],
+                [{ url: "/state/vote", params }, (data) => dispatch(setLastestVote(data))],
+                [{ url: "/state/comment", params }, (data) => dispatch(setLastestComment(data))],
+                [{ url: "/state/distribution", params }, (data) => dispatch(setHeat(data))],
+                [{ url: "/count/forum", params }, (data) => dispatch(setForumData(data))],
+                [{ url: "/count/latest" }, setLastUpdate],
+                [{ url: "/count/thread" }, setTotalThread],
+                [{ url: "/count/threadState" }, setTotalRecord],
+            ]);
+        } else {
+            const query = getQueryAllString(params);
+            graphQLHandler(query, [
+                (data) => dispatch(setTrendsData(data.state.all)),
+                (data) => dispatch(setLastestVote(data.state.vote)),
+                (data) => dispatch(setLastestComment(data.state.comment)),
+                (data) => dispatch(setHeat(data.state.distribution)),
+                (data) => dispatch(setForumData(data.count.forum)),
+                (data) => setLastUpdate(data.count.latest),
+                (data) => setTotalThread(data.count.thread),
+                (data) => setTotalRecord(data.count.threadState),
+            ]);
+        }
+    }, []);
 
     const lineChartData = useMemo(() => {
         const trendMap = {};
         trends
             .filter((row) => showForums[row.forum])
             .forEach((row) => {
-                if (!trendMap[row.id]) trendMap[row.id] = { name: row.title, data: [],id:row.id};
+                if (!trendMap[row.id]) trendMap[row.id] = { name: `${row.id}@${row.title}`, data: [] };
                 const quantity = row[target];
                 if (quantity < 2000) trendMap[row.id].data.push([row.updated, quantity]);
             });
-            
         const data = Object.values(trendMap).filter((t) => {
-            return t.data[0] ? (t.data[0][1] - t.data.at(-1)[1]) / t.data.at(-1)[1] > 0.3 : false;
+            return t.data[0] ? (t.data[0][1] - t.data.at(-1)[1]) / t.data.at(-1)[1] > 0.2 : false;
         });
-        dispatch(setChartData(data));
+
         return data;
     }, [showForums, trends, target]);
 
+    useEffect(() => {
+        dispatch(setChartData(lineChartData));
+    }, [lineChartData]);
+
     const heatmapData = useMemo(
         () =>
-            Object.keys(symbolHeat) //({x:key,y:datas[key]})
-                .map((key) => {
-                    let counter = 0;
-                    for (let forum in symbolHeat[key]) {
-                        if (showForums[forum]) counter += symbolHeat[key][forum];
-                    }
-                    return { x: key, y: counter };
-                }),
-        [symbolHeat, showForums]//maxH={{ sm: "478px" }} minH={{ sm: "478px" }}
+            symbolHeat.map((record) => {
+                let total = 0;
+                for (const forum in record.forum) {
+                    if (showForums[forum]) total += record.forum[forum];
+                }
+                return { x: record.id, y: total };
+            }),
+        [symbolHeat, showForums]
     );
+
     return (
         <>
             <Flex flexDirection="column" className="m-3">
-                {notice && <Grid templateColumns={{ sm: "1fr 1fr 1fr" }} templateRows={{ sm: "repeat(2, auto)" }} gap="20px" mb="20px" mt="20px">
-                    <Notice title="Total record" content={totalRecord} Icon={StatsIcon} />
-                    <Notice title="Total thread" content={totalThread} Icon={DocumentIcon} />
-                    <Notice title="Last update" content={lastUpdate} Icon={ClockIcon} isDate={true}/>
-                </Grid>}
+                {notice && (
+                    <Grid templateColumns={{ sm: "1fr 1fr 1fr" }} templateRows={{ sm: "repeat(2, auto)" }} gap="20px" mb="20px" mt="20px">
+                        <Notice title="Total record" content={totalRecord} Icon={StatsIcon} />
+                        <Notice title="Total thread" content={totalThread} Icon={DocumentIcon} />
+                        <Notice title="Last update" content={lastUpdate} Icon={ClockIcon} isDate={true} />
+                    </Grid>
+                )}
 
                 <SimpleGrid columns={{ sm: 1 }} spacing="24px" mb="20px" id="main-content">
                     <Card bg={colorMode === "dark" ? "navy.800" : "linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)"} p="0px">
-                        <ThreadTrendChart data={trendChart} target={target == "comment" ? "Comment" : "Vote"}  />
+                        <ThreadTrendChart target={target == "comment" ? "Comment" : "Vote"} data={lineChartData} />
                     </Card>
                 </SimpleGrid>
 
                 <Grid templateColumns={{ sm: "6fr 1fr" }} templateRows={{ sm: "repeat(2, auto)" }} gap="20px" mb="20px">
-                    <Card p="0px" maxH={{ sm: "419px" }} minH={{ sm: "419px" }} >
+                    <Card p="0px" maxH={{ sm: "419px" }} minH={{ sm: "419px" }}>
                         <ThreadTrendTable
                             target={target}
                             datas={target == "vote" ? lastestVote : lastestComment}
                             showForums={showForums}
                             textColor={textColor}
                             handleThreadFetch={handleThreadFetch}
-                            setUserSearch={(s)=>dispatch(setSearch(s))}
+                            setUserSearch={(s) => dispatch(setSearch(s))}
                             userSearch={search}
                             reset={() => dispatch(setChartData(lineChartData))}
                         />
@@ -145,7 +169,7 @@ export default function Dashboard() {
                     </Card>
 
                     <Card p="0px" maxW={{ sm: "320px", md: "100%" }}>
-                        <Tree textColor={textColor} title={"Keywords"} subTitle={"Heat map"} data={heatmapData} setSearchTarget={(s)=>dispatch(setSearch(s))} />
+                        <Tree textColor={textColor} title={"Keywords"} subTitle={"Heat map"} data={heatmapData} setSearchTarget={(s) => dispatch(setSearch(s))} />
                     </Card>
                     {/**   */}
                     <Card p="0px" maxW={{ sm: "320px", md: "100%" }}>

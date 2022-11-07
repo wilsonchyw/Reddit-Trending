@@ -35,6 +35,14 @@
     animation: fadeIn 5s, zoom-in 2.5s;
 }
 
+.zoom{
+    transition-duration: 3s;
+}
+.zoom:hover {
+    transition-duration: 0s;
+    transform: scale(1.9); 
+}
+
 .panel {
     width: 200px;
     height: 100px;

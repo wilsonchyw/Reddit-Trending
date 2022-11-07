@@ -29,6 +29,7 @@ export default function Tree({ data, title, subTitle, textColor, setSearchTarget
             },
         },
     };
+    //console.log({data})
     return (
         <>
             <Flex direction="column" mb="40px" p="28px 0px 0px 22px">
@@ -40,7 +41,7 @@ export default function Tree({ data, title, subTitle, textColor, setSearchTarget
                 </Text>
             </Flex>
 
-            {data.length ? (
+            {data ? (
                 <Box minH="300px">
                     {" "}
                     <Chart options={options} series={[{ data: data }]} type="treemap" width="100%" height="100%" />{" "}

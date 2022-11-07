@@ -4,7 +4,7 @@ export default function Toggle({ title, content, callback }) {
     const { colorMode, toggleColorMode } = useColorMode();
     return (
         <div className="my-2">
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between align-items-center">
                 <Text fontSize="md" fontWeight="600" mb="4px">
                     {title}
                 </Text>

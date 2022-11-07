@@ -64,10 +64,10 @@ class TagCloudContent extends React.Component {
                     <Canvas />
                 </div>
                 <div
-                    className="d-flex align-items-center justify-content-center mt-3"
+                    className="d-flex align-items-center justify-content-center mt-3 zoom"
                     onClick={this.props.handleHide}
                 >
-                    <i className="fas fa-angle-double-down zoom-in-out" style={{ fontSize: "70px", color: "white" }}></i>{" "}
+                    <i className="fas fa-angle-double-down zoom-in-out " style={{ fontSize: "70px", color: "white" }}></i>{" "}
                 </div>
             </div>
         );

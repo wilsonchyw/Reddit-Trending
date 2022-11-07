@@ -1,13 +1,14 @@
 // Chakra Imports
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Link, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { HSeparator } from "components/Separator/Separator";
-import apiHandler from "lib/apiHandler";
+import graphQLHandler from "lib/graphQLHandler";
+import restHandler from "lib/restHandler";
 import React, { useRef, useState } from "react";
 import GitHubButton from "react-github-btn";
-import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from "store/rawDataSlice";
-import { setDateRange, setFetchLimit, setMaxYAxis, setMinComment, setMinVote, toggleNotice } from "store/settingSlice";
+import { setDateRange, setFetchLimit, setMaxYAxis, setMinComment, setMinVote, toggleNotice, toggleUseRestApi } from "store/settingSlice";
+import { getQueryAllString } from "variables/graphQL";
 import Slider from "./Range";
 import Toggle from "./Toggle";
 
@@ -20,12 +21,9 @@ export default function Configurator(props) {
 
     let bgButton = useColorModeValue("linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)", "white");
     let colorButton = useColorModeValue("white", "gray.700");
-    const secondaryButtonBg = useColorModeValue("white", "transparent");
-    const secondaryButtonBorder = useColorModeValue("gray.700", "white");
-    const secondaryButtonColor = useColorModeValue("gray.700", "white");
     const bgDrawer = useColorModeValue("white", "navy.800");
     const settingsRef = useRef();
-    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, cache, notice } = useSelector((state) => state.setting);
+    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, cache, notice, useRestApi } = useSelector((state) => state.setting);
 
     const fetchData = () => {
         const reducers = [setTrendsData, setForumData, setLastestVote, setLastestComment, setHeat];
@@ -34,14 +32,26 @@ export default function Configurator(props) {
             limit: fetchLimit,
             minVote: minVote,
             minComment: minComment,
-            cache: cache,
             dateRange: dateRange,
         };
-        apiHandler({ url: "/post/trend", params }, (data) => dispatch(setTrendsData(data))); //setTrendDataRaw
-        apiHandler({ url: "/public/vote", params }, (data) => dispatch(setLastestVote(data))); //setLastestVoteRaw);
-        apiHandler({ url: "/public/comment", params }, (data) => dispatch(setLastestComment(data))); //setLastestCommentRaw);
-        apiHandler({ url: "/count/forum", params }, (data) => dispatch(setForumData(data))); //setForumDataRaw);
-        apiHandler({ url: "/post/symbols", params }, (data) => dispatch(setHeat(data))); //setHeatRaw);
+        if (useRestApi) {
+            restHandler([
+                [{ url: "/state/all", params }, (data) => dispatch(setTrendsData(data))],
+                [{ url: "/state/vote", params }, (data) => dispatch(setLastestVote(data))],
+                [{ url: "/state/comment", params }, (data) => dispatch(setLastestComment(data))],
+                [{ url: "/state/distribution", params }, (data) => dispatch(setHeat(data))],
+                [{ url: "/count/forum", params }, (data) => dispatch(setForumData(data))],
+            ]);
+        } else {
+            const query = getQueryAllString(params);
+            graphQLHandler(query, [
+                (data) => dispatch(setTrendsData(data.state.all)),
+                (data) => dispatch(setLastestVote(data.state.vote)),
+                (data) => dispatch(setLastestComment(data.state.comment)),
+                (data) => dispatch(setHeat(data.state.distribution)),
+                (data) => dispatch(setForumData(data.count.forum)),
+            ]);
+        }
     };
 
     return (
@@ -70,18 +80,14 @@ export default function Configurator(props) {
                             <HSeparator />
                             <Toggle title={"Notices"} content={`${notice ? "On" : "Off"}`} callback={() => dispatch(toggleNotice())} />
                             <Toggle title={"Dark/Light"} content={`Toggle ${colorMode === "light" ? "Dark" : "Light"}`} callback={toggleColorMode} />
+                            <Toggle title={useRestApi ? "RestAPI" : "GraphQL"} content={`Toggle ${useRestApi === true ? "GraphQL" : "RestAPI"}`} callback={() => dispatch(toggleUseRestApi())} />
 
                             <HSeparator />
-                                <Flex justifyContent="center" alignItems="center" w="100%" className="my-3">
-                                    <GitHubButton
-                                        href="https://github.com/wilsonych/Reddit-Trending"
-                                        data-icon="octicon-star"
-                                        data-show-count="true"
-                                        aria-label="Reddit-Trending on GitHub"
-                                    >
-                                        Star
-                                    </GitHubButton>
-                                </Flex>
+                            <Flex justifyContent="center" alignItems="center" w="100%" className="my-3">
+                                <GitHubButton href="https://github.com/wilsonych/Reddit-Trending" data-icon="octicon-star" data-show-count="true" aria-label="Reddit-Trending on GitHub">
+                                    Star
+                                </GitHubButton>
+                            </Flex>
                         </Flex>
                     </DrawerBody>
                 </DrawerContent>
