@@ -4,7 +4,6 @@ import Card from "components/Card/Card.js";
 import formatNumber from "lib/formatNumber";
 import Loading from "components/Loading";
 export default function Notice({ title, content, Icon, isDate = false }) {
-    //{isDate?new Date(content).toLocaleString():formatNumber(content)}
     const textColor = useColorModeValue("gray.700", "white");
     return (
         <Card minH="70px">

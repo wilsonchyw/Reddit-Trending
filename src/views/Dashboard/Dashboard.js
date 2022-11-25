@@ -21,7 +21,7 @@ import FORUMS from "variables/forum.json";
 import { getQueryAllString, getQueryOneString } from "variables/graphQL";
 
 export default function Dashboard() {
-    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, cache, notice, search, useRestApi } = useSelector((state) => state.setting);
+    const { fetchLimit, minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state) => state.setting);
     const { trends, forums, lastestVote, lastestComment, symbolHeat } = useSelector((state) => state.raw);
     const dispatch = useDispatch();
     const textColor = useColorModeValue("gray.700", "white");

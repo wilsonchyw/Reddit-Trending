@@ -1,13 +1,14 @@
-import  axios from "axios";
-import { store } from "../store";
-import { setMsg } from "store/messageSlice";
-//const ENDPOINT = "https://api.rtrend.site/api";
-const ENDPOINT = "http://api.rtrend.site:3003/api";
+import axios from "axios";
+const ENDPOINT = "https://api.rtrend.site/api";
+//const ENDPOINT = "http://api.rtrend.site:3003/api";
 
-//store.subscribe(restHandler)
+/**
+ *
+ * @param {[{option},function] } args
+ * @description Call backend server
+ */
 export default async function restHandler(args) {
-    //console.log("Using RestAPI")
-    const start = Date.now()
+    const start = Date.now();
     Promise.all(
         args.map((arg) => {
             const [option, callback] = arg;
@@ -18,11 +19,10 @@ export default async function restHandler(args) {
                 (value) => console.log(value.data)
             );
         })
-    )
-    .then(()=>{
-        const end = Date.now()
-        console.log(`Fetch ${args.length} request using REST`)
-        console.log(`Time usage: ${end-start}ms`)
+    ).then(() => {
+        const end = Date.now();
+        console.log(`Fetch ${args.length} request using REST`);
+        console.log(`Time usage: ${end - start}ms`);
         //store.dispatch(setMsg(`Fetch ${args.length} request using REST`))
-    })
+    });
 }
