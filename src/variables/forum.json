@@ -1,10 +1,18 @@
 {
     "SPACs": true,
-    "RobinHood": false,
+    "RobinHood": true,
     "stocks": true,
-    "wallstreetbets": false,
+    "wallstreetbets": true,
     "CryptoCurrency": true,
-    "investing": false,
+    "investing": true,
     "SatoshiStreetBets": true,
-    "pennystocks": true
+    "pennystocks": true,
+    "robinhood": true,
+    "Wallstreetbetsnew": true,
+    "WallStreetbetsELITE": true,
+    "StockMarket": true,
+    "options": true,
+    "Daytrading": true,
+    "Shortsqueeze": true,
+    "Bitcoin": true
 }

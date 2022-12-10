@@ -19,6 +19,7 @@ import { setChartData, setForumData, setHeat, setLastestComment, setLastestVote,
 import { setSearch } from "store/settingSlice";
 import FORUMS from "variables/forum.json";
 import { getQueryAllString, getQueryOneString } from "variables/graphQL";
+import Log from "lib/log"
 
 export default function Dashboard() {
     const { fetchLimit, minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state) => state.setting);
@@ -32,6 +33,8 @@ export default function Dashboard() {
     const [lastUpdate, setLastUpdate] = useState(null);
     const [totalRecord, setTotalRecord] = useState(null);
     const [totalThread, setTotalThread] = useState(null);
+
+    
 
     const params = {
         limit: fetchLimit,
@@ -69,6 +72,7 @@ export default function Dashboard() {
         }
     };
     useEffect(() => {
+        Log("test @ useEffect")
         if (useRestApi) {
             restHandler([
                 [{ url: "/state/all", params }, (data) => dispatch(setTrendsData(data))],
@@ -96,13 +100,16 @@ export default function Dashboard() {
     }, []);
 
     const lineChartData = useMemo(() => {
+        const skip = {}
         const trendMap = {};
         trends
             .filter((row) => showForums[row.forum])
             .forEach((row) => {
                 if (!trendMap[row.id]) trendMap[row.id] = { name: `${row.id}@${row.title}`, data: [] };
+                if (!skip[row.id]) skip[row.id] = false
                 const quantity = row[target];
-                if (quantity < 2000) trendMap[row.id].data.push([row.updated, quantity]);
+                if (quantity < 2000 && quantity>50 && !skip[row.id]) trendMap[row.id].data.push([row.updated, quantity]);
+                skip[row.id] = !skip[row.id]
             });
         const data = Object.values(trendMap).filter((t) => {
             return t.data[0] ? (t.data[0][1] - t.data.at(-1)[1]) / t.data.at(-1)[1] > 0.2 : false;
@@ -145,7 +152,7 @@ export default function Dashboard() {
                 </SimpleGrid>
 
                 <Grid templateColumns={{ sm: "6fr 1fr" }} templateRows={{ sm: "repeat(2, auto)" }} gap="20px" mb="20px">
-                    <Card p="0px" maxH={{ sm: "419px" }} minH={{ sm: "419px" }}>
+                    <Card p="0px" maxH={{ sm: "675px" }} minH={{ sm: "675px" }}>
                         <ThreadTrendTable
                             target={target}
                             datas={target == "vote" ? lastestVote : lastestComment}
