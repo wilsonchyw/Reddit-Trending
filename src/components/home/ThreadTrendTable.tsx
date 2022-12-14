@@ -10,12 +10,14 @@ import Pagination_ from './Pagination';
 
 export default function ThreadTrend({ showForums, handleThreadFetch, userSearch, setUserSearch, target, datas }) {
     const [prePage, setPrePage] = useState<number>(10);
-    const [sortBy, setSortBy] = useState<string>(target);
+    const [sortBy, setSortBy] = useState<string>('change');
     const [sortOrder, setSortOrder] = useState<number>(-1);
     const [currentPage, setCurrent] = useState(1);
     const { dateRange } = useSelector((state: RootState) => state.setting);
 
     if (!datas.length) return <Loading size={300} isWhite={false} />;
+
+    const sortIndicator = (t:string)=> t==sortBy?(sortOrder>0?"⬆":"⬇"):""
 
     let max = 0;
     const _datas = datas
@@ -81,17 +83,17 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
                             </th>
                             <th className="col-md-1">
                                 <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('forum')}>
-                                    Forum
+                                    Forum{sortIndicator('forum')}
                                 </Text>
                             </th>
                             <th className="col-md-1">
                                 <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('MAX')}>
-                                    {target}
+                                    {target}{sortIndicator('MAX')}
                                 </Text>
                             </th>
                             <th className="col-md-1">
                                 <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('change')}>
-                                    Change
+                                    Change{sortIndicator('change')}
                                 </Text>
                             </th>
                             <th className="col-lg-1  col-md-0 px-0"></th>
