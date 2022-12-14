@@ -1,9 +1,9 @@
-import Pie from 'src/components/chart/Pie';
-import Text from 'src/components/Text';
 import { useState } from 'react';
 import { Stack } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Pie from 'src/components/chart/Pie';
+import Text from 'src/components/Text';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 
 const formatRawData = (data, showOutlier) => {
@@ -55,7 +55,7 @@ export default function Distribution({ data, target }) {
     const [showOutlier, SetShowOutlier] = useState(false);
 
     const header = (
-        <Stack direction="column" mb="40px" p="28px 0px 0px 22px">
+        <Stack>
             <Text color={FONT_COLOR.grey}>Distribution</Text>
             <div className="d-flex justify-content-between">
                 <Text fontSize={FONT.large}>{target}</Text>

@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "start:watch":"nodemon",
         "dev": "next dev",
         "export": "next export",
         "build": "next build",

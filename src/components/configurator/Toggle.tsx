@@ -1,5 +1,5 @@
-import Text from 'src/components/Text';
 import { Button } from 'react-bootstrap';
+import Text from 'src/components/Text';
 import { FONT } from 'src/variables/css';
 export default function Toggle({ title, content, callback }) {
     return (

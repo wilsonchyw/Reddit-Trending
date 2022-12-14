@@ -1,21 +1,20 @@
-import React from 'react';
 
 interface textProps {
     color?: string;
     fontSize?: string;
-    children?: React.Element;
+    children?: any;
     fontWeight?: number;
-    onClick?: Function;
+    handleClick?: Function;
 }
 
-export default function Text({ color, fontSize = '14px', children, fontWeight = 700, onClick }: textProps): React.Element {
+export default function Text({ color, fontSize = '14px', children, fontWeight = 700, handleClick }: textProps) {
     const style = {
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight
     };
     return (
-        <span style={style} onClick={onClick}>
+        <span style={style} onClick={()=>handleClick()}>
             {children}
         </span>
     );

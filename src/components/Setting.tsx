@@ -1,10 +1,10 @@
-import { useRef } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'src/components/configurator/Range';
 import Toggle from 'src/components/configurator/Toggle';
 import graphQLHandler from 'src/lib/graphQLHandler';
 import restHandler from 'src/lib/restHandler';
+import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import {
     setDateRange,
@@ -20,7 +20,7 @@ import { getQueryAllString } from 'src/variables/graphQL';
 export default function Setting() {
     const dispatch = useDispatch();
 
-    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, notice, useRestApi, visible } = useSelector(state => state.setting);
+    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, notice, useRestApi, visible } = useSelector((state:RootState)=> state.setting);
 
     const fetchData = () => {
         const reducers = [setTrendsData, setForumData, setLastestVote, setLastestComment, setHeat];
@@ -72,7 +72,7 @@ export default function Setting() {
                     <Slider title="Max Chart Y Axis" max={4000} value={maxYAxis} reducers={setMaxYAxis} input />
                     <Slider title="Max fetch quantity" max={4000} min={1000} value={fetchLimit} reducers={setFetchLimit} />
                     <Slider title="Max fetch date range" max={7} min={1} value={dateRange} reducers={setDateRange} />
-                    <Button variant="primary" px="30px" onClick={fetchData}>
+                    <Button variant="primary" onClick={fetchData}>
                         Refresh
                     </Button>
                 </Modal.Body>

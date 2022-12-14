@@ -1,3 +1,4 @@
+import { ApexOptions } from 'apexcharts';
 import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
 import { Badge, Col, Row } from 'react-bootstrap';
@@ -5,20 +6,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import _Card from 'src/components/card/Card';
 import Loading from 'src/components/Loading';
 import Text from 'src/components/Text';
+import { RootState } from 'src/store';
 import { setSearch } from 'src/store/settingSlice';
 import { lineChartOptions } from 'src/variables/charts';
 import { FONT, FONT_COLOR } from 'src/variables/css';
-
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 export default function ThreadTrendChart({ target, showForums }) {
-    const { maxYAxis } = useSelector(state => state.setting);
+    const { maxYAxis } = useSelector((state: RootState) => state.setting);
     const [max, setMax] = useState<number>(maxYAxis);
     const [visible, setVisible] = useState<boolean>(true);
-    const [data, setData] = useState<object[]>([]);
-    const [initData, setInitData] = useState<object[]>([]);
+    const [data, setData] = useState<any[]>([]);
+    const [initData, setInitData] = useState<any[]>([]);
     const dispatch = useDispatch();
-    const { trends } = useSelector(state => state.raw);
+    const { trends } = useSelector((state: RootState) => state.raw);
 
     lineChartOptions.chart.events = {
         click(event, chartContext, config) {
@@ -40,7 +41,7 @@ export default function ThreadTrendChart({ target, showForums }) {
                 if (quantity < 2000 && quantity > 100 && !skip[row.id]) trendMap[row.id].data.push([row.updated, quantity]);
                 skip[row.id] = !skip[row.id];
             });
-        const data = Object.values(trendMap).filter(t => {
+        const data = Object.values(trendMap).filter((t: any) => {
             return t.data[0] ? (t.data[0][1] - t.data.at(-1)[1]) / t.data.at(-1)[1] > 0.2 : false;
         });
         setData(data);
@@ -59,7 +60,7 @@ export default function ThreadTrendChart({ target, showForums }) {
             ...lineChartOptions.yaxis,
             max: maxYAxis
         }
-    };
+    } as ApexOptions;
 
     if (!visible) {
         return (
@@ -94,11 +95,11 @@ export default function ThreadTrendChart({ target, showForums }) {
                     </Text>
                 </Col>
 
-                <Col>                    
+                <Col>
                     <Badge bg="light" text="dark" onClick={() => setVisible(!visible)} className="float-end mx-2">
                         {visible ? 'Hide' : 'Show'}
                     </Badge>
-                    <Badge size="sm" variant="primary" className="float-end mx-2" onClick={reset}>
+                    <Badge bg="primary" className="float-end mx-2" onClick={reset}>
                         Reset
                     </Badge>
                 </Col>

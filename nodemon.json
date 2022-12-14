@@ -3,5 +3,5 @@
   "ext": "*",
   "ignore": ["src/public"],
   "exec_": "NODE_PATH=./src ts-node-esm src/index.ts",
-  "exec":"node src/index.js"
+  "exec":"npm run build"
 }

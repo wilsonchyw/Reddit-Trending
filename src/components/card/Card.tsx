@@ -1,7 +1,6 @@
-import React from 'react';
 import Card from 'react-bootstrap/Card';
-interface cardProps {
-    children?: React.Element;
+interface _Card {
+    children?: any;
     background?: string;
     minW?: string;
     minH?: string;
@@ -11,7 +10,7 @@ interface cardProps {
     style?: Object;
     hide?: boolean;
 }
-export default function _Card(props: cardProps) {
+export default function _Card(props: _Card) {
     const style = {
         ...props.style,
         background: props.background,

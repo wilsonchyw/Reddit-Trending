@@ -14,6 +14,7 @@ import ThreadTrendChart from 'src/components/home/ThreadTrendChart';
 import ThreadTrendTable from 'src/components/home/ThreadTrendTable';
 import graphQLHandler from 'src/lib/graphQLHandler';
 import restHandler from 'src/lib/restHandler';
+import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import { setSearch } from 'src/store/settingSlice';
 import FORUMS from 'src/variables/forum.json';
@@ -21,14 +22,14 @@ import { getQueryAllString, getQueryOneString } from 'src/variables/graphQL';
 
 export default function Dashboard() {
     const dispatch = useDispatch();
-    const [showForums, setShowForums] = useState<string>(FORUMS);
+    const [showForums, setShowForums] = useState<any>(FORUMS);
     const [target, setTarget] = useState('vote');
     const [lastUpdate, setLastUpdate] = useState(null);
     const [totalRecord, setTotalRecord] = useState(null);
     const [totalThread, setTotalThread] = useState(null);
 
-    const { fetchLimit, minVote, minComment, dateRange, notice, search, useRestApi } = useSelector(state => state.setting);
-    const { forums, lastestVote, lastestComment } = useSelector(state => state.raw);
+    const { fetchLimit, minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state:RootState) => state.setting);
+    const { forums, lastestVote, lastestComment } = useSelector((state:RootState) => state.raw);
 
     const params = {
         limit: fetchLimit,
@@ -110,7 +111,7 @@ export default function Dashboard() {
                     />
                 </Stack>
 
-                <Stack lg={12} xl={12} className="my-2">
+                <Stack className="my-2">
                     <Forums
                         {...{
                             forums: showForums,

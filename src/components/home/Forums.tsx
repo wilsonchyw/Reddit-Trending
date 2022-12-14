@@ -1,15 +1,15 @@
+import { useState } from 'react';
+import { Badge, Col, Row, Stack } from 'react-bootstrap';
 import _Card from 'src/components/card/Card';
 import Loading from 'src/components/Loading';
 import Text from 'src/components/Text';
-import { useState } from 'react';
-import { Button, Col, Row, Stack,Badge } from 'react-bootstrap';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 
 export default function Forums({ forums, target, handleForumToggle, handleTargetToggle }) {
     const [hideContent, setHide] = useState<boolean>(false);
     return (
         <_Card hide={hideContent}>
-            <Stack direction="column" >
+            <Stack >
                 <div className="d-flex justify-content-between m-2">
                     <Col onClick={() => setHide(pre => !pre)} sm={10} xs={8}>
                         <Text>Forums</Text>
@@ -17,7 +17,6 @@ export default function Forums({ forums, target, handleForumToggle, handleTarget
 
                     <Col align="right">
                         <Badge
-                            size="sm"
                             bg="primary"
                             onClick={() => {
                                 handleForumToggle(preState => {

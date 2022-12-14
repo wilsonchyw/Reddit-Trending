@@ -1,16 +1,18 @@
+import { ApexOptions } from 'apexcharts';
+import dynamic from 'next/dynamic';
+import { Stack } from 'react-bootstrap';
 import _Card from 'src/components/card/Card';
 import Loading from 'src/components/Loading';
 import Text from 'src/components/Text';
-import dynamic from 'next/dynamic';
-import React from 'react';
-import { Stack } from 'react-bootstrap';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 import ChartInterface from './chart.interface';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 interface PieProps extends ChartInterface {
-    header?: React.Element;
+    header?: any;
 }
+
+
 
 export default function Pie({ data, title, subTitle, header = null }: PieProps) {
     const pieChartOptions = {
@@ -25,14 +27,14 @@ export default function Pie({ data, title, subTitle, header = null }: PieProps) 
         stroke: {
             show: false
         }
-    };
+    } as ApexOptions
 
     return (
         <_Card>
             {header ? (
                 header
             ) : (
-                <Stack direction="column" mb="40px" p="28px 0px 0px 22px">
+                <Stack>
                     <Text color={FONT_COLOR.grey}>{subTitle}</Text>
                     <Text fontSize={FONT.large}>{title}</Text>
                 </Stack>

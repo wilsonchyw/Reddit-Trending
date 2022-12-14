@@ -14,7 +14,7 @@ interface Slider {
 export default function Slider({ title, min = 0, max, value, reducers, input = false }: Slider) {
     const dispatch = useDispatch();
     return (
-        <div mb="16px">
+        <div>
             <div className="d-flex justify-content-between">
                 <Text fontSize={FONT.normal}>{title}</Text>
                 {input ? (

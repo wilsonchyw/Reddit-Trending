@@ -1,20 +1,19 @@
-import _Card from 'src/components/card/Card';
-import Loading from 'src/components/Loading';
-import Text from 'src/components/Text';
 import { useState } from 'react';
 import { Badge, Button, Col, Dropdown, DropdownButton, Form, InputGroup, Row, Stack, Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import _Card from 'src/components/card/Card';
+import Loading from 'src/components/Loading';
+import Text from 'src/components/Text';
+import { RootState } from 'src/store';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 import Pagination_ from './Pagination';
 
 export default function ThreadTrend({ showForums, handleThreadFetch, userSearch, setUserSearch, target, datas }) {
-    
     const [prePage, setPrePage] = useState<number>(10);
     const [sortBy, setSortBy] = useState<string>(target);
     const [sortOrder, setSortOrder] = useState<number>(-1);
     const [currentPage, setCurrent] = useState(1);
-    const { dateRange } = useSelector(state => state.setting);
-    const tableRowColor = 'black';
+    const { dateRange } = useSelector((state: RootState) => state.setting);
 
     if (!datas.length) return <Loading size={300} isWhite={false} />;
 
@@ -37,7 +36,7 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
 
     return (
         <_Card>
-            <Stack direction="column">
+            <Stack>
                 <Row className="d-flex justify-content-between m-2">
                     <Col className="d-flex align-items-center ">
                         <Text fontSize={FONT.bigger}>
@@ -66,7 +65,7 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
                         </DropdownButton>
                     </Col>
                 </Row>
-                <div align="center" className="d-flex justify-content-center mt-2">
+                <div className="d-flex justify-content-center mt-2">
                     <Pagination_ currentPage={currentPage} total={Math.ceil(_datas.length / prePage)} handlePageChange={setCurrent} />
                 </div>
             </Stack>
@@ -74,24 +73,24 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
             <Stack style={{ overflowY: 'scroll', minHeight: '300px' }}>
                 <Table>
                     <thead style={{ backgroundColor: 'rgb(247, 250, 252)' }}>
-                        <tr bg={tableRowColor}>
+                        <tr>
                             <th className="col-md-7">
-                                <Text color={FONT_COLOR.darkGrey} onClick={() => handleSortOrder('title')}>
+                                <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('title')}>
                                     Title
                                 </Text>
                             </th>
                             <th className="col-md-1">
-                                <Text color={FONT_COLOR.darkGrey} onClick={() => handleSortOrder('forum')}>
+                                <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('forum')}>
                                     Forum
                                 </Text>
                             </th>
                             <th className="col-md-1">
-                                <Text color={FONT_COLOR.darkGrey} onClick={() => handleSortOrder('MAX')}>
+                                <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('MAX')}>
                                     {target}
                                 </Text>
                             </th>
                             <th className="col-md-1">
-                                <Text color={FONT_COLOR.darkGrey} onClick={() => handleSortOrder('change')}>
+                                <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('change')}>
                                     Change
                                 </Text>
                             </th>
@@ -102,8 +101,8 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
                     <tbody>
                         {_datas.slice((currentPage - 1) * prePage, (currentPage - 1) * prePage + prePage).map((el, index, arr) => (
                             <tr key={el.id} className="my-2">
-                                <td border={index === arr.length - 1 ? 'none' : null}>
-                                    <Badge variant="primary" size="sm" onClick={() => handleThreadFetch(el.id)}>
+                                <td>
+                                    <Badge bg="primary" onClick={() => handleThreadFetch(el.id)}>
                                         CHART
                                     </Badge>{' '}
                                     <Text color={FONT_COLOR.darkGrey}>
@@ -112,25 +111,18 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
                                         </a>
                                     </Text>
                                 </td>
-                                <td border={index === arr.length - 1 ? 'none' : null}>
+                                <td>
                                     <Text color={FONT_COLOR.darkGrey}>{el.forum}</Text>
                                 </td>
-                                <td border={index === arr.length - 1 ? 'none' : null}>
+                                <td>
                                     <Text color={FONT_COLOR.darkGrey}>{el.MAX}</Text>
                                 </td>
-                                <td border={index === arr.length - 1 ? 'none' : null}>
+                                <td>
                                     <Text color={FONT_COLOR.darkGrey}>&#x2B06;{`${el.change}%`}</Text>
                                 </td>
                                 <td className="col-lg-1  col-md-0 px-0">
                                     <div className="progress p-0 mt-2" style={{ maxHeight: '10px' }}>
-                                        <div
-                                            className="progress-bar"
-                                            role="progressbar"
-                                            style={{ width: `${(el.change / max) * 100}%` }}
-                                            aria-valuenow="25"
-                                            aria-valuemin="0"
-                                            aria-valuemax="100"
-                                        ></div>
+                                        <div className="progress-bar" style={{ width: `${(el.change / max) * 100}%` }}></div>
                                     </div>
                                 </td>
                             </tr>
