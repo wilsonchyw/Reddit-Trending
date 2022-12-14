@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     trendChart: [],
@@ -6,11 +6,11 @@ const initialState = {
     forums: [],
     lastestVote: [],
     lastestComment: [],
-    symbolHeat: [],
+    symbolHeat: []
 };
 
 export const rawDataSlice = createSlice({
-    name:"raw",
+    name: 'raw',
     initialState,
     reducers: {
         setChartData: (state, action) => {
@@ -30,8 +30,8 @@ export const rawDataSlice = createSlice({
         },
         setHeat: (state, action) => {
             state.symbolHeat = action.payload;
-        },
-    },
+        }
+    }
 });
 
 // Action creators are generated for each case reducer function

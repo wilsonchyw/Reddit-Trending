@@ -1,3 +1,4 @@
 {
-    "files.autoSave": "off"
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }
