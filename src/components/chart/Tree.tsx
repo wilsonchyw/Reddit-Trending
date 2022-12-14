@@ -3,7 +3,7 @@ import Loading from 'src/components/Loading';
 import Text from 'src/components/Text';
 import dynamic from 'next/dynamic';
 import { Stack } from 'react-bootstrap';
-import { FONT, FONT_COLOR } from 'variables/css';
+import { FONT, FONT_COLOR } from 'src/variables/css';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 export default function Tree({ data, title, subTitle, setSearchTarget }) {
     const options = {

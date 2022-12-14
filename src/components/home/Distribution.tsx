@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Stack } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import { FONT, FONT_COLOR } from 'variables/css';
+import { FONT, FONT_COLOR } from 'src/variables/css';
 
 const formatRawData = (data, showOutlier) => {
     const filterOutliers = arr => {

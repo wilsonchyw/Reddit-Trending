@@ -1,7 +1,7 @@
 import { Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import Text from 'src/components/Text';
-import { FONT } from 'variables/css';
+import { FONT } from 'src/variables/css';
 
 interface Slider {
     title: string;

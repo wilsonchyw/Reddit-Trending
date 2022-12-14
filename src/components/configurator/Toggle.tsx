@@ -1,6 +1,6 @@
 import Text from 'src/components/Text';
 import { Button } from 'react-bootstrap';
-import { FONT } from 'variables/css';
+import { FONT } from 'src/variables/css';
 export default function Toggle({ title, content, callback }) {
     return (
         <div className="my-2">

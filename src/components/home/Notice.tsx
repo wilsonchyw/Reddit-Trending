@@ -1,7 +1,7 @@
 import _Card from 'src/components/card/Card';
 import formatNumber from 'src/lib/formatNumber';
 import { Col, Stack } from 'react-bootstrap';
-import { FONT, FONT_COLOR } from 'variables/css';
+import { FONT, FONT_COLOR } from 'src/variables/css';
 export default function Notice({ title, content, Icon, isDate = false }) {
     const textTitle = {
         color: FONT_COLOR.grey,

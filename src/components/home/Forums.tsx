@@ -2,23 +2,23 @@ import _Card from 'src/components/card/Card';
 import Loading from 'src/components/Loading';
 import Text from 'src/components/Text';
 import { useState } from 'react';
-import { Button, Col, Row, Stack } from 'react-bootstrap';
-import { FONT, FONT_COLOR } from 'variables/css';
+import { Button, Col, Row, Stack,Badge } from 'react-bootstrap';
+import { FONT, FONT_COLOR } from 'src/variables/css';
 
 export default function Forums({ forums, target, handleForumToggle, handleTargetToggle }) {
     const [hideContent, setHide] = useState<boolean>(false);
     return (
         <_Card hide={hideContent}>
-            <Stack direction="column" onClick={() => setHide(pre => !pre)}>
+            <Stack direction="column" >
                 <div className="d-flex justify-content-between m-2">
-                    <Col>
+                    <Col onClick={() => setHide(pre => !pre)} sm={10} xs={8}>
                         <Text>Forums</Text>
                     </Col>
 
                     <Col align="right">
-                        <Button
+                        <Badge
                             size="sm"
-                            variant="primary"
+                            bg="primary"
                             onClick={() => {
                                 handleForumToggle(preState => {
                                     const forumObj = {};
@@ -31,10 +31,10 @@ export default function Forums({ forums, target, handleForumToggle, handleTarget
                             style={{ maxHeight: '30px' }}
                         >
                             {'ALL'}
-                        </Button>{' '}
-                        <Button size="sm" variant="primary" onClick={() => setHide(pre => !pre)} style={{ maxHeight: '30px' }}>
+                        </Badge>{' '}
+                        <Badge  bg="primary" onClick={() => setHide(pre => !pre)} style={{ maxHeight: '30px' }}>
                             {hideContent ? 'SHOW' : 'HIDE'}
-                        </Button>
+                        </Badge>
                     </Col>
                 </div>
             </Stack>

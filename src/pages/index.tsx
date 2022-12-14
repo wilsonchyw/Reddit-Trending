@@ -16,8 +16,8 @@ import graphQLHandler from 'src/lib/graphQLHandler';
 import restHandler from 'src/lib/restHandler';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import { setSearch } from 'src/store/settingSlice';
-import FORUMS from 'variables/forum.json';
-import { getQueryAllString, getQueryOneString } from 'variables/graphQL';
+import FORUMS from 'src/variables/forum.json';
+import { getQueryAllString, getQueryOneString } from 'src/variables/graphQL';
 
 export default function Dashboard() {
     const dispatch = useDispatch();

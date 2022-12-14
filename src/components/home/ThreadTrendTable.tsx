@@ -4,7 +4,7 @@ import Text from 'src/components/Text';
 import { useState } from 'react';
 import { Badge, Button, Col, Dropdown, DropdownButton, Form, InputGroup, Row, Stack, Table } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import { FONT, FONT_COLOR } from 'variables/css';
+import { FONT, FONT_COLOR } from 'src/variables/css';
 import Pagination_ from './Pagination';
 
 export default function ThreadTrend({ showForums, handleThreadFetch, userSearch, setUserSearch, target, datas }) {

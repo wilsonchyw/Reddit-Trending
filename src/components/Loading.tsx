@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 interface Loading {
     isWhite?: Boolean;
     size?: number;
@@ -15,7 +15,7 @@ export default function Loading({ isWhite = false, size = 96 }: Loading) {
         top: '-60%',
         fontSize: size / 10 + 'px',
         whiteSpace: 'pre-wrap'
-    };
+    } as React.CSSProperties;
 
     useEffect(() => {
         const i = setInterval(() => {

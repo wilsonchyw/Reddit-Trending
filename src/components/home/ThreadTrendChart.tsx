@@ -1,13 +1,13 @@
-import _Card from 'src/components/card/Card';
-import Loading from 'src/components/Loading';
-import Text from 'src/components/Text';
 import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
 import { Badge, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import _Card from 'src/components/card/Card';
+import Loading from 'src/components/Loading';
+import Text from 'src/components/Text';
 import { setSearch } from 'src/store/settingSlice';
-import { lineChartOptions } from 'variables/charts';
-import { FONT, FONT_COLOR } from 'variables/css';
+import { lineChartOptions } from 'src/variables/charts';
+import { FONT, FONT_COLOR } from 'src/variables/css';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
@@ -72,7 +72,7 @@ export default function ThreadTrendChart({ target, showForums }) {
                     </Col>
 
                     <Col className="d-flex justify-content-end p-1">
-                        <Badge bg="light" text="dark" onClick={() => setVisible(!visible)}>
+                        <Badge bg="light" text="dark" onClick={() => setVisible(!visible)} style={{ maxHeight: '30px' }}>
                             {visible ? 'HIDE' : 'SHOW'}
                         </Badge>
                     </Col>
@@ -94,12 +94,12 @@ export default function ThreadTrendChart({ target, showForums }) {
                     </Text>
                 </Col>
 
-                <Col>
-                    <Badge size="sm" variant="primary" className="float-end mx-2" onClick={reset}>
-                        Reset
-                    </Badge>
+                <Col>                    
                     <Badge bg="light" text="dark" onClick={() => setVisible(!visible)} className="float-end mx-2">
                         {visible ? 'Hide' : 'Show'}
+                    </Badge>
+                    <Badge size="sm" variant="primary" className="float-end mx-2" onClick={reset}>
+                        Reset
                     </Badge>
                 </Col>
             </Row>

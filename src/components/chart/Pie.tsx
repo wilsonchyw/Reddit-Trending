@@ -4,7 +4,7 @@ import Text from 'src/components/Text';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { Stack } from 'react-bootstrap';
-import { FONT, FONT_COLOR } from 'variables/css';
+import { FONT, FONT_COLOR } from 'src/variables/css';
 import ChartInterface from './chart.interface';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
