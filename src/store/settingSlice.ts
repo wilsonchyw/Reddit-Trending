@@ -14,7 +14,7 @@ interface settingState {
 }
 
 const initialState: settingState = {
-    fetchLimit: 2500,
+    fetchLimit: 6000,
     minVote: 10,
     minComment: 10,
     maxYAxis: 2000,

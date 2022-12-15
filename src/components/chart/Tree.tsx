@@ -37,7 +37,7 @@ export default function Tree({ data, title, subTitle, setSearchTarget }) {
                 <Text fontSize={FONT.large}>{title}</Text>
             </Stack>
 
-            {data ? (
+            {data.length ? (
                 typeof window !== 'undefined' && (
                     <div style={{ minHeight: '400px', maxHeight: '400px' }}>
                         <Chart options={options} series={[{ data: data }]} type="treemap" width="100%" height="100%" />

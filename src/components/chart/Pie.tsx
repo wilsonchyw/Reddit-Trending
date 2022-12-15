@@ -40,7 +40,7 @@ export default function Pie({ data, title, subTitle, header = null }: PieProps) 
                 </Stack>
             )}
 
-            {data ? (
+            {data.data.length ? (
                 typeof window !== 'undefined' && (
                     <div style={{ minHeight: '400px', maxHeight: '400px' }}>
                         <Chart options={pieChartOptions} series={data.data} type="donut" width="100%" height="100%" />{' '}

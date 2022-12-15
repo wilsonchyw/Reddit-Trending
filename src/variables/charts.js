@@ -106,14 +106,14 @@ export const lineChartOptions = {
         animations: {
             enabled: true,
             easing: 'easeinout',
-            speed: 800,
+            speed: 1000,
             animateGradually: {
                 enabled: true,
-                delay: 50
+                delay: 10
             },
             dynamicAnimation: {
                 enabled: true,
-                speed: 150
+                speed: 50
             }
         }
     },
@@ -163,7 +163,7 @@ export const lineChartOptions = {
                 fontSize: '12px'
             }
         },
-        min: 0,
+        min: 50,
         max: 2000
     },
     legend: {

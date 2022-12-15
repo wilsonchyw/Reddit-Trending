@@ -16,11 +16,11 @@ import {
     toggleNotice,
     toggleUseRestApi
 } from 'src/store/settingSlice';
-import { getQueryAllString } from 'src/variables/graphQL';
+import { getQueryAllString, GraphQuery } from 'src/variables/graphQL';
 export default function Setting() {
     const dispatch = useDispatch();
 
-    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, notice, useRestApi, visible } = useSelector((state:RootState)=> state.setting);
+    const { fetchLimit, minVote, minComment, maxYAxis, dateRange, notice, useRestApi, visible } = useSelector((state: RootState) => state.setting);
 
     const fetchData = () => {
         const reducers = [setTrendsData, setForumData, setLastestVote, setLastestComment, setHeat];
@@ -40,8 +40,8 @@ export default function Setting() {
                 [{ url: '/count/forum', params }, data => dispatch(setForumData(data))]
             ]);
         } else {
-            const query = getQueryAllString(params);
-            graphQLHandler(query, [
+            //const query = getQueryAllString(params);
+            graphQLHandler(GraphQuery.fetchAll, params, [
                 data => dispatch(setTrendsData(data.state.all)),
                 data => dispatch(setLastestVote(data.state.vote)),
                 data => dispatch(setLastestComment(data.state.comment)),
@@ -69,9 +69,9 @@ export default function Setting() {
                 <Modal.Body>
                     <Slider title="Min Vote" max={200} value={minVote} reducers={setMinVote} />
                     <Slider title="Min Comment" max={200} value={minComment} reducers={setMinComment} />
-                    <Slider title="Max Chart Y Axis" max={4000} value={maxYAxis} reducers={setMaxYAxis} input />
-                    <Slider title="Max fetch quantity" max={4000} min={1000} value={fetchLimit} reducers={setFetchLimit} />
-                    <Slider title="Max fetch date range" max={7} min={1} value={dateRange} reducers={setDateRange} />
+                    <Slider title="Max Chart Y Axis" max={6000} value={maxYAxis} reducers={setMaxYAxis} input />
+                    <Slider title="Max fetch quantity" max={16000} min={1000} value={fetchLimit} reducers={setFetchLimit} />
+                    <Slider title="Max fetch date range" max={4} min={1} value={dateRange} reducers={setDateRange} />
                     <Button variant="primary" onClick={fetchData}>
                         Refresh
                     </Button>

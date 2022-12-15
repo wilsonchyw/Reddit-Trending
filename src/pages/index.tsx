@@ -16,9 +16,8 @@ import graphQLHandler from 'src/lib/graphQLHandler';
 import restHandler from 'src/lib/restHandler';
 import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
-import { setSearch } from 'src/store/settingSlice';
 import FORUMS from 'src/variables/forum.json';
-import { getQueryAllString, getQueryOneString } from 'src/variables/graphQL';
+import { getQueryOneString, GraphQuery } from 'src/variables/graphQL';
 
 export default function Dashboard() {
     const dispatch = useDispatch();
@@ -28,8 +27,8 @@ export default function Dashboard() {
     const [totalRecord, setTotalRecord] = useState(null);
     const [totalThread, setTotalThread] = useState(null);
 
-    const { fetchLimit, minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state:RootState) => state.setting);
-    const { forums, lastestVote, lastestComment } = useSelector((state:RootState) => state.raw);
+    const { fetchLimit, minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state: RootState) => state.setting);
+    const { forums, lastestVote, lastestComment } = useSelector((state: RootState) => state.raw);
 
     const params = {
         limit: fetchLimit,
@@ -63,7 +62,7 @@ export default function Dashboard() {
             restHandler([[options, callback]]);
         } else {
             const query = getQueryOneString(options.params);
-            graphQLHandler(query, [data => callback(data.thread.one)]);
+            graphQLHandler(GraphQuery.fetchOne, { ...params, id: id }, [data => callback(data.thread.one)]);
         }
     };
     useEffect(() => {
@@ -79,8 +78,7 @@ export default function Dashboard() {
                 [{ url: '/count/threadState' }, setTotalRecord]
             ]);
         } else {
-            const query = getQueryAllString(params);
-            graphQLHandler(query, [
+            graphQLHandler(GraphQuery.fetchAll, params, [
                 data => dispatch(setTrendsData(data.state.all)),
                 data => dispatch(setLastestVote(data.state.vote)),
                 data => dispatch(setLastestComment(data.state.comment)),
@@ -106,7 +104,7 @@ export default function Dashboard() {
                         datas={target == 'vote' ? lastestVote : lastestComment}
                         showForums={showForums}
                         handleThreadFetch={handleThreadFetch}
-                        setUserSearch={s => dispatch(setSearch(s))}
+                        //setUserSearch={s => dispatch(setSearch(s))}
                         userSearch={search}
                     />
                 </Stack>
