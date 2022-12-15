@@ -18,12 +18,3 @@ a:active {
     box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: light) {
-    html {
-        color-scheme: dark;
-    }
-    body {
-        color: white;
-        background: black;
-    }
-}
