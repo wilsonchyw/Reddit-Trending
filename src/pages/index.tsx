@@ -17,7 +17,7 @@ import restHandler from 'src/lib/restHandler';
 import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import FORUMS from 'src/variables/forum.json';
-import { getQueryOneString, GraphQuery } from 'src/variables/graphQL';
+import { GraphQuery } from 'src/variables/graphQL';
 
 export default function Dashboard() {
     const dispatch = useDispatch();
@@ -61,7 +61,6 @@ export default function Dashboard() {
         if (useRestApi) {
             restHandler([[options, callback]]);
         } else {
-            const query = getQueryOneString(options.params);
             graphQLHandler(GraphQuery.fetchOne, { ...params, id: id }, [data => callback(data.thread.one)]);
         }
     };

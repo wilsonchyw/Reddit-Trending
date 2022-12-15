@@ -16,7 +16,7 @@ import {
     toggleNotice,
     toggleUseRestApi
 } from 'src/store/settingSlice';
-import { getQueryAllString, GraphQuery } from 'src/variables/graphQL';
+import { GraphQuery } from 'src/variables/graphQL';
 export default function Setting() {
     const dispatch = useDispatch();
 

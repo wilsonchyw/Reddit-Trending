@@ -1,7 +1,7 @@
 import { Pagination } from 'react-bootstrap';
 import useAgent from 'src/lib/useAgent';
 export default function Pagination_({ currentPage, total, handlePageChange }) {
-    const isMobile: boolean = useAgent();
+    const isMobile: Boolean = useAgent();
     const pageChange = value => {
         if (currentPage + value > total || currentPage + value < 1) return;
         handlePageChange(currentPage + value);
