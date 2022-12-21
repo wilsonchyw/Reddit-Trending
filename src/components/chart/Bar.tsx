@@ -24,11 +24,11 @@ export default function Forums({ data, title, subTitle }) {
             enabled: false
         },
         xaxis: {}
-    } as ApexOptions
+    } as ApexOptions;
     option.xaxis.categories = data.labels; //<BarChart chartData={[{ data: [15022, 13663, 10992, 5462, 5371, 1622, 668, 61] }]} chartOptions={barChartOptions} />
     return (
         <_Card>
-            <Stack >
+            <Stack>
                 <Text color={FONT_COLOR.grey}>{subTitle}</Text>
                 <Text fontSize={FONT.large}>{title}</Text>
             </Stack>

@@ -9,7 +9,7 @@ export default function Forums({ forums, target, handleForumToggle, handleTarget
     const [hideContent, setHide] = useState<boolean>(false);
     return (
         <_Card hide={hideContent}>
-            <Stack >
+            <Stack>
                 <div className="d-flex justify-content-between m-2">
                     <Col onClick={() => setHide(pre => !pre)} sm={10} xs={8}>
                         <Text>Forums</Text>
@@ -31,7 +31,7 @@ export default function Forums({ forums, target, handleForumToggle, handleTarget
                         >
                             {'ALL'}
                         </Badge>{' '}
-                        <Badge  bg="primary" onClick={() => setHide(pre => !pre)} style={{ maxHeight: '30px' }}>
+                        <Badge bg="primary" onClick={() => setHide(pre => !pre)} style={{ maxHeight: '30px' }}>
                             {hideContent ? 'SHOW' : 'HIDE'}
                         </Badge>
                     </Col>

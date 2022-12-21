@@ -12,8 +12,6 @@ interface PieProps extends ChartInterface {
     header?: any;
 }
 
-
-
 export default function Pie({ data, title, subTitle, header = null }: PieProps) {
     const pieChartOptions = {
         chart: {
@@ -27,7 +25,7 @@ export default function Pie({ data, title, subTitle, header = null }: PieProps) 
         stroke: {
             show: false
         }
-    } as ApexOptions
+    } as ApexOptions;
 
     return (
         <_Card>

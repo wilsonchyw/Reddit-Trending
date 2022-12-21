@@ -1,4 +1,3 @@
-import parseParams from 'src/lib/parseParams';
 export enum GraphQuery {
     fetchAll = `query fetchAll($limit:Int, $minVote:Int, $minComment:Int, $dateRange:Int ) {
                     state {

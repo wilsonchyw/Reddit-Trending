@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Col, Stack } from 'react-bootstrap';
 import _Card from 'src/components/card/Card';
 import formatNumber from 'src/lib/formatNumber';
@@ -17,9 +17,7 @@ export default function Notice({ title, content, Icon, isDate = false }) {
             <_Card>
                 <div style={textTitle}>{title}</div>
                 <Stack>
-                    <div style={textContent}>
-                        {content ? (isDate ? new Date(content).toLocaleString() : formatNumber(content)) : 'Loading...'}
-                    </div>
+                    <div style={textContent}>{content ? (isDate ? new Date(content).toLocaleString() : formatNumber(content)) : 'Loading...'}</div>
                 </Stack>
             </_Card>
         </Col>

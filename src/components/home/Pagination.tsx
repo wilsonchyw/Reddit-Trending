@@ -7,7 +7,7 @@ export default function Pagination_({ currentPage, total, handlePageChange }) {
         handlePageChange(currentPage + value);
     };
     if (currentPage > total) handlePageChange(1);
-    
+
     const COUNT = isMobile ? 2 : 4;
 
     return (

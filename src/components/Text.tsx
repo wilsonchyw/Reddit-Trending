@@ -1,4 +1,3 @@
-
 interface textProps {
     color?: string;
     fontSize?: string;
@@ -14,7 +13,7 @@ export default function Text({ color, fontSize = '14px', children, fontWeight = 
         fontWeight: fontWeight
     };
     return (
-        <span style={style} onClick={()=>handleClick()}>
+        <span style={style} onClick={() => handleClick()}>
             {children}
         </span>
     );

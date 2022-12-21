@@ -29,7 +29,7 @@ export default function Tree({ data, title, subTitle, setSearchTarget }) {
                 useFillColorAsStroke: true
             }
         }
-    } as ApexOptions
+    } as ApexOptions;
     return (
         <_Card>
             <Stack>

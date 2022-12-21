@@ -1,4 +1,4 @@
-import axios ,{AxiosRequestConfig}from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 const ENDPOINT = 'https://api.rtrend.site/graphql';
 //const ENDPOINT = 'http://api.rtrend.site:3003/graphql';
@@ -15,7 +15,7 @@ export default async function graphQLHandler(query, params, callBacks = null) {
         url: ENDPOINT,
         headers: { 'content-type': 'application/json' },
         data: graphqlQuery
-    } as AxiosRequestConfig
+    } as AxiosRequestConfig;
     const start = Date.now();
 
     return axios(opt)
