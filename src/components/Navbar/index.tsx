@@ -16,9 +16,6 @@ export default function _Navbar() {
                 <Nav.Link>
                     <Link href="/">Thread</Link>
                 </Nav.Link>
-                <Nav.Link>
-                    <Link href="/keyword">Keyword</Link>
-                </Nav.Link>
             </Nav>
             <Nav>
                 <Nav.Link href="#" onClick={habdleSettingClick}>

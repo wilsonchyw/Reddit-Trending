@@ -14,7 +14,7 @@ interface settingState {
 }
 
 const initialState: settingState = {
-    fetchLimit: 6000,
+    //fetchLimit: 6000,
     minVote: 0,
     minComment: 0,
     maxYAxis: 2000,
@@ -33,10 +33,10 @@ export const settingSlice = createSlice({
         setVisible: (state: settingState, action: PayloadAction<boolean>) => {
             state.visible = action.payload;
         },
-        setFetchLimit: (state, action) => {
+        /* setFetchLimit: (state, action) => {
             state.cache = false;
             state.fetchLimit = parseInt(action.payload);
-        },
+        }, */
         setMinVote: (state, action) => {
             state.cache = false;
             state.minVote = parseInt(action.payload);
@@ -69,7 +69,7 @@ export const settingSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-    setFetchLimit,
+    //setFetchLimit,
     setMinVote,
     setMinComment,
     setMaxYAxis,

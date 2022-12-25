@@ -20,12 +20,15 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
     if (!datas.length) return <Loading size={300} isWhite={false} />;
 
     let max = 0;
+
+    const re = new RegExp(`\\b${userSearch}\\b`)
     const _datas = datas
         .map(data => {
             max = Math.max(data.change, max);
             return data;
         })
-        .filter(c => showForums[c.forum] && (c.id == userSearch || c.title.toLowerCase().includes(userSearch)))
+        //.filter(c => showForums[c.forum] && (c.id == userSearch || c.title.toLowerCase().includes(userSearch)))
+        .filter(c => showForums[c.forum] && (c.id == userSearch || re.test(c.title.toLowerCase())))
         .sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortOrder);
 
     const dataShow = _datas.slice((currentPage - 1) * prePage, (currentPage - 1) * prePage + prePage);

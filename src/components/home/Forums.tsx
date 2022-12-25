@@ -6,7 +6,7 @@ import Text from 'src/components/Text';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 
 export default function Forums({ forums, target, handleForumToggle, handleTargetToggle }) {
-    const [hideContent, setHide] = useState<boolean>(false);
+    const [hideContent, setHide] = useState<boolean>(true);
     return (
         <_Card hide={hideContent}>
             <Stack>

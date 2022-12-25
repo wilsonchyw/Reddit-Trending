@@ -7,7 +7,8 @@ import Text from 'src/components/Text';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
-export default function Forums({ data, title, subTitle }) {
+export default function Forums({ data, title, subTitle, color = '#03A9F4' }) {
+    console.log(data);
     const option = {
         chart: {
             type: 'bar',
@@ -23,7 +24,10 @@ export default function Forums({ data, title, subTitle }) {
         dataLabels: {
             enabled: false
         },
-        xaxis: {}
+        xaxis: {},
+        fill: {
+            colors: [color]
+        }
     } as ApexOptions;
     option.xaxis.categories = data.labels; //<BarChart chartData={[{ data: [15022, 13663, 10992, 5462, 5371, 1622, 668, 61] }]} chartOptions={barChartOptions} />
     return (

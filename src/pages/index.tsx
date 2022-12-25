@@ -18,6 +18,16 @@ import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import FORUMS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
+import Forumbar from 'src/components/home/ForumBar';
+
+export interface State {
+    MAX:number
+    MIN:number
+    change:number
+    forum:string
+    id:string
+    title:string
+}
 
 export default function Dashboard() {
     const dispatch = useDispatch();
@@ -133,7 +143,11 @@ export default function Dashboard() {
                             <Bar title={'SubReddit'} subTitle={'Total'} data={forumData} />
                         </Col>
 
-                        <Col lg={6} className="mb-2 ">
+                        <Col lg={6} className="mb-2">
+                            <Forumbar datas={target == 'vote' ? lastestVote : lastestComment} />
+                        </Col>
+
+                        <Col lg={6} className="mb-2 pe-lg-0">
                             <Pie title={'SubReddit'} subTitle={'Total'} data={forumData} />
                         </Col>
                     </Row>

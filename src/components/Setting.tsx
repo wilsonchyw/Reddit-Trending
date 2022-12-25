@@ -8,7 +8,7 @@ import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import {
     setDateRange,
-    setFetchLimit,
+    //setFetchLimit,
     setMaxYAxis,
     setMinComment,
     setMinVote,
@@ -70,7 +70,9 @@ export default function Setting() {
                     <Slider title="Min Vote" max={200} value={minVote} reducers={setMinVote} />
                     <Slider title="Min Comment" max={200} value={minComment} reducers={setMinComment} />
                     <Slider title="Max Chart Y Axis" max={6000} value={maxYAxis} reducers={setMaxYAxis} input />
-                    <Slider title="Max fetch quantity" max={16000} min={1000} value={fetchLimit} reducers={setFetchLimit} />
+                    {
+                        //Slider title="Max fetch quantity" max={16000} min={1000} value={fetchLimit} reducers={setFetchLimit} />
+                    }
                     <Slider title="Max fetch date range" max={4} min={1} value={dateRange} reducers={setDateRange} />
                     <Button variant="primary" onClick={fetchData}>
                         Refresh

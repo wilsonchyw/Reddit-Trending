@@ -6,7 +6,7 @@ import Loading from 'src/components/Loading';
 import Text from 'src/components/Text';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
-export default function Tree({ data, title, subTitle, setSearchTarget }) {
+export default function Tree({ data, title, subTitle, setSearchTarget, header = null }) {
     const options = {
         legend: {
             show: false
@@ -28,14 +28,19 @@ export default function Tree({ data, title, subTitle, setSearchTarget }) {
                 radius: 10,
                 useFillColorAsStroke: true
             }
-        }
+        },
+        
     } as ApexOptions;
     return (
         <_Card>
-            <Stack>
-                <Text color={FONT_COLOR.grey}>{subTitle}</Text>
-                <Text fontSize={FONT.large}>{title}</Text>
-            </Stack>
+            {header ? (
+                header
+            ) : (
+                <Stack>
+                    <Text color={FONT_COLOR.grey}>{subTitle}</Text>
+                    <Text fontSize={FONT.large}>{title}</Text>
+                </Stack>
+            )}
 
             {data.length ? (
                 typeof window !== 'undefined' && (
