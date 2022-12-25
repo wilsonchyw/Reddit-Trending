@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface settingState {
-    fetchLimit: number;
+    //fetchLimit: number;
     minVote: number;
     minComment: number;
     maxYAxis: number;

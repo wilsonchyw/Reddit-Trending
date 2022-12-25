@@ -50,5 +50,4 @@ export default function Pie({ data, title, subTitle, header = null }: PieProps) 
         </_Card>
     );
 
-    return typeof window !== 'undefined' && <Chart options={pieChartOptions} series={data.data} type="donut" width="100%" height="100%" />;
 }

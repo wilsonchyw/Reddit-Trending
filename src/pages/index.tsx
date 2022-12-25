@@ -18,15 +18,16 @@ import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import FORUMS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
-import Forumbar from 'src/components/home/ForumBar';
+import ForumDistribution from 'src/components/home/ForumDistribution';
+import ForumCount from 'src/components/home/ForumCount';
 
 export interface State {
-    MAX:number
-    MIN:number
-    change:number
-    forum:string
-    id:string
-    title:string
+    MAX: number;
+    MIN: number;
+    change: number;
+    forum: string;
+    id: string;
+    title: string;
 }
 
 export default function Dashboard() {
@@ -37,11 +38,10 @@ export default function Dashboard() {
     const [totalRecord, setTotalRecord] = useState(null);
     const [totalThread, setTotalThread] = useState(null);
 
-    const { fetchLimit, minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state: RootState) => state.setting);
+    const { minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state: RootState) => state.setting);
     const { forums, lastestVote, lastestComment } = useSelector((state: RootState) => state.raw);
 
     const params = {
-        limit: fetchLimit,
         minVote: minVote,
         minComment: minComment,
         dateRange: dateRange
@@ -140,15 +140,11 @@ export default function Dashboard() {
                         </Col>
 
                         <Col lg={6} className="mb-2 pe-lg-0">
-                            <Bar title={'SubReddit'} subTitle={'Total'} data={forumData} />
+                            <ForumCount datas={forumData} />
                         </Col>
 
                         <Col lg={6} className="mb-2">
-                            <Forumbar datas={target == 'vote' ? lastestVote : lastestComment} />
-                        </Col>
-
-                        <Col lg={6} className="mb-2 pe-lg-0">
-                            <Pie title={'SubReddit'} subTitle={'Total'} data={forumData} />
+                            <ForumDistribution datas={target == 'vote' ? lastestVote : lastestComment} />
                         </Col>
                     </Row>
                 </Stack>

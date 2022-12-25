@@ -8,7 +8,7 @@ services:
         volumes:
             - ".:/app"
             - "/app/node_modules"
-        entrypoint : [ "npm","run", "dev" ]
+        entrypoint : [ "npm","run", "start:check" ]
         container_name: reddit_trending_next
         image: reddit_trending_next:dev
         

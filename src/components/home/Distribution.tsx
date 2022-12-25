@@ -5,8 +5,9 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Pie from 'src/components/chart/Pie';
 import Text from 'src/components/Text';
 import { FONT, FONT_COLOR } from 'src/variables/css';
+import ChartInterface from '../chart/chart.interface';
 
-const formatRawData = (data, showOutlier) => {
+const formatRawData = (data, showOutlier): ChartInterface['data'] => {
     const filterOutliers = arr => {
         const values = arr.concat();
         values.sort((a, b) => a - b);
@@ -51,7 +52,7 @@ const formatRawData = (data, showOutlier) => {
     };
 };
 
-export default function Distribution({ data, target }) {
+export default function Distribution({ data, target }: { data: any[]; target: string }) {
     const [showOutlier, SetShowOutlier] = useState(false);
 
     const header = (
@@ -73,9 +74,5 @@ export default function Distribution({ data, target }) {
 
     const formattedData = formatRawData(data, showOutlier);
 
-    return (
-        <>
-            <Pie data={formattedData} header={header} title="" subTitle="" />
-        </>
-    );
+    return <Pie data={formattedData} header={header} title="" subTitle="" />;
 }

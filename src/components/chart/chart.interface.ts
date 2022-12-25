@@ -6,3 +6,4 @@ export default interface ChartInterface {
     title: string;
     subTitle: string;
 }
+

@@ -9,7 +9,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "pretty": "npx prettier --write \"**/*.(ts|js|tsx)\""
+        "pretty": "npx prettier --write \"**/*.(ts|js|tsx)\"",
+        "start:check":"npx tsc --noEmit"
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.1",
