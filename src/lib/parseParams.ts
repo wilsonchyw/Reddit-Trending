@@ -1,8 +1,7 @@
 /**
- *
- * @param {} params
- * @returns
- * @description Parse Object to GraphQL params
+ * Converts an object of key-value pairs into a string of parameter assignments.
+ * @param {Object} params - The object to be converted.
+ * @returns {string} A string of parameter assignments in the form "key1:value1,key2:value2,..."
  */
 export default function parseParams(params) {
     let result = '';

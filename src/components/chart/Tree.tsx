@@ -6,6 +6,17 @@ import Loading from 'src/components/Loading';
 import Text from 'src/components/Text';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
+
+/**
+ * A function that returns a tree map chart wrapped in a Card component.
+ * @param {Object} props - The properties for the tree map chart and Card component.
+ * @param {Object[]} props.data - The data for the tree map chart.
+ * @param {string} props.title - The title for the tree map chart.
+ * @param {string} props.subTitle - The subtitle for the tree map chart.
+ * @param {Function} props.setSearchTarget - A function that sets the search target.
+ * @param {JSX.Element} [props.header] - The header for the Card component.
+ * @returns {JSX.Element} A tree map chart wrapped in a Card component.
+ */
 export default function Tree({ data, title, subTitle, setSearchTarget, header = null }) {
     const options = {
         legend: {
@@ -28,8 +39,7 @@ export default function Tree({ data, title, subTitle, setSearchTarget, header = 
                 radius: 10,
                 useFillColorAsStroke: true
             }
-        },
-        
+        }
     } as ApexOptions;
     return (
         <_Card>

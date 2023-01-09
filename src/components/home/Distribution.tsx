@@ -7,6 +7,12 @@ import Text from 'src/components/Text';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 import ChartInterface from '../chart/chart.interface';
 
+/**
+ * Formats raw data for use in a chart. It takes in an array of data, data, and a boolean, showOutlier, indicating whether to show outliers in the chart data. The function processes the data by filtering out outliers if showOutlier is true, rounding the maximum value of the data to the nearest hundred, and dividing the data into intervals based on the maximum value. The function then creates an array of labels for each interval, with the label representing the range of values in the interval. Finally, the function returns an object containing the processed data and the labels.
+ * @param {any[]} data - The raw data to be formatted.
+ * @param {boolean} showOutlier - A boolean indicating whether to show outliers in the chart data.
+ * @returns {Object} An object containing the formatted chart data and labels.
+ */
 const formatRawData = (data, showOutlier): ChartInterface['data'] => {
     const filterOutliers = arr => {
         const values = arr.concat();
@@ -53,7 +59,7 @@ const formatRawData = (data, showOutlier): ChartInterface['data'] => {
 };
 
 export default function Distribution({ data, target }: { data: any[]; target: string }) {
-    const [showOutlier, SetShowOutlier] = useState(false);
+    const [showOutlier, SetShowOutlier] = useState<boolean>(false);
 
     const header = (
         <Stack>

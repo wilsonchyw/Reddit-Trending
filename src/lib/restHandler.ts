@@ -3,8 +3,9 @@ const ENDPOINT = 'https://api.rtrend.site/api';
 //const ENDPOINT = "http://api.rtrend.site:3003/api";
 
 /**
- * @param {[{option},function] } args
- * @description Call backend server
+ * Makes HTTP requests using the REST API.
+ * @param {Array} args - An array of argument pairs, where each pair consists of an Axios request config object and a callback function.
+ * @returns {Promise} A promise that resolves when all of the HTTP requests have completed.
  */
 export default async function restHandler(args) {
     const start = Date.now();

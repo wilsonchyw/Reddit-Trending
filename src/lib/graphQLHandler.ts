@@ -3,7 +3,13 @@ import axios, { AxiosRequestConfig } from 'axios';
 const ENDPOINT = 'https://api.rtrend.site/graphql';
 //const ENDPOINT = 'http://api.rtrend.site:3003/graphql';
 
-//store.subscribe(restHandler)
+/**
+ * Sends a GraphQL query to the specified endpoint and handles the response.
+ * @param {string} query - The GraphQL query to send.
+ * @param {Object} params - The variables to include in the query.
+ * @param {function[]} [callBacks=null] - An array of callback functions to be called with the response data.
+ * @returns {Promise} A promise that resolves when the query has been sent and the response has been handled.
+ */
 export default async function graphQLHandler(query, params, callBacks = null) {
     const graphqlQuery = {
         //operationName: 'fetch',

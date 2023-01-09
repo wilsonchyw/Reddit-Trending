@@ -8,7 +8,19 @@ import { FONT, FONT_COLOR } from 'src/variables/css';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-export default function Forums({ data, title, subTitle, color = '#03A9F4',header }) {
+/**
+ * A function that returns a bar chart wrapped in a Card component.
+ * @param {Object} props - The properties for the bar chart and Card component.
+ * @param {Object} props.data - The data for the bar chart.
+ * @param {string[]} props.data.labels - The labels for the bar chart.
+ * @param {number[]} props.data.data - The data for the bar chart.
+ * @param {string} props.title - The title for the bar chart.
+ * @param {string} props.subTitle - The subtitle for the bar chart.
+ * @param {string} [props.color="#03A9F4"] - The color for the bars in the bar chart.
+ * @param {JSX.Element} [props.header] - The header for the Card component.
+ * @returns {JSX.Element} A bar chart wrapped in a Card component.
+ */
+export default function Forums({ data, title, subTitle, color = '#03A9F4', header }) {
     const option = {
         chart: {
             type: 'bar',

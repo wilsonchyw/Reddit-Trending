@@ -11,6 +11,18 @@ interface Slider {
     input?: boolean;
     value?: any;
 }
+
+/**
+ * A function that returns a slider element.
+ * @param {Object} props - The properties for the slider.
+ * @param {string} props.title - The title for the slider.
+ * @param {number} [props.min=0] - The minimum value for the slider.
+ * @param {number} props.max - The maximum value for the slider.
+ * @param {number} props.value - The current value of the slider.
+ * @param {Function} props.reducers - A function that dispatches an action to update the state.
+ * @param {boolean} [props.input=false] - A boolean indicating whether to show a text input for the slider value.
+ * @returns {JSX.Element} A slider element.
+ */
 export default function Slider({ title, min = 0, max, value, reducers, input = false }: Slider) {
     const dispatch = useDispatch();
     return (

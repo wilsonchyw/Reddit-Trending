@@ -12,6 +12,17 @@ interface PieProps extends ChartInterface {
     header?: any;
 }
 
+/**
+ * A function that returns a pie chart wrapped in a Card component.
+ * @param {Object} props - The properties for the pie chart and Card component.
+ * @param {Object} props.data - The data for the pie chart.
+ * @param {string[]} props.data.labels - The labels for the pie chart.
+ * @param {any[]} props.data.data - The data for the pie chart.
+ * @param {string} props.title - The title for the pie chart.
+ * @param {string} props.subTitle - The subtitle for the pie chart.
+ * @param {JSX.Element} [props.header] - The header for the Card component.
+ * @returns {JSX.Element} A pie chart wrapped in a Card component.
+ */
 export default function Pie({ data, title, subTitle, header = null }: PieProps) {
     const pieChartOptions = {
         chart: {
@@ -49,5 +60,4 @@ export default function Pie({ data, title, subTitle, header = null }: PieProps) 
             )}
         </_Card>
     );
-
 }
