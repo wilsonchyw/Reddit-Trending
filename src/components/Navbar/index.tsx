@@ -9,10 +9,7 @@ export default function _Navbar() {
     const habdleSettingClick = () => dispatch(setVisible(true));
     return (
         <Navbar variant="dark" className="px-2" style={{ color: 'white', background: 'linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)' }}>
-            {
-                /**
-                 * 
-                  <Navbar.Brand>
+            <Navbar.Brand>
                 <Link href="/">Reddit Trending</Link>
             </Navbar.Brand>
             <Nav className="me-auto">
@@ -25,9 +22,6 @@ export default function _Navbar() {
                     Settings
                 </Nav.Link>
             </Nav>
-                 */
-            }
-           
         </Navbar>
     );
 }
