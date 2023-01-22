@@ -25,6 +25,8 @@ export default async function graphQLHandler(query, params, callBacks = null) {
     }; //as AxiosRequestConfig;
     const start = Date.now();
 
+    //axios.defaults.headers.common['Content-type'] = 'application/json'
+
     return axios(opt)
         .then(({ data }) => data.data)
         .then(data => {
