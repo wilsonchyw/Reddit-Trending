@@ -16,12 +16,12 @@ export default async function graphQLHandler(query, params, callBacks = null) {
         query: query,
         variables: params
     };
-    const opt = {
+    const opt :AxiosRequestConfig= {
         method: 'POST',
         url: ENDPOINT,
         headers: { 'content-type': 'application/json' },
         data: graphqlQuery
-    } as AxiosRequestConfig;
+    } //as AxiosRequestConfig;
     const start = Date.now();
 
     return axios(opt)
