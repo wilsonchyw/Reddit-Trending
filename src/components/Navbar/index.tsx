@@ -13,9 +13,7 @@ export default function _Navbar() {
                 <Link href="/">Reddit Trending</Link>
             </Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link>
-                    <Link href="/">Thread</Link>
-                </Nav.Link>
+                <Link href="/">Thread</Link>
             </Nav>
             <Nav>
                 <Nav.Link href="#" onClick={habdleSettingClick}>

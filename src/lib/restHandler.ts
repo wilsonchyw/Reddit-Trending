@@ -9,20 +9,27 @@ const ENDPOINT = 'https://api.rtrend.site/api';
  */
 export default async function restHandler(args) {
     const start = Date.now();
-    Promise.all(
+    return Promise.all(
         args.map(arg => {
             const [option, callback] = arg;
             if (!option.method) option.method = 'get';
             option.url = `${ENDPOINT}${option.url}`;
             return axios(option).then(
-                ({ data }) => callback(data),
-                value => console.log(value.data)
+                ({ data }) => {
+                    if (callback) {
+                        callback(data);
+                    } else {
+                        return data;
+                    }
+                },
+                value => console.log('value => ', value.data)
             );
         })
-    ).then(() => {
+    ).then(data => {
         const end = Date.now();
         console.log(`Fetch ${args.length} request using REST`);
         console.log(`Time usage: ${end - start}ms`);
         //store.dispatch(setMsg(`Fetch ${args.length} request using REST`))
+        return data;
     });
 }

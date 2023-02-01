@@ -4,8 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 import { useDispatch, useSelector } from 'react-redux';
-import Bar from 'src/components/chart/Bar';
-import Pie from 'src/components/chart/Pie';
 import Distribution from 'src/components/home/Distribution';
 import Forums from 'src/components/home/Forums';
 import KeyWordHeat from 'src/components/home/KeyWordHeat';
@@ -30,7 +28,18 @@ export interface State {
     title: string;
 }
 
-export default function Dashboard() {
+export default function Dashboard({ all, vote, comment, distribution, forums, latest, thread, threadState }) {
+    useEffect(() => {
+        dispatch(setTrendsData(all));
+        dispatch(setLastestVote(vote));
+        dispatch(setLastestComment(comment));
+        dispatch(setHeat(distribution));
+        dispatch(setForumData(forums));
+        setLastUpdate(latest);
+        setTotalThread(thread);
+        setTotalRecord(threadState);
+    }, []);
+
     const dispatch = useDispatch();
     const [showForums, setShowForums] = useState<any>(FORUMS);
     const [target, setTarget] = useState('vote');
@@ -39,7 +48,7 @@ export default function Dashboard() {
     const [totalThread, setTotalThread] = useState(null);
 
     const { minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state: RootState) => state.setting);
-    const { forums, lastestVote, lastestComment } = useSelector((state: RootState) => state.raw);
+    const { lastestVote, lastestComment } = useSelector((state: RootState) => state.raw);
 
     const params = {
         minVote: minVote,
@@ -74,31 +83,6 @@ export default function Dashboard() {
             graphQLHandler(GraphQuery.fetchOne, { ...params, id: id }, [data => callback(data.thread.one)]);
         }
     };
-    useEffect(() => {
-        if (useRestApi) {
-            restHandler([
-                [{ url: '/state/all', params }, data => dispatch(setTrendsData(data))],
-                [{ url: '/state/vote', params }, data => dispatch(setLastestVote(data))],
-                [{ url: '/state/comment', params }, data => dispatch(setLastestComment(data))],
-                [{ url: '/state/distribution', params }, data => dispatch(setHeat(data))],
-                [{ url: '/count/forum', params }, data => dispatch(setForumData(data))],
-                [{ url: '/count/latest' }, setLastUpdate],
-                [{ url: '/count/thread' }, setTotalThread],
-                [{ url: '/count/threadState' }, setTotalRecord]
-            ]);
-        } else {
-            graphQLHandler(GraphQuery.fetchAll, params, [
-                data => dispatch(setTrendsData(data.state.all)),
-                data => dispatch(setLastestVote(data.state.vote)),
-                data => dispatch(setLastestComment(data.state.comment)),
-                data => dispatch(setHeat(data.state.distribution)),
-                data => dispatch(setForumData(data.count.forum)),
-                data => setLastUpdate(data.count.latest),
-                data => setTotalThread(data.count.thread),
-                data => setTotalRecord(data.count.threadState)
-            ]);
-        }
-    }, []);
 
     return (
         <>
@@ -159,4 +143,23 @@ export default function Dashboard() {
             </Container>
         </>
     );
+}
+
+export async function getStaticProps(context) {
+    const params = { minVote: 0, minComment: 0, dateRange: 1 };
+    const [all, vote, comment, distribution, forums, latest, thread, threadState] = await restHandler([
+        [{ url: '/state/all' }],
+        [{ url: '/state/vote' }],
+        [{ url: '/state/comment', params }],
+        [{ url: '/state/distribution', params }],
+        [{ url: '/count/forum', params }],
+        [{ url: '/count/latest' }],
+        [{ url: '/count/thread' }],
+        [{ url: '/count/threadState' }]
+    ]);
+    //console.log([all, vote,comment,distribution,forums,latest,thread,threadState])
+    return {
+        props: { all, vote, comment, distribution, forums, latest, thread, threadState } ,// will be passed to the page component as props
+        revalidate: 1800,
+    };
 }
