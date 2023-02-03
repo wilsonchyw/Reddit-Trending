@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Stack from 'react-bootstrap/Stack';
 import { useDispatch, useSelector } from 'react-redux';
 import Distribution from 'src/components/home/Distribution';
+import ForumCount from 'src/components/home/ForumCount';
+import ForumDistribution from 'src/components/home/ForumDistribution';
 import Forums from 'src/components/home/Forums';
 import KeyWordHeat from 'src/components/home/KeyWordHeat';
 import Notice from 'src/components/home/Notice';
@@ -16,8 +18,6 @@ import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import FORUMS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
-import ForumDistribution from 'src/components/home/ForumDistribution';
-import ForumCount from 'src/components/home/ForumCount';
 
 export interface State {
     MAX: number;
@@ -157,9 +157,12 @@ export async function getStaticProps(context) {
         [{ url: '/count/thread' }],
         [{ url: '/count/threadState' }]
     ]);
-    //console.log([all, vote,comment,distribution,forums,latest,thread,threadState])
+    //console.log([all, vote, comment, distribution, forums, latest, thread, threadState]);
+    if ([all, vote, comment, distribution, forums, latest, thread, threadState].some(x=>x==undefined)) {
+        throw new Error(`Failed to fetch posts, some API call fail`);
+    }
     return {
-        props: { all, vote, comment, distribution, forums, latest, thread, threadState } ,// will be passed to the page component as props
-        revalidate: 1800,
+        props: { all, vote, comment, distribution, forums, latest, thread, threadState }, // will be passed to the page component as props
+        revalidate: 1800
     };
 }

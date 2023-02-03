@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -15,7 +16,10 @@ export default function App({ Component, pageProps }: AppProps) {
                 <title>Reddit Trending | The financial trending on Reddit</title>
                 <link rel="icon" href="/favicon.ico" type="image/x-icon"></link>
                 <meta name="theme-color" content="#fff" />
-                <meta name="description" content="See what financial related news people are hotly discussing in the last 24 hours" />
+                <meta
+                    name="description"
+                    content="Maximize your financial success by staying ahead of the game. Reddit Trending visualizes million records of financial trends on Reddit, providing real-time insights to help you make informed decisions."
+                />
             </Head>
             <Provider store={store}>
                 <_Navbar />
@@ -23,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
                 <Footer />
             </Provider>
+            <Analytics />
         </SSRProvider>
     );
 }

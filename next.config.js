@@ -8,9 +8,9 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true
     },
-    experimental: {
-        runtime: 'edge'
-    }
+    /* experimental: {
+        runtime: 'experimental-edge'
+    } */
 };
 
 module.exports = nextConfig;

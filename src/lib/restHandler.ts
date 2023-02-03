@@ -26,6 +26,7 @@ export default async function restHandler(args) {
             );
         })
     ).then(data => {
+        //console.log(data)
         const end = Date.now();
         console.log(`Fetch ${args.length} request using REST`);
         console.log(`Time usage: ${end - start}ms`);
