@@ -15,7 +15,7 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 export default function ThreadTrendChart({ target, showForums }) {
     const { maxYAxis } = useSelector((state: RootState) => state.setting);
     const [max, setMax] = useState<number>(maxYAxis);
-    const [visible, setVisible] = useState<boolean>(true);
+    const [visible, setVisible] = useState<boolean>(false);
     const [data, setData] = useState<any[]>([]);
     const [initData, setInitData] = useState<any[]>([]);
     const dispatch = useDispatch();
@@ -27,6 +27,7 @@ export default function ThreadTrendChart({ target, showForums }) {
             if (id) dispatch(setSearch(id));
         }
     };
+    console.log(trends)
 
     useMemo(() => {
         if (trends.length && (trends[0].name == 'Vote' || trends[0].name == 'Comment')) return setData(trends);

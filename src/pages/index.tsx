@@ -28,9 +28,10 @@ export interface State {
     title: string;
 }
 
-export default function Dashboard({ all, vote, comment, distribution, forums, latest, thread, threadState }) {
+export default function Dashboard({ vote, comment, distribution, forums, latest, thread, threadState }) {
     useEffect(() => {
-        dispatch(setTrendsData(all));
+        restHandler([[{ url: '/state/all', params }, data => dispatch(setTrendsData(data))]]);
+        //dispatch(setTrendsData(all));
         dispatch(setLastestVote(vote));
         dispatch(setLastestComment(comment));
         dispatch(setHeat(distribution));
@@ -147,8 +148,8 @@ export default function Dashboard({ all, vote, comment, distribution, forums, la
 
 export async function getStaticProps(context) {
     const params = { minVote: 0, minComment: 0, dateRange: 1 };
-    const [all, vote, comment, distribution, forums, latest, thread, threadState] = await restHandler([
-        [{ url: '/state/all' }],
+    const [vote, comment, distribution, forums, latest, thread, threadState] = await restHandler([
+        //[{ url: '/state/all' }],
         [{ url: '/state/vote' }],
         [{ url: '/state/comment', params }],
         [{ url: '/state/distribution', params }],
@@ -158,11 +159,11 @@ export async function getStaticProps(context) {
         [{ url: '/count/threadState' }]
     ]);
     //console.log([all, vote, comment, distribution, forums, latest, thread, threadState]);
-    if ([all, vote, comment, distribution, forums, latest, thread, threadState].some(x=>x==undefined)) {
+    if ([vote, comment, distribution, forums, latest, thread, threadState].some(x => x == undefined)) {
         throw new Error(`Failed to fetch posts, some API call fail`);
     }
     return {
-        props: { all, vote, comment, distribution, forums, latest, thread, threadState }, // will be passed to the page component as props
+        props: { vote, comment, distribution, forums, latest, thread, threadState }, // will be passed to the page component as props
         revalidate: 1800
     };
 }
