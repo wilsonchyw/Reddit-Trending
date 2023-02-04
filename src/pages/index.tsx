@@ -159,9 +159,13 @@ export async function getStaticProps(context) {
         [{ url: '/count/threadState' }]
     ]);
     //console.log([all, vote, comment, distribution, forums, latest, thread, threadState]);
-    if ([vote, comment, distribution, forums, latest, thread, threadState].some(x => x == undefined)) {
-        throw new Error(`Failed to fetch posts, some API call fail`);
+    for(const i of [vote, comment, distribution, forums, latest, thread, threadState]){
+        if(i==undefined){
+            console.log(i)
+            throw new Error(`Failed to fetch posts, some API call fail`);
+        }
     }
+    
     return {
         props: { vote, comment, distribution, forums, latest, thread, threadState }, // will be passed to the page component as props
         revalidate: 1800

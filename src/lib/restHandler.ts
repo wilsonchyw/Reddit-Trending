@@ -22,7 +22,6 @@ export default async function restHandler(args) {
             return axios(option).then(
                 (res) => {
                     const {data} = res
-                    console.log(`${option.url} .length`,data.length,"mb")
                     if (callback) {
                         callback(data);
                     } else {
