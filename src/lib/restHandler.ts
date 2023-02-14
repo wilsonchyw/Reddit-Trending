@@ -13,11 +13,6 @@ export default async function restHandler(args) {
         args.map(arg => {
             const [option, callback] = arg;
             if (!option.method) option.method = 'get';
-            option.headers = {
-                'Content-Type': 'application/json',
-                'Accept-Encoding': 'gzip',
-                'Content-Encoding': 'gzip'
-            };
             option.url = `${ENDPOINT}${option.url}`;
             return axios(option).then(
                 (res) => {
