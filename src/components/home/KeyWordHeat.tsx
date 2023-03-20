@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState ,useEffect} from 'react';
 import { Col, Row, Stack } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Tree from 'src/components/chart/Tree';
@@ -25,6 +25,17 @@ export default function KeyWordHeat({ showForums }) {
     const [min, setMin] = useState<number>(2);
     const dispatch = useDispatch();
     const { symbolHeat } = useSelector((state: RootState) => state.raw);
+    const [shouldRender, setRender] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setRender(true);
+        }, 1000);
+
+        return () => clearTimeout(timeout);
+    }, [shouldRender]);
+
+    
 
     const heatmapData = useMemo(
         (): HeatmapDatas =>
@@ -39,6 +50,8 @@ export default function KeyWordHeat({ showForums }) {
                 .filter((data: HeatmapData) => data.y >= min),
         [symbolHeat, showForums, min]
     );
+
+    if (!shouldRender) return null;
 
     const header = (
         <Stack>

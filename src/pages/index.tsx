@@ -18,6 +18,7 @@ import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import FORUMS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
+import useAgent from 'src/lib/useAgent';
 
 export interface State {
     MAX: number;
@@ -41,6 +42,7 @@ export default function Dashboard({ vote, comment, distribution, forums, latest,
         setTotalRecord(threadState);
     }, []);
 
+    const isMobile = useAgent()
     const dispatch = useDispatch();
     const [showForums, setShowForums] = useState<any>(FORUMS);
     const [target, setTarget] = useState('vote');
@@ -99,6 +101,7 @@ export default function Dashboard({ vote, comment, distribution, forums, latest,
                         showForums={showForums}
                         handleThreadFetch={handleThreadFetch}
                         //setUserSearch={s => dispatch(setSearch(s))}
+                        handleTargetToggle= {setTarget}
                         userSearch={search}
                     />
                 </Stack>
@@ -120,9 +123,9 @@ export default function Dashboard({ vote, comment, distribution, forums, latest,
                             <Distribution data={(target == 'vote' ? lastestVote : lastestComment).filter(c => showForums[c.forum])} target={target} />
                         </Col>
 
-                        <Col lg={6} className="mb-2 ">
+                        {!isMobile &&<Col lg={6} className="mb-2 ">
                             <KeyWordHeat showForums={showForums} />
-                        </Col>
+                        </Col>}
 
                         <Col lg={6} className="mb-2 pe-lg-0">
                             <ForumCount datas={forumData} />

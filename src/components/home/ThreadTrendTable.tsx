@@ -9,19 +9,21 @@ import { RootState } from 'src/store';
 import { setSearch } from 'src/store/settingSlice';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 import Pagination_ from './Pagination';
+import ToCSV from './ToCSV';
 
-export default function ThreadTrend({ showForums, handleThreadFetch, userSearch, target, datas }) {
+export default function ThreadTrend({ showForums, handleThreadFetch, userSearch, target, datas, handleTargetToggle }) {
     const [prePage, setPrePage] = useState<number>(10);
     const [sortBy, setSortBy] = useState<string>('change');
     const [sortOrder, setSortOrder] = useState<number>(-1);
     const [currentPage, setCurrent] = useState(1);
+    const [showChartButton, setChartButton] = useState<boolean>(true);
     const isMobile: Boolean = useAgent();
 
     if (!datas.length) return <Loading size={300} isWhite={false} />;
 
     let max = 0;
 
-    const re = new RegExp(`\\b${userSearch}\\b`)
+    const re = new RegExp(`\\b${userSearch}\\b`);
     const _datas = datas
         .map(data => {
             max = Math.max(data.change, max);
@@ -45,7 +47,16 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
 
     return (
         <_Card>
-            <Header dataLength={_datas.length} setPrePage={setPrePage} currentPage={currentPage} prePage={prePage} setCurrent={setCurrent} />
+            <Header
+                dataLength={_datas.length}
+                setPrePage={setPrePage}
+                currentPage={currentPage}
+                prePage={prePage}
+                setCurrent={setCurrent}
+                datas={_datas}
+                target={target}
+                handleTargetToggle={handleTargetToggle}
+            />
             <Stack style={{ minHeight: '300px' }}>
                 {isMobile ? (
                     <_TableMobile
@@ -63,6 +74,7 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
                         target={target}
                         max={max}
                         sortIndicator={sortIndicator}
+                        showChartButton={showChartButton}
                     />
                 )}
             </Stack>
@@ -141,7 +153,7 @@ function _TableMobile({ data, handleThreadFetch, sortIndicator, handleSortOrder,
     );
 }
 
-function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, target, max }) {
+function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, target, max, showChartButton }) {
     return (
         <Table>
             <thead style={{ backgroundColor: 'rgb(247, 250, 252)' }}>
@@ -174,9 +186,14 @@ function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, targe
                 {data.map((el, index, arr) => (
                     <tr key={el.id} className="my-2">
                         <td>
-                            <Badge bg="primary" onClick={() => handleThreadFetch(el.id)}>
-                                CHART
-                            </Badge>{' '}
+                            {showChartButton && (
+                                <>
+                                    <Badge bg="primary" onClick={() => handleThreadFetch(el.id)}>
+                                        CHART
+                                    </Badge>{' '}
+                                </>
+                            )}
+
                             <Text color={FONT_COLOR.darkGrey}>
                                 <a href={`https://www.reddit.com/r/${el.forum}/comments/${el.id}`} target="_blank" rel="noreferrer">
                                     {el.title}
@@ -184,7 +201,11 @@ function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, targe
                             </Text>
                         </td>
                         <td>
-                            <Text color={FONT_COLOR.darkGrey}>{el.forum}</Text>
+                            <Text color={FONT_COLOR.darkGrey}>
+                                <a href={`https://www.reddit.com/r/${el.forum}/`} target="_blank" rel="noreferrer">
+                                    {el.forum}
+                                </a>
+                            </Text>
                         </td>
                         <td>
                             <Text color={FONT_COLOR.darkGrey}>{el.MAX}</Text>
@@ -204,7 +225,7 @@ function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, targe
     );
 }
 
-function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent }) {
+function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, datas, target, handleTargetToggle }) {
     const dispatch = useDispatch();
     const { dateRange, search } = useSelector((state: RootState) => state.setting);
     const handleUserSearch = (s: string) => dispatch(setSearch(s));
@@ -212,8 +233,11 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent }) {
         <Stack>
             <Row className="d-flex justify-content-between p-2">
                 <Col xs={12} md={4} className="d-flex align-items-center p-1">
-                    <Text fontSize={FONT.bigger}>
-                        Changes within {dateRange * 24} hours, Total {dataLength} record
+                    <Button size="sm" onClick={() => handleTargetToggle(preState => (preState == 'comment' ? 'vote' : 'comment'))} className="me-2">
+                        {target}
+                    </Button>
+                    <Text fontSize={FONT.bigger} >
+                        changes within {dateRange * 24} hours, Total {dataLength} record
                     </Text>
                 </Col>
                 <Col xs={12} md={4} className="d-flex align-items-center p-1">
@@ -231,6 +255,7 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent }) {
                     </InputGroup>
                 </Col>
                 <Col xs={12} md={4} className="d-flex align-items-center justify-content-md-end justify-content-sm-center p-1">
+                    <ToCSV datas={datas} />
                     <DropdownButton title={`Page size`} size="sm">
                         <Dropdown.Item onClick={() => setPrePage(10)}>10</Dropdown.Item>
                         <Dropdown.Item onClick={() => setPrePage(25)}>25</Dropdown.Item>
