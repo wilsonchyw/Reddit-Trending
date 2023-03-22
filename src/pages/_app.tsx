@@ -9,12 +9,15 @@ import _Navbar from 'src/components/Navbar';
 import Setting from 'src/components/Setting';
 import { store } from '../store';
 import '../styles/globals.css';
+import '../styles/tagcloud.css';
+import '../styles/blog.css';
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <SSRProvider>
             <Head>
                 <title>Reddit Trending | The financial trending on Reddit</title>
                 <link rel="icon" href="/favicon.ico" type="image/x-icon"></link>
+                <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css"></link>
                 <meta name="theme-color" content="#fff" />
                 <meta
                     name="description"

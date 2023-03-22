@@ -13,11 +13,18 @@ interface Props {
     }[];
 }
 
-export default function ToCSV({ datas }: Props): ReactElement {
+function exportJsonOnNewTab(data) {
+    const tab = window.open('', '_blank');
+    tab.document.body.innerHTML = JSON.stringify(data);
+}
+
+
+export default function Export({ datas }: Props): ReactElement {
     datas = datas.sort((a, b) => b.change - a.change);
     return (
-        <Button size="sm" className="mx-2">
-            <CSVLink data={datas}>CSV</CSVLink>
-        </Button>
+        <DropdownButton title={`Export`} size="sm">
+            <Dropdown.Item as="button"><CSVLink data={datas}>CSV</CSVLink></Dropdown.Item>
+            <Dropdown.Item onClick={() => exportJsonOnNewTab(datas)}>JSON</Dropdown.Item>
+        </DropdownButton>
     );
 }

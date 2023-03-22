@@ -9,7 +9,7 @@ import { RootState } from 'src/store';
 import { setSearch } from 'src/store/settingSlice';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 import Pagination_ from './Pagination';
-import ToCSV from './ToCSV';
+import Export from './Export';
 
 export default function ThreadTrend({ showForums, handleThreadFetch, userSearch, target, datas, handleTargetToggle }) {
     const [prePage, setPrePage] = useState<number>(10);
@@ -233,10 +233,15 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, data
         <Stack>
             <Row className="d-flex justify-content-between p-2">
                 <Col xs={12} md={4} className="d-flex align-items-center p-1">
-                    <Button size="sm" onClick={() => handleTargetToggle(preState => (preState == 'comment' ? 'vote' : 'comment'))} className="me-2">
-                        {target}
-                    </Button>
-                    <Text fontSize={FONT.bigger} >
+                    <Text fontSize={FONT.bigger}>
+                        <Button
+                            size="sm"
+                            onClick={() => handleTargetToggle(preState => (preState == 'comment' ? 'vote' : 'comment'))}
+                            className="me-2"
+                            variant="light"
+                        >
+                            {target}
+                        </Button>{' '}
                         changes within {dateRange * 24} hours, Total {dataLength} record
                     </Text>
                 </Col>
@@ -255,8 +260,9 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, data
                     </InputGroup>
                 </Col>
                 <Col xs={12} md={4} className="d-flex align-items-center justify-content-md-end justify-content-sm-center p-1">
-                    <ToCSV datas={datas} />
-                    <DropdownButton title={`Page size`} size="sm">
+                    <Export datas={datas} />
+
+                    <DropdownButton title={`Page size`} size="sm" className="ms-2">
                         <Dropdown.Item onClick={() => setPrePage(10)}>10</Dropdown.Item>
                         <Dropdown.Item onClick={() => setPrePage(25)}>25</Dropdown.Item>
                         <Dropdown.Item onClick={() => setPrePage(50)}>50</Dropdown.Item>

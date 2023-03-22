@@ -30,7 +30,7 @@ export default function KeyWordHeat({ showForums }) {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setRender(true);
-        }, 1000);
+        }, 500);
 
         return () => clearTimeout(timeout);
     }, [shouldRender]);
@@ -51,7 +51,7 @@ export default function KeyWordHeat({ showForums }) {
         [symbolHeat, showForums, min]
     );
 
-    if (!shouldRender) return null;
+    
 
     const header = (
         <Stack>
@@ -62,6 +62,8 @@ export default function KeyWordHeat({ showForums }) {
             </div>
         </Stack>
     );
+
+    if (!shouldRender) return header;
 
     return <Tree title={'Keywords'} subTitle={'Heat map'} data={heatmapData} setSearchTarget={s => dispatch(setSearch(s))} header={header} />;
 }

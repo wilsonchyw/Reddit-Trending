@@ -1,0 +1,35 @@
+@keyframes zoom-in {
+    0% {
+        transform: scale(0, 0);
+    }
+    50% {
+        transform: scale(0.4, 0.4);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+.main-tag {
+    animation: zoom-in 1s;
+}
+
+.test1 {
+    animation: fadeIn 2s, zoom-in 1s;
+}
+.test2 {
+    animation: fadeIn 3s, zoom-in 1.5s;
+}
+.test3 {
+    animation: fadeIn 4s, zoom-in 2s;
+}
+.test4 {
+    animation: fadeIn 5s, zoom-in 2.5s;
+}
+
+.zoom{
+    transition-duration: 3s;
+}
+.zoom:hover {
+    transition-duration: 0s;
+    transform: scale(1.9); 
+}

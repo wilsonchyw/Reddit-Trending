@@ -12,21 +12,15 @@ export default function _Navbar() {
             <h1 className="navbar-brand">
                 <Link href="/">Reddit Trending</Link>
             </h1>
-            {/* <Nav className="mx-2">
-                <Link href="/">Thread</Link>
-            </Nav> */}
-
             <h1 className="navbar-brand  me-auto">
-                <span className="me-2" >{'| '}</span>
-                <Link href="https://rtrending.wordpress.com/">
-                    Blog
-                </Link>
+                <span className="me-2">{'| '}</span>
+                <Link href="/post">Posts</Link>
             </h1>
-            <Nav>
+            <h1 className="navbar-brand">
                 <Nav.Link href="#" onClick={habdleSettingClick}>
                     Settings
                 </Nav.Link>
-            </Nav>
+            </h1>
         </Navbar>
     );
 }

@@ -1,0 +1,10 @@
+.blog-content {
+    color: rgb(79, 79, 79);
+    font-weight: 400;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.blog-readmore {
+    color: #5fcb71;
+}

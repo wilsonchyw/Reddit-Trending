@@ -72,19 +72,19 @@ export default function Setting() {
                     {
                         //Slider title="Max fetch quantity" max={16000} min={1000} value={fetchLimit} reducers={setFetchLimit} />
                     }
-                    <Slider title="Max fetch date range" max={4} min={1} value={dateRange} reducers={setDateRange} />
+                    <Slider title="Date range" max={4} min={1} value={dateRange} reducers={setDateRange} />
                     <Button variant="primary" onClick={fetchData}>
                         Refresh
                     </Button>
                 </Modal.Body>
-                <Modal.Body>
+                {/* <Modal.Body>
                     <Toggle title={'Notices'} content={`${notice ? 'On' : 'Off'}`} callback={() => dispatch(toggleNotice())} />
                     <Toggle
                         title={useRestApi ? 'RestAPI' : 'GraphQL'}
                         content={`Use ${useRestApi === true ? 'GraphQL' : 'RestAPI'}`}
                         callback={() => dispatch(toggleUseRestApi())}
                     />
-                </Modal.Body>
+                </Modal.Body> */}
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
