@@ -8,7 +8,7 @@ export default function TagCloud(): ReactElement {
             className="d-flex align-items-center justify-content-center flex-column"
             id="panel"
             key="cloudTag"
-            style={{ background: 'linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)', height: '40vh' }}
+            style={{ background: 'linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)', height: '45vh' }}
         >
             <div>
                 <Canvas />

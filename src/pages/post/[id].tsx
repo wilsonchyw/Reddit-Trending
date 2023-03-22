@@ -41,8 +41,13 @@ export default function PostContent({ post, pre, next }: Props): ReactElement {
 }
 
 export async function getStaticProps({ params }) {
-    const { post, pre, next } = await buildCache.get(params.id as string);
-    const newUrl = `https://reddittrend.com/post/${post.id}/`;
+    const newUrl = `https://reddittrend.com/post/${params.id}/`;
+    let { post, pre, next } = await buildCache.get(params.id as string);
+    if (!post){
+        const response = await fetch(`http://api.rtrend.site:4000/wp-json/wp/v2/posts?id=${params.id}`);
+        post = await response.json();        
+    }
+    
     const preUrl = post.link;
     post.yoast_head = post.yoast_head.replaceAll(preUrl, newUrl);
     return {
@@ -57,7 +62,6 @@ export async function getStaticPaths() {
     const paths = posts.map((post: Post) => ({
         params: { id: String(post.id) }
     }));
-    console.log(paths);
     return {
         paths,
         fallback: false

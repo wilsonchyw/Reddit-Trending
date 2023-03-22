@@ -12,7 +12,7 @@ const buildCache = {
         const datas = JSON.parse(datasJSON as unknown as string);
         const index = datas.findIndex(x => x.id === parseInt(id));
         if (index == -1) {
-            return null;
+            return {post:null,pre:{ id: datas.at(-1).id, title: datas.at(-1).title.rendered }};
         }
         const next = index > 0 ? { id: datas[index - 1].id, title: datas[index - 1].title.rendered } : null;
         const pre = index < datas.length - 1 ? { id: datas[index + 1].id, title: datas[index + 1].title.rendered } : null;
