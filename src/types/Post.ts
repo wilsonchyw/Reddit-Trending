@@ -25,6 +25,7 @@ export interface Post {
     yoast_head: string;
     yoast_head_json: YoastHeadJson;
     _links: Links;
+    _embedded:any
 }
 
 export interface Guid {

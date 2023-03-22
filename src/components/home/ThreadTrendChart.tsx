@@ -27,7 +27,6 @@ export default function ThreadTrendChart({ target, showForums }) {
             if (id) dispatch(setSearch(id));
         }
     };
-    console.log(trends)
 
     useMemo(() => {
         if (trends.length && (trends[0].name == 'Vote' || trends[0].name == 'Comment')) return setData(trends);

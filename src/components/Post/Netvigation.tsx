@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
-import { Row, Col } from 'react-bootstrap';
 import Link from 'next/link';
+import React, { ReactElement } from 'react';
+import { Col } from 'react-bootstrap';
 import Text from 'src/components/Text';
 interface Props {
     post: { id: string; title: string } | null;
@@ -14,12 +14,15 @@ export default function Netvigation({ post, children, style }: Props): ReactElem
     if (!post) return <div style={style}></div>;
     return (
         <Link href={`/post/${post.id}`}>
-        <Col md={3} sm={12} className="d-flex flex-column" style={style}>
-            
-                <Text color={'blue'}>{children}</Text>
-                <div>{post.title}</div>
-            
-        </Col>
+            <Col md={3} sm={12} className="d-flex flex-column" style={style}>
+                {children}
+
+                <div>
+                    <Text fontWeight={500} fontSize={'1rem'}>
+                        {post.title}
+                    </Text>
+                </div>
+            </Col>
         </Link>
     );
 }

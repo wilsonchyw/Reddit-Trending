@@ -20,7 +20,7 @@ import { GraphQuery } from 'src/variables/graphQL';
 export default function Setting() {
     const dispatch = useDispatch();
 
-    const {  minVote, minComment, maxYAxis, dateRange, notice, useRestApi, visible } = useSelector((state: RootState) => state.setting);
+    const { minVote, minComment, maxYAxis, dateRange, notice, useRestApi, visible } = useSelector((state: RootState) => state.setting);
 
     const fetchData = () => {
         const reducers = [setTrendsData, setForumData, setLastestVote, setLastestComment, setHeat];

@@ -16,8 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <SSRProvider>
             <Head>
                 <title>Reddit Trending | The financial trending on Reddit</title>
-                <link rel="icon" href="/favicon.ico" type="image/x-icon"></link>
+                <link rel="icon" href="/logos/logo-transparent-svg.svg" type="image/x-icon"></link>
                 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css"></link>
+                <meta name="keywords" content="Financial, Stock, Market, reddit trend, daily trend"></meta>
                 <meta name="theme-color" content="#fff" />
                 <meta
                     name="description"
@@ -31,6 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Footer />
             </Provider>
             <Analytics />
+            
         </SSRProvider>
     );
 }

@@ -9,6 +9,15 @@
     color: #5fcb71;
 }
 
-.has-large-font-size{
-    font-size: 40px;
+.has-large-font-size {
+    font-size: 2rem;
+}
+
+.blog-frame {
+    max-height: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent);
+    /* max-height: 200px;
+    overflow: hidden; */
 }
