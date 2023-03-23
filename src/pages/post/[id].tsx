@@ -7,6 +7,7 @@ import Divider from 'src/components/Divider';
 import Netvigation from 'src/components/Post/Netvigation';
 import Text from 'src/components/Text';
 import type { Post } from 'src/types/Post';
+import he from 'he';
 
 interface Props {
     post: Post;
@@ -34,7 +35,7 @@ export default function PostContent({ post, pre, next }: Props): ReactElement {
                 <Divider />
                 <Text color="grey">Posted on {new Date(post.date).toDateString()}</Text>
                 <Divider />
-                <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
+                <div dangerouslySetInnerHTML={{ __html: he.decode(post.content.rendered) }}></div>
                 {/* <div>
                     Share this:
                     <TwitterButton link={post.link} />

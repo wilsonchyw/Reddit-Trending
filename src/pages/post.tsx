@@ -3,6 +3,8 @@ import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Text from 'src/components/Text';
 import type { Post } from 'src/types/Post';
+import he from 'he';
+
 interface Props {
     posts?: Post[];
     notFound?: boolean;
@@ -42,7 +44,7 @@ export default function BlogPost({ posts, notFound }: Props) {
                                     <Card.Body>
                                         <Card.Title>
                                             <Text fontSize="1.2rem" fontWeight={700} color="#2a2058">
-                                                <Link href={`/post/${post.id}`}>{post.title.rendered}</Link>
+                                                <Link href={`/post/${post.id}`}>{he.decode(post.title.rendered)}</Link>
                                             </Text>
                                         </Card.Title>
                                         <Card.Text className="small text-muted">
@@ -50,7 +52,7 @@ export default function BlogPost({ posts, notFound }: Props) {
                                         </Card.Text>
                                         <Card.Text
                                             className="blog-frame mb-0"
-                                            dangerouslySetInnerHTML={{ __html: post.excerpt.rendered.replace('[&hellip;]', '') }}
+                                            dangerouslySetInnerHTML={{ __html: he.decode(post.excerpt.rendered.replace('[&hellip;]', '...'))/* .replace('[&hellip;]', '') */ }}
                                         ></Card.Text>
                                         <Card.Text className="blog-readmore">
                                             <Link href={`/post/${post.id}`}>Read more →</Link>
@@ -281,6 +283,7 @@ export async function getStaticProps(context) {
             };
         })
         .catch(err => {
+            console.log(err)
             return {
                 notFound: true // will be passed to the page component as props
             };
