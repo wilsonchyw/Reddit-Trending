@@ -5,7 +5,7 @@ const CACHE = '_buildCache.json';
 
 const buildCache = {
     set: async (data: any) => {
-        return await fs.writeFile(path.join(process.cwd(), CACHE), JSON.stringify(data).replace(/\&amp\;/g, '&'));
+        return await fs.writeFile(path.join(process.cwd(), CACHE), JSON.stringify(data).replaceAll(/\&amp\;/g, '&').replaceAll("&#8211;", '-'));
     },
     get: async (id: string): Promise<any> => {
         const datasJSON = await fs.readFile(path.join(process.cwd(), CACHE));

@@ -25,13 +25,18 @@ export default function BlogPost({ posts, notFound }: Props) {
                         <Card className="my-3 zoom" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
                             <Row className="no-gutters">
                                 <Col lg={3} md={4} sm={6}>
-                                    <Image
-                                        fluid
-                                        rounded
-                                        style={{ objectFit: 'cover', minWidth: '100%', minHeight: '100%' }}
-                                        src={post._embedded['wp:featuredmedia'][0].source_url}
-                                        alt={post.slug}
-                                    />
+                                    {post._embedded['wp:featuredmedia'] && (
+                                        <Image
+                                            fluid
+                                            rounded
+                                            style={{ objectFit: 'cover', minWidth: '100%', minHeight: '100%' }}
+                                            src={post._embedded['wp:featuredmedia'][0].source_url.replace(
+                                                'http://api.rtrend.site:4000',
+                                                'https://api.rtrend.site/wordpress'
+                                            )}
+                                            alt={post.slug}
+                                        />
+                                    )}
                                 </Col>
                                 <Col lg={9} md={8} sm={6}>
                                     <Card.Body>
@@ -45,7 +50,7 @@ export default function BlogPost({ posts, notFound }: Props) {
                                         </Card.Text>
                                         <Card.Text
                                             className="blog-frame mb-0"
-                                            dangerouslySetInnerHTML={{ __html: post.excerpt.rendered.replace('[&hellip;]', '')}}
+                                            dangerouslySetInnerHTML={{ __html: post.excerpt.rendered.replace('[&hellip;]', '') }}
                                         ></Card.Text>
                                         <Card.Text className="blog-readmore">
                                             <Link href={`/post/${post.id}`}>Read more →</Link>
@@ -266,7 +271,7 @@ function Tags({ tags }: { tags: string[] }) {
 }
 
 export async function getStaticProps(context) {
-    return fetch('http://api.rtrend.site:4000/wp-json/wp/v2/posts?_embed')
+    return fetch('https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?_embed')
         .then(response => response.json())
         .then(posts => {
             return {

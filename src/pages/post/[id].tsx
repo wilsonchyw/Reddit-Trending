@@ -24,7 +24,7 @@ export default function PostContent({ post, pre, next }: Props): ReactElement {
                     fluid
                     rounded
                     style={{ objectFit: 'cover', width: '100%', maxHeight: '30vh' }}
-                    src={post._embedded['wp:featuredmedia'][0].source_url}
+                    src={post._embedded['wp:featuredmedia'][0].source_url.replace("http://api.rtrend.site:4000","https://api.rtrend.site/wordpress")}
                     className="mx-auto"
                     alt={post.slug}
                 />
@@ -61,7 +61,7 @@ export async function getStaticProps({ params }) {
     const newUrl = `https://reddittrend.com/post/${params.id}/`;
     let { post, pre, next } = await buildCache.get(params.id as string);
     if (!post) {
-        const response = await fetch(`http://api.rtrend.site:4000/wp-json/wp/v2/posts?id=${params.id}&_embed`);
+        const response = await fetch(`https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?id=${params.id}&_embed`);
         post = await response.json();
     }
 
@@ -73,7 +73,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const response = await fetch('http://api.rtrend.site:4000/wp-json/wp/v2/posts?_embed');
+    const response = await fetch('https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?_embed');
     const posts = await response.json();
     await buildCache.set(posts);
     const paths = posts.map((post: Post) => ({
