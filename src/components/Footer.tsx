@@ -6,7 +6,7 @@ export default function Footer() {
             style={{ background: 'linear-gradient(81.62deg, rgb(49, 56, 96) 2.25%, rgb(21, 25, 40) 79.87%)' }}
         >
             <Container>
-                <Row>
+                {/* <Row>
                     <Col md={12}>
                         <h5>About Us</h5>
                         <p className="text-light mb-2">
@@ -14,7 +14,7 @@ export default function Footer() {
                             on Reddit so you can stay informed and stay ahead of the game.
                         </p>
                     </Col>
-                </Row>
+                </Row> */}
             </Container>
             <div className="py-2">
                 <Container>

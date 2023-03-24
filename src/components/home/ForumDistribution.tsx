@@ -37,10 +37,10 @@ export default function ForumDistribution({ datas }: { datas: State[] }) {
             <div className="d-flex justify-content-between">
                 <Text fontSize={FONT.large}>{dateRange * 24 + 'hrs'}</Text>
                 <ButtonGroup className="px-3">
-                    <Button onClick={() => setChart(Chart.Pie)} variant={chart == Chart.Pie ? 'primary' : 'outline-success'} size="sm">
+                    <Button onClick={() => setChart(Chart.Pie)} variant={chart == Chart.Pie ? 'primary' : 'outline-primary'} size="sm">
                         {Chart.Pie}
                     </Button>{' '}
-                    <Button onClick={() => setChart(Chart.Bar)} variant={chart == Chart.Bar ? 'success' : 'outline-primary'} size="sm">
+                    <Button onClick={() => setChart(Chart.Bar)} variant={chart == Chart.Bar ? 'primary' : 'outline-primary'} size="sm">
                         {Chart.Bar}
                     </Button>
                 </ButtonGroup>

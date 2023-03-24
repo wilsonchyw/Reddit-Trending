@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html>
             <Head>
-                <title>Reddit Trending | The financial trending on Reddit</title>
                 <link rel="icon" href="/logos/logo-transparent-svg.svg" type="image/x-icon"></link>
                 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css"></link>
                 <meta name="keywords" content="Financial, Stock, Market, reddit trend, daily trend"></meta>

@@ -238,7 +238,7 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, data
                             size="sm"
                             onClick={() => handleTargetToggle(preState => (preState == 'comment' ? 'vote' : 'comment'))}
                             className="me-2"
-                            variant="light"
+                            variant="primary"
                         >
                             {target}
                         </Button>{' '}

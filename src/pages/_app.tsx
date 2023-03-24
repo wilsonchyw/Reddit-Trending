@@ -14,6 +14,9 @@ import '../styles/blog.css';
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <SSRProvider>
+            <Head>
+                <title>Reddit Trending | The financial trending on Reddit</title>
+            </Head>
             <Provider store={store}>
                 <_Navbar />
                 <Setting />
@@ -21,7 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Footer />
             </Provider>
             <Analytics />
-            
         </SSRProvider>
     );
 }

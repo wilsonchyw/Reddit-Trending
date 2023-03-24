@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row, Image } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Text from 'src/components/Text';
 import type { Post } from 'src/types/Post';
 import he from 'he';
+import * as _Image from 'next/image';
 
 interface Props {
     posts?: Post[];
@@ -15,6 +16,16 @@ function parseDate(date) {
     const _date = new Date(date);
     return _date.getDate() + ' ' + month[_date.getMonth()];
 }
+/*  <_Image
+                                            fluid
+                                            rounded
+                                            style={{ objectFit: 'fill', minWidth: '100%', height: '-webkit-fill-available', maxHeight: '220px' }}
+                                            src={post._embedded['wp:featuredmedia'][0].source_url.replace(
+                                                'http://api.rtrend.site:4000',
+                                                'https://api.rtrend.site/wordpress'
+                                            )}
+                                            alt={post.slug}
+                                        /> */
 
 export default function BlogPost({ posts, notFound }: Props) {
     //const post = posts.at(-1)
@@ -24,14 +35,19 @@ export default function BlogPost({ posts, notFound }: Props) {
             <Row id="blog-content">
                 <Col md={12}>
                     {posts.map((post: Post) => (
-                        <Card className="my-3 zoom" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' }}>
-                            <Row className="no-gutters">
-                                <Col lg={3} md={4} sm={6}>
+                        <Card className="my-3 zoom" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , overflow: 'hidden'}}>
+                            <Row className="no-gutters " style={{ maxHeight: '230px' }}>
+                                <Col
+                                    lg={3}
+                                    md={4}
+                                    sm={6}
+                                    className=""
+                                    style={{ maxHeight: '230px', minHeight: '100%', position: 'relative' }}
+                                >
                                     {post._embedded['wp:featuredmedia'] && (
-                                        <Image
-                                            fluid
-                                            rounded
-                                            style={{ objectFit: 'cover', minWidth: '100%', minHeight: '100%' }}
+                                        <_Image
+                                            layout="fill"
+                                            style={{ objectFit: 'fill', minWidth: '100%', height: '-webkit-fill-available', maxHeight: '230px' }}
                                             src={post._embedded['wp:featuredmedia'][0].source_url.replace(
                                                 'http://api.rtrend.site:4000',
                                                 'https://api.rtrend.site/wordpress'
@@ -51,8 +67,10 @@ export default function BlogPost({ posts, notFound }: Props) {
                                             Posted on {new Date(post.date).toDateString()} {/* <Tags tags={post.tags} /> */}
                                         </Card.Text>
                                         <Card.Text
-                                            className="blog-frame mb-0"
-                                            dangerouslySetInnerHTML={{ __html: he.decode(post.excerpt.rendered.replace('[&hellip;]', '...'))/* .replace('[&hellip;]', '') */ }}
+                                            className="mb-0 blog-frame"
+                                            dangerouslySetInnerHTML={{
+                                                __html: he.decode(post.excerpt.rendered.replace('[&hellip;]', '...')) /* .replace('[&hellip;]', '') */
+                                            }}
                                         ></Card.Text>
                                         <Card.Text className="blog-readmore">
                                             <Link href={`/post/${post.id}`}>Read more →</Link>
@@ -99,7 +117,7 @@ function Hero() {
                         fluid
                         rounded
                         style={{ objectFit: 'cover', minWidth: '100%', maxHeight: '90%' }}
-                        src="blog.jpg"
+                        src="/blog.jpg"
                         alt="financial trends blog"
                     />
                 </Col>
@@ -194,7 +212,7 @@ function Introduction() {
                         fluid
                         rounded
                         style={{ objectFit: 'cover', minWidth: '100%', minHeight: '100%' }}
-                        src="blog.jpg"
+                        src="//blog.jpg"
                         alt="financial trends blog"
                     />
                 </Col>
@@ -283,7 +301,7 @@ export async function getStaticProps(context) {
             };
         })
         .catch(err => {
-            console.log(err)
+            console.log(err);
             return {
                 notFound: true // will be passed to the page component as props
             };

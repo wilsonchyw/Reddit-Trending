@@ -25,7 +25,7 @@ export default function PostContent({ post, pre, next }: Props): ReactElement {
                     fluid
                     rounded
                     style={{ objectFit: 'cover', width: '100%', maxHeight: '30vh' }}
-                    src={post._embedded['wp:featuredmedia'][0].source_url.replace("http://api.rtrend.site:4000","https://api.rtrend.site/wordpress")}
+                    src={post._embedded['wp:featuredmedia'][0].source_url.replace('http://api.rtrend.site:4000', 'https://api.rtrend.site/wordpress')}
                     className="mx-auto"
                     alt={post.slug}
                 />
@@ -42,16 +42,20 @@ export default function PostContent({ post, pre, next }: Props): ReactElement {
                 </div> */}
                 <Divider className="my-4" />
                 <div className="d-flex justify-content-between">
-                    <Netvigation post={pre}>
-                        <Text fontWeight={700} fontSize="1.2rem" color="#313860">
-                            ◄Previous
-                        </Text>
-                    </Netvigation>
-                    <Netvigation post={next} style={{ marginLeft: 'auto', marginRight: 0, textAlign: 'end' }}>
-                        <Text fontWeight={700} fontSize={'1.2rem'} color="#313860">
-                            Next►
-                        </Text>
-                    </Netvigation>
+                    {pre && (
+                        <Netvigation post={pre}>
+                            <Text fontWeight={700} fontSize="1.2rem" color="#313860">
+                                ◄Previous
+                            </Text>
+                        </Netvigation>
+                    )}
+                    {next && (
+                        <Netvigation post={next} style={{ marginLeft: 'auto', marginRight: 0, textAlign: 'end' }}>
+                            <Text fontWeight={700} fontSize={'1.2rem'} color="#313860">
+                                Next►
+                            </Text>
+                        </Netvigation>
+                    )}
                 </div>
             </Col>
         </>
