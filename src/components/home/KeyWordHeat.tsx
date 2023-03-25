@@ -6,6 +6,7 @@ import Text from 'src/components/Text';
 import { RootState } from 'src/store';
 import { setSearch } from 'src/store/settingSlice';
 import { FONT, FONT_COLOR } from 'src/variables/css';
+import Loading from 'src/components/Loading';
 
 interface SymbolHeat {
     data: string[];
@@ -22,7 +23,7 @@ interface HeatmapData {
 interface HeatmapDatas extends Array<HeatmapData> {}
 
 export default function KeyWordHeat({ showForums }) {
-    const [min, setMin] = useState<number>(2);
+    const [min, setMin] = useState<number>(6);
     const dispatch = useDispatch();
     const { symbolHeat } = useSelector((state: RootState) => state.raw);
     const [shouldRender, setRender] = useState(false);
@@ -30,7 +31,7 @@ export default function KeyWordHeat({ showForums }) {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setRender(true);
-        }, 500);
+        }, 200);
 
         return () => clearTimeout(timeout);
     }, [shouldRender]);
@@ -63,7 +64,7 @@ export default function KeyWordHeat({ showForums }) {
         </Stack>
     );
 
-    if (!shouldRender) return header;
+    if (!shouldRender) return <Loading size={300} />;
 
     return <Tree title={'Keywords'} subTitle={'Heat map'} data={heatmapData} setSearchTarget={s => dispatch(setSearch(s))} header={header} />;
 }

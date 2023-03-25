@@ -31,6 +31,7 @@ button.btn-outline-primary:hover,
     background: linear-gradient(81.62deg, rgb(49, 56, 96) 2.25%, rgb(21, 25, 40) 79.87%);
     
 }
+
 .bg-primary,
 .progress-bar {
     background: linear-gradient(90deg, rgba(75, 85, 147, 1) 0%, rgba(9, 9, 121, 1) 73%, rgba(40, 47, 74, 1) 100%);
@@ -40,6 +41,7 @@ button.btn-outline-primary:hover,
     background-color: rgb(49, 56, 96);
     border-color: rgb(49, 56, 96);
 }
+
 .btn{
     border-color: rgb(49, 56, 96);
 }
@@ -47,3 +49,4 @@ button.btn-outline-primary:hover,
 button.btn-outline-primary{
     color:rgb(49, 56, 96);
 }
+

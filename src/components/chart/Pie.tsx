@@ -36,6 +36,10 @@ export default function Pie({ data, title, subTitle, header = null }: PieProps) 
         stroke: {
             show: false
         }
+        //colors: ['#000033', '#00004d', '#000066', '#000080']
+        /* fill: {
+            colors: ['rgb(49, 56, 96)', 'rgb(21, 25, 40)']
+          } */
     } as ApexOptions;
 
     return (

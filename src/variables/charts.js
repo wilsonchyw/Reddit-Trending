@@ -18,7 +18,7 @@ export const barChartOptions = {
     xaxis: {
         labels: {
             style: {
-                colors: '#A0AEC0',
+                colors: 'rgba(40, 47, 74, 1)',
                 fontSize: '12px'
             }
         },
@@ -30,11 +30,11 @@ export const barChartOptions = {
     },
     yaxis: {
         show: true,
-        color: '#A0AEC0',
+        color: 'rgb(49, 56, 96)',
         labels: {
             show: true,
             style: {
-                colors: '#A0AEC0',
+                colors: 'rgb(49, 56, 96)',
                 fontSize: '14px'
             }
         }

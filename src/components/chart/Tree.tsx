@@ -35,11 +35,13 @@ export default function Tree({ data, title, subTitle, setSearchTarget, header = 
         },
         plotOptions: {
             treemap: {
-                shadeIntensity: 0.5,
+                //enableShades: false,
+                shadeIntensity: 0.1,
                 radius: 10,
                 useFillColorAsStroke: true
             }
-        }
+        },
+        colors: ['#000033']
     } as ApexOptions;
     return (
         <_Card>

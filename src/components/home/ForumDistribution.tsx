@@ -51,6 +51,6 @@ export default function ForumDistribution({ datas }: { datas: State[] }) {
     if (chart == Chart.Pie) {
         return <Pie data={_data} title={'SubReddit'} subTitle={dateRange * 24 + 'hr'} header={header} />;
     } else {
-        return <Bar data={_data} title={'SubReddit'} subTitle={dateRange * 24 + 'hr'} color={'#00E396'} header={header} />;
+        return <Bar data={_data} title={'SubReddit'} subTitle={dateRange * 24 + 'hr'} header={header} />;
     }
 }

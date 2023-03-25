@@ -20,7 +20,7 @@ const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
  * @param {JSX.Element} [props.header] - The header for the Card component.
  * @returns {JSX.Element} A bar chart wrapped in a Card component.
  */
-export default function Forums({ data, title, subTitle, color = '#03A9F4', header }) {
+export default function Forums({ data, title, subTitle, color = 'rgb(49, 56, 96)', header }) {
     const option = {
         chart: {
             type: 'bar',
@@ -38,8 +38,24 @@ export default function Forums({ data, title, subTitle, color = '#03A9F4', heade
         },
         xaxis: {},
         fill: {
-            colors: [color]
+            //colors: [color]
+            type: 'gradient',
+            gradient: {
+                colorStops: [
+                    {
+                        offset: 0.6,
+                        color: '#000033',
+                        opacity: 50
+                    },
+                    {
+                        offset: 100,
+                        color: '#000080',
+                        opacity: 1
+                    }
+                ]
+            }
         }
+        //colors:['#000033']
     } as ApexOptions;
     option.xaxis.categories = data.labels; //<BarChart chartData={[{ data: [15022, 13663, 10992, 5462, 5371, 1622, 668, 61] }]} chartOptions={barChartOptions} />
     return (
