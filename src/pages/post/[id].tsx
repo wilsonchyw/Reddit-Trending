@@ -1,13 +1,14 @@
+import he from 'he';
 import parse from 'html-react-parser';
 import Head from 'next/head';
 import { ReactElement } from 'react';
-import { Col, Image, Row } from 'react-bootstrap';
+import { Col, Image } from 'react-bootstrap';
 import buildCache from 'src/build';
 import Divider from 'src/components/Divider';
 import Netvigation from 'src/components/Post/Netvigation';
 import Text from 'src/components/Text';
 import type { Post } from 'src/types/Post';
-import he from 'he';
+import { useRouter } from 'next/router';
 
 interface Props {
     post: Post;
@@ -16,6 +17,10 @@ interface Props {
 }
 
 export default function PostContent({ post, pre, next }: Props): ReactElement {
+    const router = useRouter();
+    if (router.isFallback) {
+        return <div>This page is in constructing...</div>;
+    }
     return (
         <>
             <Head>{parse(post.yoast_head)}</Head>
@@ -79,13 +84,26 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     const response = await fetch('https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?_embed');
-    const posts = await response.json();
+    const posts = (await response.json()).map(post => {
+        const { yoast_head, id, title, slug, date, content } = post;
+        return {
+            id,
+            yoast_head,
+            title,
+            slug,
+            date,
+            content,
+            _embedded: {
+                'wp:featuredmedia': post._embedded['wp:featuredmedia']
+            }
+        };
+    });
     await buildCache.set(posts);
     const paths = posts.map((post: Post) => ({
         params: { id: String(post.id) }
     }));
     return {
         paths,
-        fallback: true,
+        fallback: true
     };
 }

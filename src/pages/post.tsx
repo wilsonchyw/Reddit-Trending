@@ -35,7 +35,7 @@ export default function BlogPost({ posts, notFound }: Props) {
             <Row id="blog-content">
                 <Col md={12}>
                     {posts.map((post: Post) => (
-                        <Card className="my-3 zoom" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , overflow: 'hidden'}}>
+                        <Card key={post.id} className="my-3 zoom" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , overflow: 'hidden'}}>
                             <Row className="no-gutters " style={{ maxHeight: '230px' }}>
                                 <Col
                                     lg={3}
@@ -47,7 +47,7 @@ export default function BlogPost({ posts, notFound }: Props) {
                                     {post._embedded['wp:featuredmedia'] && (
                                         <_Image
                                             layout="fill"
-                                            style={{ objectFit: 'fill', minWidth: '100%', height: '-webkit-fill-available', maxHeight: '230px' }}
+                                            //style={{ objectFit: 'fill', minWidth: '100%', height: '-webkit-fill-available', maxHeight: '230px' }}
                                             src={post._embedded['wp:featuredmedia'][0].source_url.replace(
                                                 'http://api.rtrend.site:4000',
                                                 'https://api.rtrend.site/wordpress'
@@ -60,7 +60,7 @@ export default function BlogPost({ posts, notFound }: Props) {
                                     <Card.Body>
                                         <Card.Title>
                                             <Text fontSize="1.2rem" fontWeight={700} color="#2a2058">
-                                                <Link href={`/post/${post.id}`}>{he.decode(post.title.rendered)}</Link>
+                                                <Link href={`/post/${post.id}`} >{he.decode(post.title.rendered)}</Link>
                                             </Text>
                                         </Card.Title>
                                         <Card.Text className="small text-muted">
@@ -294,6 +294,20 @@ export async function getStaticProps(context) {
     return fetch('https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?_embed')
         .then(response => response.json())
         .then(posts => {
+            posts = posts.map(post => {
+                const { yoast_head, id, title, slug, date, excerpt } = post;
+                return {
+                    id,
+                    //yoast_head,
+                    title,
+                    slug,
+                    date,
+                    excerpt,
+                    _embedded: {
+                        'wp:featuredmedia': post._embedded['wp:featuredmedia']
+                    }
+                };
+            })
             return {
                 props: {
                     posts

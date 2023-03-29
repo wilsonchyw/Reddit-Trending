@@ -13,7 +13,7 @@ interface Props {
 export default function Netvigation({ post, children, style }: Props): ReactElement {
     if (!post) return <div style={style}></div>;
     return (
-        <Link href={`/post/${post.id}`}>
+        <Link href={`/post/${post.id}`} passHref>
             <Col md={3} sm={12} className="d-flex flex-column" style={style}>
                 {children}
 
