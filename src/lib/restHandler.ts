@@ -1,6 +1,6 @@
 import axios from 'axios';
-//const ENDPOINT = 'https://api.rtrend.site/api';
-const ENDPOINT = "http://api.rtrend.site:3003/api";
+const ENDPOINT = 'https://api.rtrend.site/api';
+//const ENDPOINT = "http://api.rtrend.site:3003/api";
 
 /**
  * Makes HTTP requests using the REST API.
