@@ -1,32 +1,12 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Table } from 'react-bootstrap';
-import SymbolChart from 'src/components/chart/SymbolChart';
+import Container from 'react-bootstrap/Container';
+import Stack from 'react-bootstrap/Stack';
 
-export interface Symbol {
-    symbol:  string;
-    threads: string[];
-    verb:    string[];
-    daily:   number[];
-    name:    string;
-    change:  Change;
-    chart:   string;
-}
+import DataTable from 'src/components/SymbolPage/DataTable';
+import type { Symbol } from 'src/types/Symbol';
 
-export interface Change {
-    vote:    Comment;
-    comment: Comment;
-}
-
-export interface Comment {
-    min:        number;
-    max:        number;
-    precentage: number;
-    quantity:   number;
-}
-
-
-export default function SymbolTable({ symbols }:{symbols:Symbol[]}) {
+function SymbolTable({ symbols }: { symbols: Symbol[] }) {
     //const [symbols, setSymbols] = useState([]);
     const [length, setLength] = useState<Number>(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -55,8 +35,8 @@ export default function SymbolTable({ symbols }:{symbols:Symbol[]}) {
                 <tr>
                     <th>Symbol</th>
                     <th>Counter</th>
-                    <th >24 Hour change</th>
-                    <th >30 Day change</th>
+                    <th>24 Hour change</th>
+                    <th>30 Day change</th>
                     <th onClick={() => setSortMethod('vote')}>Vote</th>
                     <th onClick={() => setSortMethod('comment')}>Comment</th>
                 </tr>
@@ -69,7 +49,7 @@ export default function SymbolTable({ symbols }:{symbols:Symbol[]}) {
             <tbody>
                 {currentRows
                     .sort((a, b) => b.change[sortMethod].max - a.change[sortMethod].max)
-                    .map((symbol:Symbol) => (
+                    .map((symbol: Symbol) => (
                         <tr key={symbol.symbol}>
                             <td>
                                 <div>{symbol.symbol.toUpperCase()}</div>
@@ -127,6 +107,16 @@ export default function SymbolTable({ symbols }:{symbols:Symbol[]}) {
             </Table>
             {renderPagination()}
         </div>
+    );
+}
+
+export default function SymbolPage({ symbols }: { symbols: Symbol[] }) {
+    return (
+        <Container fluid>
+            <Stack className="m-2">
+                <DataTable data={symbols} />
+            </Stack>
+        </Container>
     );
 }
 

@@ -71,6 +71,7 @@ export async function getStaticProps({ params }) {
     //const newUrl = `https://reddittrend.com/post/${params.id}/`;
     let { post, pre, next } = await buildCache.get(params.id as string);
     if (!post) {
+        console.log("Fetch post from API")
         const response = await fetch(`https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?id=${params.id}&_embed`);
         post = await response.json();
     }

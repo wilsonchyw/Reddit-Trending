@@ -35,7 +35,7 @@ export default function ThreadTrendChart({ target, showForums }) {
         trends
             .filter(row => showForums[row.forum])
             .forEach(row => {
-                if (!trendMap[row.id]) trendMap[row.id] = { name: `${row.id}@${row.title}`, data: [] };
+                if (!trendMap[row.id]) trendMap[row.id] = { name: `${row.id}@${row.TITLE}`, data: [] };
                 if (!skip[row.id]) skip[row.id] = false;
                 const quantity = row[target];
                 if (quantity < 2000 && quantity > 100 && !skip[row.id]) trendMap[row.id].data.push([row.updated, quantity]);
@@ -74,7 +74,7 @@ export default function ThreadTrendChart({ target, showForums }) {
 
                     <Col className="d-flex justify-content-end p-1">
                         <Badge bg="light" text="dark" onClick={() => setVisible(!visible)} style={{ maxHeight: '30px' }}>
-                            {visible ? 'HIDE' : 'SHOW'}
+                            {visible ? 'HidE' : 'SHOW'}
                         </Badge>
                     </Col>
                 </Row>

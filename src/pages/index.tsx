@@ -16,7 +16,7 @@ import graphQLHandler from 'src/lib/graphQLHandler';
 import restHandler from 'src/lib/restHandler';
 import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
-import FORUMS from 'src/variables/forum.json';
+import forumS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
 import useAgent from 'src/lib/useAgent';
 
@@ -25,8 +25,8 @@ export interface State {
     MIN: number;
     change: number;
     forum: string;
-    id: string;
-    title: string;
+    ID: string;
+    TITLE: string;
 }
 
 export default function Dashboard({ vote, comment, distribution, forums, latest, thread, threadState }) {
@@ -44,7 +44,7 @@ export default function Dashboard({ vote, comment, distribution, forums, latest,
 
     const isMobile = useAgent()
     const dispatch = useDispatch();
-    const [showForums, setShowForums] = useState<any>(FORUMS);
+    const [showForums, setShowForums] = useState<any>(forumS);
     const [target, setTarget] = useState('vote');
     const [lastUpdate, setLastUpdate] = useState(null);
     const [totalRecord, setTotalRecord] = useState(null);
