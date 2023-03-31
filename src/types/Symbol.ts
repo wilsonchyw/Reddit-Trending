@@ -1,11 +1,11 @@
 export interface Symbol {
-    symbol:  string;
-    threads: string[];
-    verb:    string[];
-    daily:   number[];
-    name:    string;
-    change:  Change;
-    chart:   string;
+    symbol:   string;
+    name:     string;
+    change:   Change;
+    quantity: Change;
+    threads:  string[];
+    verb:     string[];
+    chart:    string;
 }
 
 export interface Change {
@@ -14,8 +14,7 @@ export interface Change {
 }
 
 export interface Comment {
-    min:        number;
-    max:        number;
-    precentage: number;
-    quantity:   number;
+    day:   number;
+    week:  number;
+    month: number;
 }

@@ -9,5 +9,7 @@ export enum FONT_COLOR {
     black = 'black',
     grey = 'rgb(160, 174, 192)',
     white = 'white',
-    darkGrey = 'rgb(113,128,150)'
+    darkGrey = 'rgb(113,128,150)',
+    green="#00b324",
+    red="#d10023"
 }

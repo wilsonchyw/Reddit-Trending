@@ -111,6 +111,7 @@ function SymbolTable({ symbols }: { symbols: Symbol[] }) {
 }
 
 export default function SymbolPage({ symbols }: { symbols: Symbol[] }) {
+    //console.log(symbols)
     return (
         <Container fluid>
             <Stack className="m-2">
