@@ -49,6 +49,7 @@ export default function Dashboard({ vote, comment, distribution, forums, latest,
     const [lastUpdate, setLastUpdate] = useState(null);
     const [totalRecord, setTotalRecord] = useState(null);
     const [totalThread, setTotalThread] = useState(null);
+    const [chartVisible, setChartVisible] = useState<boolean>(false);
 
     const { minVote, minComment, dateRange, notice, search, useRestApi } = useSelector((state: RootState) => state.setting);
     const { lastestVote, lastestComment } = useSelector((state: RootState) => state.raw);
@@ -85,13 +86,14 @@ export default function Dashboard({ vote, comment, distribution, forums, latest,
         } else {
             graphQLHandler(GraphQuery.fetchOne, { ...params, id: id }, [data => callback(data.thread.one)]);
         }
+        setChartVisible(true)
     };
 
     return (
         <>
             <Container fluid>
                 <Stack id="main-content" className="my-2">
-                    <ThreadTrendChart target={target} showForums={showForums} />
+                    <ThreadTrendChart target={target} showForums={showForums} chartVisible={chartVisible}  setChartVisible={setChartVisible} />
                 </Stack>
 
                 <Stack className="my-2">
@@ -101,6 +103,7 @@ export default function Dashboard({ vote, comment, distribution, forums, latest,
                         showForums={showForums}
                         handleThreadFetch={handleThreadFetch}
                         //setUserSearch={s => dispatch(setSearch(s))}
+                        //setChartVisible={setChartVisible}
                         handleTargetToggle= {setTarget}
                         userSearch={search}
                     />
@@ -164,7 +167,6 @@ export async function getStaticProps(context) {
     //console.log([all, vote, comment, distribution, forums, latest, thread, threadState]);
     for(const i of [vote, comment, distribution, forums, latest, thread, threadState]){
         if(i==undefined){
-            console.log(i)
             throw new Error(`Failed to fetch posts, some API call fail`);
         }
     }

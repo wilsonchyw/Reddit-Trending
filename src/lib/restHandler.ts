@@ -1,6 +1,6 @@
 import axios from 'axios';
-const ENDPOINT = 'https://api.rtrend.site/api';
-//const ENDPOINT = "http://api.rtrend.site:3003/api";
+//const ENDPOINT = 'https://api.rtrend.site/api';
+const ENDPOINT = "http://api.rtrend.site:3003/api";
 
 /**
  * Makes HTTP requests using the REST API.
@@ -27,7 +27,7 @@ export default async function restHandler(args) {
             );
         })
     ).then(data => {
-        console.log(data)
+        //console.log(data)
         const end = Date.now();
         //console.log(`Fetch ${args.length} request using REST`);
         //console.log(`Time usage: ${end - start}ms`);

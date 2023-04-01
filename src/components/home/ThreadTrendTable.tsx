@@ -9,7 +9,7 @@ import { RootState } from 'src/store';
 import { setSearch } from 'src/store/settingSlice';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 import Pagination_ from './Pagination';
-import Export from './Export';
+import Export from '../Export';
 
 export default function ThreadTrend({ showForums, handleThreadFetch, userSearch, target, datas, handleTargetToggle }) {
     const [prePage, setPrePage] = useState<number>(10);
@@ -43,7 +43,7 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
         }
     };
 
-    const sortIndicator = (t: string) => (t == sortBy ? (sortOrder > 0 ? '⬆' : '⬇') : '');
+    const sortIndicator = (t: string) => (t == sortBy ? (sortOrder > 0 ? '▲' : '▼') : '');
 
     return (
         <_Card>
@@ -85,7 +85,7 @@ export default function ThreadTrend({ showForums, handleThreadFetch, userSearch,
 function _TableMobile({ data, handleThreadFetch, sortIndicator, handleSortOrder, target }) {
     return (
         <div>
-            <Row className="border">
+            <Row className="border sticky-top" style={{ backgroundColor: 'rgb(247, 250, 252)' }}>
                 <Row>
                     <Col>
                         <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('title')}>
@@ -116,7 +116,12 @@ function _TableMobile({ data, handleThreadFetch, sortIndicator, handleSortOrder,
                 <Row key={el.id} className="p-1 border-bottom">
                     <Row>
                         <Col>
-                            <Text color={FONT_COLOR.darkGrey}>
+                            <Text fontSize={FONT.small}>
+                                <Badge bg="primary" onClick={() => handleThreadFetch(el.id)}>
+                                    CHART
+                                </Badge>
+                            </Text>
+                            <Text color={FONT_COLOR.darkGrey} className="ms-2">
                                 <a href={`https://www.reddit.com/r/${el.forum}/comments/${el.id}`} target="_blank" rel="noreferrer">
                                     {el.title}
                                 </a>
@@ -136,7 +141,7 @@ function _TableMobile({ data, handleThreadFetch, sortIndicator, handleSortOrder,
                         </Col>
                         <Col xs={3} className="p-0">
                             <Text color={FONT_COLOR.grey} fontWeight={600}>
-                                &#x2B06;{`${el.change}%`}
+                                ▲{`${el.change}%`}
                             </Text>
                         </Col>
                         <Col xs={1} className="p-0">
@@ -211,7 +216,7 @@ function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, targe
                             <Text color={FONT_COLOR.darkGrey}>{el.MAX}</Text>
                         </td>
                         <td>
-                            <Text color={FONT_COLOR.darkGrey}>&#x2B06;{`${el.change}%`}</Text>
+                            <Text color={FONT_COLOR.darkGrey}>▲{`${el.change}%`}</Text>
                         </td>
                         <td className="col-lg-1  col-md-0 px-0">
                             <div className="progress p-0 mt-2" style={{ maxHeight: '10px' }}>
@@ -231,18 +236,10 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, data
     const handleUserSearch = (s: string) => dispatch(setSearch(s));
     return (
         <Stack>
-            <Row className="d-flex justify-content-between p-2">
+            <Row className="d-flex justify-content-between p-2 ">
                 <Col xs={12} md={4} className="d-flex align-items-center p-1">
                     <Text fontSize={FONT.bigger}>
-                        <Button
-                            size="sm"
-                            onClick={() => handleTargetToggle(preState => (preState == 'comment' ? 'vote' : 'comment'))}
-                            className="me-2"
-                            variant="primary"
-                        >
-                            {target}
-                        </Button>{' '}
-                        changes within {dateRange * 24} hours, Total {dataLength} record
+                        {target} changes within {dateRange * 24} hours, Total {dataLength} record
                     </Text>
                 </Col>
                 <Col xs={12} md={4} className="d-flex align-items-center p-1">
@@ -261,12 +258,19 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, data
                 </Col>
                 <Col xs={12} md={4} className="d-flex align-items-center justify-content-md-end justify-content-sm-center p-1">
                     <Export datas={datas} />
-
                     <DropdownButton title={`Page size`} size="sm" className="ms-2">
                         <Dropdown.Item onClick={() => setPrePage(10)}>10</Dropdown.Item>
                         <Dropdown.Item onClick={() => setPrePage(25)}>25</Dropdown.Item>
                         <Dropdown.Item onClick={() => setPrePage(50)}>50</Dropdown.Item>
                     </DropdownButton>
+                    <Button
+                        size="sm"
+                        onClick={() => handleTargetToggle(preState => (preState == 'comment' ? 'vote' : 'comment'))}
+                        className="m-2"
+                        variant="primary"
+                    >
+                        {target}
+                    </Button>{' '}
                 </Col>
             </Row>
             <div className="d-flex justify-content-center mt-2">

@@ -12,10 +12,10 @@ import { lineChartOptions } from 'src/variables/charts';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-export default function ThreadTrendChart({ target, showForums }) {
+export default function ThreadTrendChart({ target, showForums, chartVisible, setChartVisible }) {
     const { maxYAxis } = useSelector((state: RootState) => state.setting);
     const [max, setMax] = useState<number>(maxYAxis);
-    const [visible, setVisible] = useState<boolean>(false);
+
     const [data, setData] = useState<any[]>([]);
     const [initData, setInitData] = useState<any[]>([]);
     const dispatch = useDispatch();
@@ -62,10 +62,10 @@ export default function ThreadTrendChart({ target, showForums }) {
         }
     } as ApexOptions;
 
-    if (!visible) {
+    if (!chartVisible) {
         return (
             <_Card background={'linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)'} hide minW="100%">
-                <Row onClick={() => setVisible(!visible)}>
+                <Row onClick={() => setChartVisible(!chartVisible)}>
                     <Col>
                         <Text color={FONT_COLOR.white} fontSize={FONT.large}>
                             Chart
@@ -73,8 +73,8 @@ export default function ThreadTrendChart({ target, showForums }) {
                     </Col>
 
                     <Col className="d-flex justify-content-end p-1">
-                        <Badge bg="light" text="dark" onClick={() => setVisible(!visible)} style={{ maxHeight: '30px' }}>
-                            {visible ? 'HidE' : 'SHOW'}
+                        <Badge bg="light" text="dark" onClick={() => setChartVisible(!chartVisible)} style={{ maxHeight: '30px' }}>
+                            {chartVisible ? 'HidE' : 'SHOW'}
                         </Badge>
                     </Col>
                 </Row>
@@ -96,8 +96,8 @@ export default function ThreadTrendChart({ target, showForums }) {
                 </Col>
 
                 <Col>
-                    <Badge bg="light" text="dark" onClick={() => setVisible(!visible)} className="float-end mx-2">
-                        {visible ? 'Hide' : 'Show'}
+                    <Badge bg="light" text="dark" onClick={() => setChartVisible(!chartVisible)} className="float-end mx-2">
+                        {chartVisible ? 'Hide' : 'Show'}
                     </Badge>
                     <Badge bg="primary" className="float-end mx-2" onClick={reset}>
                         Reset

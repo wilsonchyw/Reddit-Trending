@@ -25,7 +25,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.js"
-, "src/pages/symbols.tsx"  ],
+, "src/pages/stocks.tsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -13,3 +13,7 @@ export enum FONT_COLOR {
     green="#00b324",
     red="#d10023"
 }
+
+export enum LAYOUT{
+    middle = "d-flex align-items-center"
+}

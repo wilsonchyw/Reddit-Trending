@@ -35,15 +35,13 @@ export default function BlogPost({ posts, notFound }: Props) {
             <Row id="blog-content">
                 <Col md={12}>
                     {posts.map((post: Post) => (
-                        <Card key={post.id} className="my-3 zoom" style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)' , overflow: 'hidden'}}>
+                        <Card
+                            key={post.id}
+                            className="my-3 zoom"
+                            style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', overflow: 'hidden' }}
+                        >
                             <Row className="no-gutters " style={{ maxHeight: '230px' }}>
-                                <Col
-                                    lg={3}
-                                    md={4}
-                                    sm={6}
-                                    className=""
-                                    style={{ maxHeight: '230px', minHeight: '100%', position: 'relative' }}
-                                >
+                                <Col lg={3} md={4} sm={6} className="" style={{ maxHeight: '230px', minHeight: '100%', position: 'relative' }}>
                                     {post._embedded['wp:featuredmedia'] && (
                                         <_Image
                                             layout="fill"
@@ -60,7 +58,7 @@ export default function BlogPost({ posts, notFound }: Props) {
                                     <Card.Body>
                                         <Card.Title>
                                             <Text fontSize="1.2rem" fontWeight={700} color="#2a2058">
-                                                <Link href={`/post/${post.id}`} >{he.decode(post.title.rendered)}</Link>
+                                                <Link href={`/post/${post.id}`}>{he.decode(post.title.rendered)}</Link>
                                             </Text>
                                         </Card.Title>
                                         <Card.Text className="small text-muted">
@@ -307,7 +305,7 @@ export async function getStaticProps(context) {
                         'wp:featuredmedia': post._embedded['wp:featuredmedia']
                     }
                 };
-            })
+            });
             return {
                 props: {
                     posts

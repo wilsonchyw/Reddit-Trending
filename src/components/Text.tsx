@@ -4,16 +4,17 @@ interface textProps {
     children?: any;
     fontWeight?: number;
     handleClick?: Function;
+    className?:string
 }
 
-export default function Text({ color, fontSize = '14px', children, fontWeight = 700, handleClick=()=>{} }: textProps) {
+export default function Text({ color,className="", fontSize = '14px', children, fontWeight = 700, handleClick=()=>{} }: textProps) {
     const style = {
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight
     };
     return (
-        <span style={style} onClick={() => handleClick()}>
+        <span className={className} style={style} onClick={() => handleClick()}>
             {children}
         </span>
     );

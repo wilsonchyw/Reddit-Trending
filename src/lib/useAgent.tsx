@@ -6,16 +6,23 @@ const mobileAgents = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i, /BlackB
  * @returns {Boolean} - True if the device is a mobile device, false otherwise.
  */
 function useAgent() {
-    const [isMobile, setIsMobile] = useState<Boolean>(false);
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const result = mobileAgents.some(agent => {
-                return navigator.userAgent.match(agent);
-            });
-            setIsMobile(result);
-        }
-    }, []);
-    return isMobile;
+    if (typeof window !== 'undefined') {
+        const [isMobile, setIsMobile] = useState<boolean>(/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(navigator.userAgent));
+
+        useEffect(() => {
+            const handleResize = () =>
+                setIsMobile(/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/.test(navigator.userAgent) || window.innerWidth < 768);
+            window.addEventListener('resize', handleResize);
+            return () => {
+                window.removeEventListener('resize', handleResize);
+            };
+        }, []);
+
+        return isMobile;
+    }else{
+        return false
+    }
+    
 }
 
 export default useAgent;
