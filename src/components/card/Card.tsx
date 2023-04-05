@@ -9,6 +9,7 @@ interface _Card {
     className?: string;
     style?: Object;
     hide?: boolean;
+    nopadding?: boolean;
 }
 
 /**
@@ -37,7 +38,7 @@ export default function _Card(props: _Card) {
     };
     return (
         <Card className={` bg-white rounded border-0 ${props.className}`} style={style}>
-            <Card.Body className={props.hide ? 'py-0' : ''}>{props.children}</Card.Body>
+            <Card.Body className={`${props.hide ? 'py-0' : ''} ${props.nopadding == true ? 'p-0' : ''}`}>{props.children}</Card.Body>
         </Card>
     );
 }

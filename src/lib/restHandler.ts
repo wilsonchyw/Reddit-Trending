@@ -1,6 +1,6 @@
 import axios from 'axios';
-const ENDPOINT = 'https://api.rtrend.site/api';
-//const ENDPOINT = "http://api.rtrend.site:3003/api";
+//const ENDPOINT = 'https://api.rtrend.site/api';
+const ENDPOINT = process.env.NODE_ENV === 'production' ? 'https://api.rtrend.site/api' : 'http://api.rtrend.site:3003/api';
 
 /**
  * Makes HTTP requests using the REST API.
@@ -14,9 +14,10 @@ export default async function restHandler(args) {
             const [option, callback] = arg;
             if (!option.method) option.method = 'get';
             option.url = `${ENDPOINT}${option.url}`;
+            //console.log({option})
             return axios(option).then(
-                (res) => {
-                    const {data} = res
+                res => {
+                    const { data } = res;
                     if (callback) {
                         callback(data);
                     } else {

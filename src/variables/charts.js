@@ -100,7 +100,7 @@ export const lineChartOptions = {
     chart: {
         id: 'apexchart-example',
         toolbar: {
-            show: true
+            show: false
         },
         events: {},
         animations: {
@@ -162,9 +162,9 @@ export const lineChartOptions = {
                 colors: '#fff',
                 fontSize: '12px'
             }
-        },
-        min: 50,
-        max: 2000
+        }
+        //min: 50,
+        //max: 2000
     },
     legend: {
         show: false

@@ -19,6 +19,8 @@ import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData
 import forumS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
 import useAgent from 'src/lib/useAgent';
+import DataTable from 'src/components/SymbolPage/DataTable';
+import { setSymbol } from 'src/store/symbolSlice';
 
 export interface State {
     MAX: number;

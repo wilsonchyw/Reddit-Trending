@@ -8,15 +8,16 @@ import useAgent from 'src/lib/useAgent';
 import { RootState } from 'src/store';
 import { setSearch } from 'src/store/settingSlice';
 import { FONT, FONT_COLOR } from 'src/variables/css';
-import Pagination_ from './Pagination';
-import Export from '../Export';
+import Pagination_ from 'src/components/home/Pagination';
+import Export from 'src/components/Export';
+import Link from 'next/link';
 
-export default function ThreadTrend({ showForums = {}, handleThreadFetch, userSearch, target, datas, handleTargetToggle, noFilter = false }) {
+export default function ThreadTrend({ handleThreadFetch, userSearch, datas }) {
+
     const [prePage, setPrePage] = useState<number>(10);
     const [sortBy, setSortBy] = useState<string>('change');
     const [sortOrder, setSortOrder] = useState<number>(-1);
     const [currentPage, setCurrent] = useState(1);
-    const [showChartButton, setChartButton] = useState<boolean>(true);
     const [showModal, setShowModal] = useState(false);
     const isMobile: Boolean = useAgent();
 
@@ -30,8 +31,7 @@ export default function ThreadTrend({ showForums = {}, handleThreadFetch, userSe
             max = Math.max(data.change, max);
             return data;
         })
-        //.filter(c => showForums[c.forum] && (c.id == userSearch || c.title.toLowerCase().includes(userSearch)))
-        .filter(c => noFilter || (showForums[c.forum] && (c.id == userSearch || re.test(c.title.toLowerCase()))))
+        .filter(c => c.id == userSearch || re.test(c.title.toLowerCase()))
         .sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortOrder);
 
     const dataShow = _datas.slice((currentPage - 1) * prePage, (currentPage - 1) * prePage + prePage);
@@ -55,29 +55,20 @@ export default function ThreadTrend({ showForums = {}, handleThreadFetch, userSe
                 currentPage={currentPage}
                 prePage={prePage}
                 setCurrent={setCurrent}
-                datas={_datas}
-                target={target}
-                handleTargetToggle={handleTargetToggle}
                 setShowModal={setShowModal}
             />
             <Stack style={{ minHeight: '300px' }}>
                 {isMobile ? (
                     <_TableMobile
                         data={dataShow}
-                        handleThreadFetch={handleThreadFetch}
                         handleSortOrder={handleSortOrder}
-                        target={target}
                         sortIndicator={sortIndicator}
                     />
                 ) : (
                     <_Table
                         data={dataShow}
-                        handleThreadFetch={handleThreadFetch}
                         handleSortOrder={handleSortOrder}
-                        target={target}
-                        max={max}
                         sortIndicator={sortIndicator}
-                        showChartButton={showChartButton}
                     />
                 )}
             </Stack>
@@ -85,66 +76,59 @@ export default function ThreadTrend({ showForums = {}, handleThreadFetch, userSe
     );
 }
 
-function _TableMobile({ data, handleThreadFetch, sortIndicator, handleSortOrder, target }) {
+function _TableMobile({ data,  sortIndicator, handleSortOrder }) {
     return (
         <div>
-            <Row className="border sticky-top" style={{ backgroundColor: 'rgb(247, 250, 252)' }}>
+            <Row className="border sticky-top bg-primary text-white">
                 <Row>
                     <Col>
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('title')}>
-                            Title
-                        </Text>
+                        <Text handleClick={() => handleSortOrder('title')}>TITLE</Text>
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={4}>
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('forum')}>
-                            Forum{sortIndicator('forum')}
+                    <Col xs={5} className="pe-0">
+                        <Text handleClick={() => handleSortOrder('forum')}>FORUM{sortIndicator('forum')}</Text>
+                    </Col>
+
+                    <Col xs={3} className="p-0">
+                        <Text handleClick={() => handleSortOrder('MAX_VOTE')}>
+                            VOTE
+                            {sortIndicator('MAX_VOTE')}
                         </Text>
                     </Col>
-                    <Col xs={4}>
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('MAX')}>
-                            {target}
-                            {sortIndicator('MAX')}
-                        </Text>
-                    </Col>
-                    <Col xs={4}>
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('change')}>
-                            Change{sortIndicator('change')}
+                    <Col xs={3} className="p-0">
+                        <Text handleClick={() => handleSortOrder('MAX_COMMENT')}>
+                            COMMENT
+                            {sortIndicator('MAX_COMMENT')}
                         </Text>
                     </Col>
                 </Row>
             </Row>
             {data.map((el, index, arr) => (
-                <Row key={el.id} className="p-1 border-bottom">
+                <Row key={el.id} className="border-bottom">
                     <Row>
                         <Col>
-                            <Text fontSize={FONT.small}>
-                                <Badge bg="primary" onClick={() => handleThreadFetch(el.id)}>
-                                    CHART
-                                </Badge>
-                            </Text>
-                            <Text color={FONT_COLOR.darkGrey} className="ms-2">
-                                <a href={`https://www.reddit.com/r/${el.forum}/comments/${el.id}`} target="_blank" rel="noreferrer">
+                            <Text className="text-dark">
+                                <Link href={`https://www.reddit.com/r/${el.forum}/comments/${el.id}`} target="_blank" rel="noreferrer">
                                     {el.title}
-                                </a>
+                                </Link>
                             </Text>
                         </Col>
                     </Row>
                     <Row>
-                        <Col xs={5} className="pe-0">
-                            <Text color={FONT_COLOR.grey} fontWeight={600}>
+                        <Col xs={5}>
+                            <Text color={FONT_COLOR.grey} fontWeight={700}>
                                 {el.forum}
                             </Text>
                         </Col>
                         <Col xs={3} className="p-0">
                             <Text color={FONT_COLOR.grey} fontWeight={600}>
-                                {el.MAX}
+                                {el.MAX_VOTE}
                             </Text>
                         </Col>
                         <Col xs={3} className="p-0">
                             <Text color={FONT_COLOR.grey} fontWeight={600}>
-                                ▲{`${el.change}%`}
+                                {el.MAX_COMMENT}
                             </Text>
                         </Col>
                     </Row>
@@ -154,48 +138,46 @@ function _TableMobile({ data, handleThreadFetch, sortIndicator, handleSortOrder,
     );
 }
 
-function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, target, max, showChartButton }) {
+function _Table({ data,  sortIndicator, handleSortOrder }) {
     return (
         <Table>
-            <thead style={{ backgroundColor: 'rgb(247, 250, 252)' }}>
+            <thead className="bg-primary text-white">
                 <tr>
-                    <th className="col-md-8">
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('title')}>
-                            Title
+                    <th className="col-md-6">
+                        <Text  handleClick={() => handleSortOrder('title')}>
+                            TITLE
                         </Text>
                     </th>
                     <th className="col-md-1">
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('forum')}>
-                            Forum{sortIndicator('forum')}
+                        <Text  handleClick={() => handleSortOrder('forum')}>
+                            FORUM{sortIndicator('forum')}
                         </Text>
                     </th>
                     <th className="col-md-1">
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('MAX')}>
-                            {target}
-                            {sortIndicator('MAX')}
+                        <Text handleClick={() => handleSortOrder('MAX_COMMENT')}>
+                            COMMENT
+                            {sortIndicator('MAX_COMMENT')}
                         </Text>
                     </th>
                     <th className="col-md-1">
-                        <Text color={FONT_COLOR.darkGrey} handleClick={() => handleSortOrder('change')}>
-                            Change{sortIndicator('change')}
+                        <Text  handleClick={() => handleSortOrder('MAX_VOTE')}>
+                            VOTE
+                            {sortIndicator('MAX_VOTE')}
                         </Text>
                     </th>
-                    <th className="col-lg-1  col-md-0 px-0"></th>
+                    <th className="col-md-2">
+                        <Text  handleClick={() => handleSortOrder('created')}>
+                            CREATED
+                            {sortIndicator('created')}
+                        </Text>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((el, index, arr) => (
                     <tr key={el.id} className="my-2">
                         <td>
-                            {showChartButton && (
-                                <>
-                                    <Badge bg="primary" onClick={() => handleThreadFetch(el.id)}>
-                                        CHART
-                                    </Badge>{' '}
-                                </>
-                            )}
-
-                            <Text color={FONT_COLOR.darkGrey}>
+                            <Text className="text-primary">
                                 <a href={`https://www.reddit.com/r/${el.forum}/comments/${el.id}`} target="_blank" rel="noreferrer">
                                     {el.title}
                                 </a>
@@ -209,15 +191,13 @@ function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, targe
                             </Text>
                         </td>
                         <td>
-                            <Text color={FONT_COLOR.darkGrey}>{el.MAX}</Text>
+                            <Text color={FONT_COLOR.darkGrey}>{el.MAX_COMMENT}</Text>
                         </td>
                         <td>
-                            <Text color={FONT_COLOR.darkGrey}>▲{`${el.change}%`}</Text>
+                            <Text color={FONT_COLOR.darkGrey}>{el.MAX_VOTE}</Text>
                         </td>
-                        <td className="col-lg-1  col-md-0 px-0">
-                            <span className="progress p-0 mt-2" style={{ maxHeight: '10px' }}>
-                                <span className="progress-bar" style={{ width: `${(el.change / max) * 100}%` }}></span>
-                            </span>
+                        <td>
+                            <Text color={FONT_COLOR.darkGrey}>{new Date(el.created).toLocaleString()}</Text>
                         </td>
                     </tr>
                 ))}
@@ -226,18 +206,16 @@ function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, targe
     );
 }
 
-function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, datas, target, handleTargetToggle, setShowModal }) {
+function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, setShowModal }) {
     const dispatch = useDispatch();
-    const { dateRange, search } = useSelector((state: RootState) => state.setting);
+    const { search } = useSelector((state: RootState) => state.setting);
 
     const handleUserSearch = (s: string) => dispatch(setSearch(s));
     return (
         <Stack>
             <Row className="d-flex justify-content-between p-2 ">
                 <Col xs={12} md={4} className="d-flex align-items-center p-1">
-                    <Text fontSize={FONT.bigger}>
-                        {target} changes within {dateRange * 24} hours, Total {dataLength} record
-                    </Text>
+                    <Text fontSize={FONT.bigger}>{dataLength} threads related to symbol</Text>
                 </Col>
                 <Col xs={12} md={4} className="d-flex align-items-center p-1">
                     <InputGroup className="">
@@ -262,14 +240,6 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, data
                         <Dropdown.Item onClick={() => setPrePage(25)}>25</Dropdown.Item>
                         <Dropdown.Item onClick={() => setPrePage(50)}>50</Dropdown.Item>
                     </DropdownButton>
-                    <Button
-                        size="sm"
-                        onClick={() => handleTargetToggle(preState => (preState == 'comment' ? 'vote' : 'comment'))}
-                        className="m-2"
-                        variant="primary"
-                    >
-                        {target}
-                    </Button>{' '}
                 </Col>
             </Row>
             <div className="d-flex justify-content-center mt-2">

@@ -1,12 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
-import useAgent from 'src/lib/useAgent';
-
 import DataTable from 'src/components/SymbolPage/DataTable';
+import useAgent from 'src/lib/useAgent';
 import type { Symbol } from 'src/types/Symbol';
 
 export default function StockPage({ symbols }: { symbols: Symbol[] }) {
     const isMobile = useAgent();
+
     return (
         <Container fluid className={isMobile && 'p-0'}>
             <Stack className={isMobile ? 'm-0' : 'm-2'}>

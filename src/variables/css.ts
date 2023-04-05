@@ -1,8 +1,8 @@
 export enum FONT {
-    large = '18px',
-    bigger = '16px',
-    normal = '14px',
-    small = '12px'
+    large = '1.2rem',
+    bigger = '1.1rem',
+    normal = '1rem',
+    small = '0.8rem'
 }
 
 export enum FONT_COLOR {

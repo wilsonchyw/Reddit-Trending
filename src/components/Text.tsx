@@ -7,7 +7,7 @@ interface textProps {
     className?:string
 }
 
-export default function Text({ color,className="", fontSize = '14px', children, fontWeight = 700, handleClick=()=>{} }: textProps) {
+export default function Text({ color,className="", fontSize = '0.9rem', children, fontWeight = 700, handleClick=()=>{} }: textProps) {
     const style = {
         color: color,
         fontSize: fontSize,

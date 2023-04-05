@@ -5,6 +5,7 @@ import Pagination_ from 'src/components/home/Pagination';
 import Text from 'src/components/Text';
 import useAgent from 'src/lib/useAgent';
 import { FONT, FONT_COLOR } from 'src/variables/css';
+
 interface Props {
     currentPage: number;
     data: any[];
@@ -28,7 +29,7 @@ export default function Header({
 }: Props): ReactElement {
     const isMobile = useAgent();
     return (
-        <Row>
+        <Row className="mx-1">
             <Col md={4} className={isMobile ? 'd-flex justify-content-center mb-2' : 'd-flex justify-content-start'}>
                 <Text color={FONT_COLOR.black} fontSize={FONT.bigger}>
                     Total {data.length} records

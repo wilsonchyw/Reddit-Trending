@@ -21,6 +21,9 @@ export default function PostContent({ post, pre, next }: Props): ReactElement {
     if (router.isFallback) {
         return <div>This page is in constructing...</div>;
     }
+
+
+
     return (
         <>
             <Head>{parse(post.yoast_head)}</Head>
@@ -71,11 +74,23 @@ export async function getStaticProps({ params }) {
     //const newUrl = `https://reddittrend.com/post/${params.id}/`;
     let { post, pre, next } = await buildCache.get(params.id as string);
     if (!post) {
-        console.log("Fetch post from API")
-        const response = await fetch(`https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?id=${params.id}&_embed`);
+        console.log('Fetch post from API');
+        const response = await fetch(`https://api.rtrend.site/wordpress/wp-json/wp/v2/posts/${params.id}?_embed`);
         post = await response.json();
     }
 
+    if (!post.id) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+                // statusCode: 301
+            }
+        };
+    }
+    console.log(post)
+    if (!pre) pre = null;
+    if (!next) next = null;
     //const preUrl = post.link;
     //post.yoast_head = post.yoast_head.replaceAll(preUrl, newUrl);
     return {
@@ -99,7 +114,13 @@ export async function getStaticPaths() {
             }
         };
     });
-    await buildCache.set(posts);
+
+    try {
+        await buildCache.set(posts);
+    } catch (e) {
+        console.log(e);
+    }
+
     const paths = posts.map((post: Post) => ({
         params: { id: String(post.id) }
     }));

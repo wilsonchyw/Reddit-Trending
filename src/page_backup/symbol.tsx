@@ -12,7 +12,7 @@ import Forums from 'src/components/home/Forums';
 import KeyWordHeat from 'src/components/home/KeyWordHeat';
 import Notice from 'src/components/home/Notice';
 import ThreadTrendChart from 'src/components/home/ThreadTrendChart';
-import ThreadTrendTable from 'src/components/home/ThreadTrendTable';
+import ThreadTrendTable from 'src/components/SymbolDetailPage/ThreadTrendTable';
 import graphQLHandler from 'src/lib/graphQLHandler';
 import restHandler from 'src/lib/restHandler';
 import { RootState } from 'src/store';
@@ -20,34 +20,57 @@ import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData
 import forumS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
 import useAgent from 'src/lib/useAgent';
+import _Card from 'src/components/card/Card';
+import SymbolDetail from 'src/components/SymbolDetailPage/SymbolDetail';
+import { SymbolRaw } from 'src/types/Symbol';
+import SymbolChart from 'src/components/SymbolDetailPage/SymbolDetailChart';
+import SymbolInfo from 'src/components/SymbolDetailPage/SymbolVerbAndThread';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Breadcrumbs from 'src/components/SymbolDetailPage/Breadcrumb';
 
 export default function Symbol() {
     const router = useRouter();
-    const symbol =  router.query.symbol
-    console.log(symbol);
-    const [threads, setThreads] = useState();
+    const { query } = router;
+    //const { symbol, threads } = router.query;
+    //console.log(router.query);
+    const [threadStats, setThreadStat] = useState([]);
+    const [symbol, setSymbol] = useState(null);
+    const [symbolRaw, setSymbolRaw] = useState<SymbolRaw>([]);
 
     useEffect(() => {
-        symbol && restHandler([[{ url: '/state/lastest', params: { symbols: JSON.parse(symbol).threads} }, setThreads]]);
-    }, [symbol]);
+        console.log(query.symbol);
+        const symbolFromQuery = query.symbol ? JSON.parse(query.symbol) : null;
+        
+        setSymbol(symbolFromQuery);
+        if (!symbolFromQuery) {
+            console.log('no data');
+        } else {
+            restHandler([
+                [{ url: '/state/lastest', params: { symbols: symbolFromQuery.threads } }, setThreadStat],
+                [{ url: '/symbol/one', params: { id: symbolFromQuery.symbol } }, setSymbolRaw]
+            ]);
+        }
+    }, [query]);
 
-    return <div>{JSON.stringify(threads)}</div>;
+    if (!symbol) return null;
+
+    return (
+        <Container fluid="xxl">
+            <Breadcrumbs symbol={symbol} />
+            <Row className="my-3">
+                <Col md={6} xl={4} xs={12} className="my-3">
+                    <SymbolDetail symbol={symbol} />
+                </Col>
+                <Col md={6} xl={4} xs={12} className="my-3">
+                    <SymbolChart datas={symbolRaw} />
+                </Col>
+                <Col md={6} xl={4} xs={12} className="my-3">
+                    <SymbolInfo symbol={symbol} />
+                </Col>
+            </Row>
+            <Stack className="my-3">
+                <ThreadTrendTable datas={threadStats} handleThreadFetch={() => {}} userSearch="" />
+            </Stack>
+        </Container>
+    );
 }
-
-/* export async function getStaticProps(context) {
-    const { query } = context;
-    const symbol = query.symbol;
-    return {
-        props: { symbol } // will be passed to the page component as props
-    };
-} */
-/* <ThreadTrendTable
-            target={'vote'}
-            datas={target == 'vote' ? lastestVote : lastestComment}
-            showForums={showForums}
-            handleThreadFetch={handleThreadFetch}
-            //setUserSearch={s => dispatch(setSearch(s))}
-            //setChartVisible={setChartVisible}
-            handleTargetToggle={setTarget}
-            userSearch={search}
-        /> */

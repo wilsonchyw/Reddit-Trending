@@ -1,0 +1,16 @@
+.symbol-detail, tr td th {
+    padding: 3px 0 !important;
+    margin-bottom: 5px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .symbol-detail  tr, td, th {
+        padding: 2px 0 !important;
+        margin-bottom: 3px !important;
+    }
+}
+
+table.symbol-detail {
+    margin-bottom: 0px;
+    font-size: 0.8rem !important;
+}

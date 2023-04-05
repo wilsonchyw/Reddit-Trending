@@ -1,7 +1,7 @@
 import { ApexOptions } from 'apexcharts';
 import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
-import { Badge, Col, Row } from 'react-bootstrap';
+import { Badge, Col, Row, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import _Card from 'src/components/card/Card';
 import Loading from 'src/components/Loading';
@@ -58,7 +58,8 @@ export default function ThreadTrendChart({ target, showForums, chartVisible, set
         ...lineChartOptions,
         yaxis: {
             ...lineChartOptions.yaxis,
-            max: maxYAxis
+            max: maxYAxis,
+            mix: 50
         }
     } as ApexOptions;
 
@@ -105,7 +106,7 @@ export default function ThreadTrendChart({ target, showForums, chartVisible, set
                 </Col>
             </Row>
 
-            {data.length ? (
+            {data.length ? ( //
                 <div className="m-0 p-0 w-100 h-100" style={{ minHeight: '450px', minWidth: '100%' }}>
                     {typeof window !== 'undefined' && <Chart options={opt} series={data} type="line" width="100%" height="100%" />}
                 </div>
