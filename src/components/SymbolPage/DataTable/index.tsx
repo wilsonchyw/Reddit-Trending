@@ -1,13 +1,16 @@
 import { useMemo, useState } from 'react';
-import type { Symbol } from 'src/types/Symbol';
 import { Col, Row, Table } from 'react-bootstrap';
 import _Card from 'src/components/card/Card';
 import useAgent from 'src/lib/useAgent';
+import type { Symbol } from 'src/types/Symbol';
 
 import Pagination_ from 'src/components/home/Pagination';
 import Header from './Header';
 import { TableHeader } from './TableHeader';
 import TableRow from './TablwRow';
+
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store';
 
 export interface TimeFrame {
     day: number;
@@ -33,15 +36,10 @@ export default function DataTable({ data }: Props) {
     /**
      * Pagination setting area
      */
-    const [activePage, setActivePage] = useState(1);
-
+    const { currentPage } = useSelector((state: RootState) => state.setting);
     // calculate the current page data
-    const lastItem = activePage * itemsPerPage;
+    const lastItem = currentPage * itemsPerPage;
     const firstItem = lastItem - itemsPerPage;
-
-    const handlePageChange = pageNumber => {
-        setActivePage(pageNumber);
-    };
 
     /**
      * Pagination setting end
@@ -64,12 +62,10 @@ export default function DataTable({ data }: Props) {
     return (
         <_Card className={'mt-2 ' + isMobile && 'm-0'} nopadding={isMobile}>
             <Header
-                currentPage={activePage}
                 data={sortedData}
                 sortTarget={sortTarget}
                 setSorttarget={setSorttarget}
                 toggleName={toggleName}
-                handlePageChange={handlePageChange}
                 itemsPerPage={itemsPerPage}
                 setItemPerPage={setItemPerPage}
             />
@@ -93,7 +89,7 @@ export default function DataTable({ data }: Props) {
             </Table>
             <Row className="mx-1">
                 <Col className="d-flex justify-content-center">
-                    <Pagination_ currentPage={activePage} total={Math.ceil(sortedData.length / itemsPerPage)} handlePageChange={handlePageChange} />
+                    <Pagination_ total={Math.ceil(sortedData.length / itemsPerPage)} />
                 </Col>
             </Row>
         </_Card>

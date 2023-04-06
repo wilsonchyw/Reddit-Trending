@@ -8,17 +8,18 @@ import useAgent from 'src/lib/useAgent';
 import { RootState } from 'src/store';
 import { setSearch } from 'src/store/settingSlice';
 import { FONT, FONT_COLOR } from 'src/variables/css';
-import Pagination_ from './Pagination';
 import Export from '../Export';
+import Pagination_ from './Pagination';
+
 
 export default function ThreadTrend({ showForums = {}, handleThreadFetch, userSearch, target, datas, handleTargetToggle, noFilter = false }) {
     const [prePage, setPrePage] = useState<number>(10);
     const [sortBy, setSortBy] = useState<string>('change');
     const [sortOrder, setSortOrder] = useState<number>(-1);
-    const [currentPage, setCurrent] = useState(1);
     const [showChartButton, setChartButton] = useState<boolean>(true);
     const [showModal, setShowModal] = useState(false);
     const isMobile: Boolean = useAgent();
+    const { currentPage } = useSelector((state: RootState) => state.setting);
 
     if (!datas.length) return <Loading size={300} isWhite={false} />;
 
@@ -52,9 +53,7 @@ export default function ThreadTrend({ showForums = {}, handleThreadFetch, userSe
             <Header
                 dataLength={_datas.length}
                 setPrePage={setPrePage}
-                currentPage={currentPage}
                 prePage={prePage}
-                setCurrent={setCurrent}
                 datas={_datas}
                 target={target}
                 handleTargetToggle={handleTargetToggle}
@@ -226,7 +225,7 @@ function _Table({ data, handleThreadFetch, sortIndicator, handleSortOrder, targe
     );
 }
 
-function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, datas, target, handleTargetToggle, setShowModal }) {
+function Header({ dataLength, setPrePage, prePage, target, handleTargetToggle, setShowModal }) {
     const dispatch = useDispatch();
     const { dateRange, search } = useSelector((state: RootState) => state.setting);
 
@@ -273,7 +272,7 @@ function Header({ dataLength, setPrePage, currentPage, prePage, setCurrent, data
                 </Col>
             </Row>
             <div className="d-flex justify-content-center mt-2">
-                <Pagination_ currentPage={currentPage} total={Math.ceil(dataLength / prePage)} handlePageChange={setCurrent} />
+                <Pagination_ total={Math.ceil(dataLength / prePage)} />
             </div>
         </Stack>
     );

@@ -18,7 +18,8 @@ export default function TableRow({ symbol, sortTarget, sortBy, showName }: Table
     const isMobile = useAgent();
     const dispatch = useDispatch();
     const router = useRouter();
-    const handleSymbolSelect = symbol => {
+    const handleSymbolSelect = (e, symbol) => {
+        e.preventDefault();
         //dispatch(setSymbol(symbol))
         localStorage.setItem('symbol', JSON.stringify(symbol));
         router.push(`/symbol/${symbol.symbol}`);
@@ -46,10 +47,18 @@ const SymbolName = React.forwardRef(({ symbol, onClick, href }, ref) => {
 export function TableRowWidth({ symbol, sortTarget, handleSymbolSelect }: { symbol: Symbol; sortTarget: string; handleSymbolSelect: Function }) {
     return (
         <tr key={symbol.symbol}>
-            <td onClick={() => handleSymbolSelect(symbol)}>
+            <td /* onClick={() => handleSymbolSelect(symbol)} */>
                 {/* <Link href={{ pathname: '/symbol', query: { ...symbol} }} passHref legacyBehavior> */}
-                <SymbolName symbol={symbol} />
+                {/* <SymbolName symbol={symbol} /> */}
                 {/* </Link> */}
+                <a href={`/symbol/${symbol.symbol}`} onClick={e => handleSymbolSelect(e, symbol)}>
+                    <Text color={FONT_COLOR.black} fontWeight={700}>
+                        {symbol.symbol.toUpperCase()}
+                    </Text>
+                    <br />
+
+                    <Text color={FONT_COLOR.darkGrey}>{symbol.name}</Text>
+                </a>
             </td>
 
             <td>
@@ -63,18 +72,48 @@ export function TableRowWidth({ symbol, sortTarget, handleSymbolSelect }: { symb
             </td>
 
             <td>
-                <Text color={symbol.change[sortTarget].day > 0 ? FONT_COLOR.green : FONT_COLOR.red}>
-                    {(symbol.change[sortTarget].day * 100).toFixed(1)}%
+                <Text
+                    color={
+                        typeof symbol.change[sortTarget].day == 'string'
+                            ? FONT_COLOR.darkGrey
+                            : symbol.change[sortTarget].day > 0
+                            ? FONT_COLOR.green
+                            : FONT_COLOR.red
+                    }
+                >
+                    {typeof symbol.change[sortTarget].day != 'string'
+                        ? (symbol.change[sortTarget].day * 100).toFixed(1) + '%'
+                        : symbol.change[sortTarget].day}
                 </Text>
             </td>
             <td>
-                <Text color={symbol.change[sortTarget].week > 0 ? FONT_COLOR.green : FONT_COLOR.red}>
-                    {(symbol.change[sortTarget].week * 100).toFixed(1)}%
+                <Text
+                    color={
+                        typeof symbol.change[sortTarget].week == 'string'
+                            ? FONT_COLOR.darkGrey
+                            : symbol.change[sortTarget].week > 0
+                            ? FONT_COLOR.green
+                            : FONT_COLOR.red
+                    }
+                >
+                    {typeof symbol.change[sortTarget].week != 'string'
+                        ? (symbol.change[sortTarget].week * 100).toFixed(1) + '%'
+                        : symbol.change[sortTarget].week}
                 </Text>
             </td>
             <td>
-                <Text color={symbol.change[sortTarget].month > 0 ? FONT_COLOR.green : FONT_COLOR.red}>
-                    {(symbol.change[sortTarget].month * 100).toFixed(1)}%
+                <Text
+                    color={
+                        typeof symbol.change[sortTarget].month == 'string'
+                            ? FONT_COLOR.darkGrey
+                            : symbol.change[sortTarget].month > 0
+                            ? FONT_COLOR.green
+                            : FONT_COLOR.red
+                    }
+                >
+                    {typeof symbol.change[sortTarget].month != 'string'
+                        ? (symbol.change[sortTarget].month * 100).toFixed(1) + '%'
+                        : symbol.change[sortTarget].month}
                 </Text>
             </td>
             <td className="p-0">

@@ -11,6 +11,7 @@ interface settingState {
     search: string;
     useRestApi: boolean;
     visible: boolean;
+    currentPage:number
 }
 
 const initialState: settingState = {
@@ -23,7 +24,8 @@ const initialState: settingState = {
     notice: true,
     search: '',
     useRestApi: true,
-    visible: false
+    visible: false,
+    currentPage:1
 };
 
 export const settingSlice = createSlice({
@@ -63,7 +65,10 @@ export const settingSlice = createSlice({
         },
         toggleUseRestApi: state => {
             state.useRestApi = !state.useRestApi;
-        }
+        },
+        setPage:(state, action) => {
+            state.currentPage = action.payload;
+        },
     }
 });
 
@@ -78,7 +83,8 @@ export const {
     toggleNotice,
     setSearch,
     toggleUseRestApi,
-    setVisible
+    setVisible,
+    setPage
 } = settingSlice.actions;
 
 export default settingSlice.reducer;

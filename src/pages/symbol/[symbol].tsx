@@ -16,6 +16,7 @@ export default function Symbol() {
     const router = useRouter();
     //const { query } = router;
     const { symbol } = router.query;
+    const { pathname } = router;
     //console.log(router.query);
     //const { _symbol } = useSelector((state: RootState) => state.symbol);
     const [threadStats, setThreadStat] = useState([]);
@@ -24,11 +25,13 @@ export default function Symbol() {
 
     useEffect(() => {
         if (symbol) {
-            const localSymbol = JSON.parse(localStorage.getItem('symbol'));
+            let localSymbol = localStorage.getItem('symbol') as any;
+            localSymbol = localSymbol == 'undefined' ? {} : JSON.parse(localSymbol);
             if (!localSymbol || localSymbol.symbol != symbol) {
+                const type= pathname.includes("stock")?"stock":"crypto"
                 restHandler([
                     [
-                        { url: '/symbol', params: { id: symbol } },
+                        { url: '/symbol', params: { id: symbol,type } },
                         datas => {
                             setSymbol(datas[0]);
                             localStorage.setItem('symbol', JSON.stringify(datas[0]));
@@ -43,9 +46,9 @@ export default function Symbol() {
 
     useEffect(() => {
         if (_symbol) {
-            console.log(_symbol.threads)
+            console.log(_symbol.threads);
             restHandler([
-                [{ url: '/state/lastest', params: { symbols: JSON.stringify(_symbol.threads )} }, setThreadStat],
+                [{ url: '/state/lastest', params: { symbols: JSON.stringify(_symbol.threads.slice(0, 1000)) } }, setThreadStat],
                 [{ url: '/symbol/one', params: { id: _symbol.symbol } }, setSymbolRaw]
             ]);
         }

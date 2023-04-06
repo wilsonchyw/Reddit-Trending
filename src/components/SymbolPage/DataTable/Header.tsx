@@ -7,20 +7,16 @@ import useAgent from 'src/lib/useAgent';
 import { FONT, FONT_COLOR } from 'src/variables/css';
 
 interface Props {
-    currentPage: number;
     data: any[];
     itemsPerPage: number;
     sortTarget: string;
     toggleName: Function;
-    handlePageChange: Function;
     setItemPerPage: Function;
     setSorttarget: Function;
 }
 
 export default function Header({
-    currentPage,
     data,
-    handlePageChange,
     setItemPerPage,
     toggleName,
     itemsPerPage,
@@ -36,7 +32,7 @@ export default function Header({
                 </Text>
             </Col>
             <Col md={4} className={'d-flex justify-content-center'}>
-                <Pagination_ currentPage={currentPage} total={Math.ceil(data.length / itemsPerPage)} handlePageChange={handlePageChange} />
+                <Pagination_ total={Math.ceil(data.length / itemsPerPage)} />
             </Col>
             <Col md={4} className={isMobile ? 'd-flex justify-content-center mb-2' : 'd-flex justify-content-end'}>
                 <Export datas={data} />

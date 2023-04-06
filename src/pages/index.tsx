@@ -14,13 +14,11 @@ import ThreadTrendChart from 'src/components/home/ThreadTrendChart';
 import ThreadTrendTable from 'src/components/home/ThreadTrendTable';
 import graphQLHandler from 'src/lib/graphQLHandler';
 import restHandler from 'src/lib/restHandler';
+import useAgent from 'src/lib/useAgent';
 import { RootState } from 'src/store';
 import { setForumData, setHeat, setLastestComment, setLastestVote, setTrendsData } from 'src/store/rawDataSlice';
 import forumS from 'src/variables/forum.json';
 import { GraphQuery } from 'src/variables/graphQL';
-import useAgent from 'src/lib/useAgent';
-import DataTable from 'src/components/SymbolPage/DataTable';
-import { setSymbol } from 'src/store/symbolSlice';
 
 export interface State {
     MAX: number;
