@@ -15,8 +15,8 @@ import { SymbolRaw } from 'src/types/Symbol';
 export default function Symbol() {
     const router = useRouter();
     //const { query } = router;
-    const { symbol } = router.query;
-    const { pathname } = router;
+    const { symbol,type } = router.query;
+    //const { pathname } = router;
     //console.log(router.query);
     //const { _symbol } = useSelector((state: RootState) => state.symbol);
     const [threadStats, setThreadStat] = useState([]);
@@ -28,7 +28,7 @@ export default function Symbol() {
             let localSymbol = localStorage.getItem('symbol') as any;
             localSymbol = localSymbol == 'undefined' ? {} : JSON.parse(localSymbol);
             if (!localSymbol || localSymbol.symbol != symbol) {
-                const type= pathname.includes("stock")?"stock":"crypto"
+                //const type= pathname.includes("stock")?"stock":"crypto"
                 restHandler([
                     [
                         { url: '/symbol', params: { id: symbol,type } },

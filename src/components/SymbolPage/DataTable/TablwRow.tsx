@@ -51,7 +51,7 @@ export function TableRowWidth({ symbol, sortTarget, handleSymbolSelect }: { symb
                 {/* <Link href={{ pathname: '/symbol', query: { ...symbol} }} passHref legacyBehavior> */}
                 {/* <SymbolName symbol={symbol} /> */}
                 {/* </Link> */}
-                <a href={`/symbol/${symbol.symbol}`} onClick={e => handleSymbolSelect(e, symbol)}>
+                <a href={`/symbol/${symbol.type}/${symbol.symbol}`} onClick={e => handleSymbolSelect(e, symbol)}>
                     <Text color={FONT_COLOR.black} fontWeight={700}>
                         {symbol.symbol.toUpperCase()}
                     </Text>
