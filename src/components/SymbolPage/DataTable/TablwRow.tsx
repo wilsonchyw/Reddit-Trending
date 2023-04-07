@@ -22,7 +22,7 @@ export default function TableRow({ symbol, sortTarget, sortBy, showName }: Table
         e.preventDefault();
         //dispatch(setSymbol(symbol))
         localStorage.setItem('symbol', JSON.stringify(symbol));
-        router.push(`/symbol/${symbol.symbol}`);
+        router.push(`/symbol/${symbol.type}/${symbol.symbol}`);
     };
     return isMobile ? (
         <TableRowMobile showName={showName} symbol={symbol} sortTarget={sortTarget} sortBy={sortBy} />
@@ -31,22 +31,11 @@ export default function TableRow({ symbol, sortTarget, sortBy, showName }: Table
     );
 }
 
-const SymbolName = React.forwardRef(({ symbol, onClick, href }, ref) => {
-    return (
-        <a ref={ref} href={href} onClick={onClick}>
-            <Text color={FONT_COLOR.black} fontWeight={700}>
-                {symbol.symbol.toUpperCase()}
-            </Text>
-            <br />
 
-            <Text color={FONT_COLOR.darkGrey}>{symbol.name}</Text>
-        </a>
-    );
-});
 
 export function TableRowWidth({ symbol, sortTarget, handleSymbolSelect }: { symbol: Symbol; sortTarget: string; handleSymbolSelect: Function }) {
     return (
-        <tr key={symbol.symbol}>
+        <tr key={symbol.symbol+symbol.type}>
             <td /* onClick={() => handleSymbolSelect(symbol)} */>
                 {/* <Link href={{ pathname: '/symbol', query: { ...symbol} }} passHref legacyBehavior> */}
                 {/* <SymbolName symbol={symbol} /> */}
@@ -125,7 +114,7 @@ export function TableRowWidth({ symbol, sortTarget, handleSymbolSelect }: { symb
 
 export function TableRowMobile({ symbol, sortTarget, sortBy, showName }: { showName: Function; symbol: Symbol; sortTarget: string; sortBy: string }) {
     return (
-        <tr key={symbol.symbol}>
+        <tr key={symbol.symbol+symbol.type}>
             <td>
                 <Text color={FONT_COLOR.black} fontWeight={700} fontSize={FONT.small} className="px-1">
                     {symbol.symbol.toUpperCase()}

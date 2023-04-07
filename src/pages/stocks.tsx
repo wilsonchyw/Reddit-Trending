@@ -17,7 +17,8 @@ export default function StockPage({ symbols }: { symbols: Symbol[] }) {
 }
 
 export async function getStaticProps(context) {
-    return fetch(`http://api.rtrend.site:3003/api/symbol?page=0&per_page=9999&type=stock`)
+    const ENDPOINT = process.env.NODE_ENV === 'production' ? 'https://api.rtrend.site/api/symbol?page=0&per_page=9999&type=stock' : 'http://api.rtrend.site:3003/api/symbol?page=0&per_page=9999&type=stock';
+    return fetch(ENDPOINT)
         .then(response => response.json())
         .then(symbol => {
             return {
