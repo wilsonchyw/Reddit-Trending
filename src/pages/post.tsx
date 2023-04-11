@@ -1,26 +1,28 @@
-import Link from 'next/link';
-import { Button, Col, Container, Row, Image } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import Text from 'src/components/Text';
-import type { Post } from 'src/types/Post';
 import he from 'he';
 import * as _Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 import Pagination_ from 'src/components/home/Pagination';
-import { useMemo, useState } from 'react';
+import Text from 'src/components/Text';
+import type { Post } from 'src/types/Post';
+
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store';
 
 interface Props {
     posts?: Post[];
     notFound?: boolean;
 }
 
-
-
 export default function BlogPost({ posts, notFound }: Props) {
     const [itemsPerPage, setItemPerPage] = useState<number>(5);
     const [activePage, setActivePage] = useState(1);
 
+    const { currentPage } = useSelector((state: RootState) => state.setting);
     // calculate the current page data
-    const lastItem = activePage * itemsPerPage;
+    const lastItem = currentPage * itemsPerPage;
     const firstItem = lastItem - itemsPerPage;
 
     const handlePageChange = pageNumber => {
@@ -44,10 +46,10 @@ export default function BlogPost({ posts, notFound }: Props) {
                                         <_Image
                                             layout="fill"
                                             //style={{ objectFit: 'fill', minWidth: '100%', height: '-webkit-fill-available', maxHeight: '230px' }}
-                                            src={post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url.replace(
-                                                'http://api.rtrend.site:4000',
-                                                'https://api.rtrend.site/wordpress'
-                                            )}
+                                            src={(
+                                                post._embedded['wp:featuredmedia'][0].media_details.sizes.medium ||
+                                                post._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail
+                                            ).source_url.replace('http://api.rtrend.site:4000', 'https://api.rtrend.site/wordpress')}
                                             alt={post.slug}
                                         />
                                     )}
@@ -80,7 +82,7 @@ export default function BlogPost({ posts, notFound }: Props) {
             </Row>
             <Row className="mx-1">
                 <Col className="d-flex justify-content-center">
-                    <Pagination_ currentPage={activePage} total={Math.ceil(posts.length / itemsPerPage)} handlePageChange={handlePageChange} />
+                    <Pagination_ total={Math.ceil(posts.length / itemsPerPage)} />
                 </Col>
             </Row>
         </Container>
@@ -143,7 +145,7 @@ function BigRoundButton(props) {
 }
 
 export async function getStaticProps(context) {
-    return fetch('https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?_embed')
+    return fetch('https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?_embed&per_page=100')
         .then(response => response.json())
         .then(posts => {
             posts = posts.map(post => {
