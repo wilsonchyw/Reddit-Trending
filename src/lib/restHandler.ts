@@ -1,6 +1,6 @@
 import axios from 'axios';
-//const ENDPOINT = 'https://api.rtrend.site/api';
-const ENDPOINT = process.env.NODE_ENV === 'production' ? 'https://api.rtrend.site/api' : 'http://api.rtrend.site:3003/api';
+//const ENDPOINT = 'https://api.reddittrend.com/api';
+const ENDPOINT = process.env.NODE_ENV === 'production' ? 'https://api.reddittrend.com/api' : 'http://api.reddittrend.com:3003/api';
 
 /**
  * Makes HTTP requests using the REST API.

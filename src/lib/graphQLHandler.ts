@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosRequestHeaders } from 'axios';
 
-const ENDPOINT = 'https://api.rtrend.site/graphql';
-//const ENDPOINT = 'http://api.rtrend.site:3003/graphql';
+const ENDPOINT = 'https://api.reddittrend.com/graphql';
+//const ENDPOINT = 'http://api.reddittrend.com:3003/graphql';
 
 /**
  * Sends a GraphQL query to the specified endpoint and handles the response.

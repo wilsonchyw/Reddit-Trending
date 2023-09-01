@@ -15,7 +15,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'api.rtrend.site',
+                hostname: 'api.reddittrend.com',
                 port: '',
                 pathname: '/**'
             }

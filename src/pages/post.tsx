@@ -49,7 +49,7 @@ export default function BlogPost({ posts, notFound }: Props) {
                                             src={(
                                                 post._embedded['wp:featuredmedia'][0].media_details.sizes.medium ||
                                                 post._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail
-                                            ).source_url.replace('http://api.rtrend.site:4000', 'https://api.rtrend.site/wordpress')}
+                                            ).source_url.replace('http://api.reddittrend.com:4000', 'https://api.reddittrend.com/wordpress')}
                                             alt={post.slug}
                                         />
                                     )}
@@ -145,7 +145,7 @@ function BigRoundButton(props) {
 }
 
 export async function getStaticProps(context) {
-    return fetch('https://api.rtrend.site/wordpress/wp-json/wp/v2/posts?_embed&per_page=100')
+    return fetch('https://api.reddittrend.com/wordpress/wp-json/wp/v2/posts?_embed&per_page=100')
         .then(response => response.json())
         .then(posts => {
             posts = posts.map(post => {

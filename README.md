@@ -1,9 +1,9 @@
 ## Reddit-Trending
-[Reddit Trending](http://rtrend.site/) is a powerful and dynamic web application written in TypeScript that provides real-time visualization of more than 3 million financial-related trends on Reddit.
+[Reddit Trending](http://reddittrend.com/) is a powerful and dynamic web application written in TypeScript that provides real-time visualization of more than 3 million financial-related trends on Reddit.
 With its intuitive user interface and advanced data visualization capabilities, Reddit Trending offers a unique and insightful perspective into the latest financial trends and discussions happening on Reddit.
  
-<img src="http://api.rtrend.site:5002/assets/img/trending/1.png" width="700">
-<img src="http://api.rtrend.site:5002/assets/img/trending/2.png" width="700">
+<img src="http://api.reddittrend.com:5002/assets/img/trending/1.png" width="700">
+<img src="http://api.reddittrend.com:5002/assets/img/trending/2.png" width="700">
 
  
 ## Tech Stack
