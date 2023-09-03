@@ -15,12 +15,14 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'api.reddittrend.com',
-                port: '',
-                pathname: '/**'
-            }
-        ]
-    }
+                hostname: '**',
+            },
+            {
+                protocol: 'http',
+                hostname: '**',
+            },
+        ],
+    },
 };
 
 module.exports = nextConfig;

@@ -15,10 +15,11 @@
     },
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.1",
-        "@vercel/analytics": "^0.1.8",
+        "@vercel/analytics": "^0.1.11",
         "apexcharts": "^3.36.3",
         "axios": "^1.2.1",
         "bootstrap": "^5.2.3",
+        "dotenv": "^16.3.1",
         "he": "^1.2.0",
         "html-react-parser": "^3.0.12",
         "next": "12.3.2",

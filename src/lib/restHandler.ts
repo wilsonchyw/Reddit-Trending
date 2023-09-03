@@ -1,6 +1,6 @@
 import axios from 'axios';
 //const ENDPOINT = 'https://api.reddittrend.com/api';
-const ENDPOINT = process.env.NODE_ENV === 'production' ? 'https://api.reddittrend.com/api' : 'http://api.reddittrend.com:3003/api';
+const ENDPOINT = process.env.NODE_ENV === 'production' ? 'https://api.reddittrend.com/api' : "https://api.reddittrend.com/api"//'http://api.reddittrend.com:3003/api';
 
 /**
  * Makes HTTP requests using the REST API.
@@ -15,6 +15,7 @@ export default async function restHandler(args) {
             if (!option.method) option.method = 'get';
             option.url = `${ENDPOINT}${option.url}`;
             //console.log({option})
+            //console.log(option.url)
             return axios(option).then(
                 res => {
                     const { data } = res;
